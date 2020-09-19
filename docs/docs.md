@@ -129,6 +129,12 @@ CATEGORY: id, title, description, slug
 
 ```
 
+# __Le Versionning__ #
+
+Le versionning sera géré avec l'outils git. Le projet, dans ses versions de présentation et sa version final, sera sur "master".
+Le developpement du projet se fera sur la branche "develop".
+chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge sur la branche de developpment "develop" a l'aide de Pull Request uniquement.
+
 
 
 
