@@ -33,11 +33,15 @@ Ce site est intégralement réaliser avec React et Redux pour ce qui est de la p
 
 Le site aura pour icon une banane avec des lunettes de soleil.
 
-La couleur primaire sera le jaune.
+La couleur primaire sera le jaune.(#FADB2A)main, (#F1F094)secondary
 
-La couleur secondaire sera le violet.
+La couleur secondaire sera le violet.(#78317B)
 
 Un carrousel des excuses de retard les mieux notés sera affiché en homepage
+
+Responsive design
+
+Le site devra implémenter un mamiximun de bonne pratique Opquast
 
 # __Les User Stories__ #
 
@@ -134,6 +138,7 @@ CATEGORY: id, title, description, slug
 Le versionning sera géré avec l'outils git. Le projet, dans ses versions de présentation et sa version final, sera sur "master".
 Le developpement du projet se fera sur la branche "develop".
 chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge sur la branche de developpment "develop" a l'aide de Pull Request uniquement.
+
 
 
 
