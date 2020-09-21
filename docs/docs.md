@@ -156,7 +156,7 @@ CATEGORY: id, title, description, slug
 |  slug  | VARCHAR(255)    | NOT NULL   | Slug du tire de l'excuse     |
 |  content  |  TEXT  |  NOT NULL  | Contenu de l'excuse    |
 |  author  |  Entity   |  NOT NULL  | Auteur de L'excuse     |
-|  like  |  INT   |  NULL  |  Note de l'excuses   |
+|  like  |  INT   |  DEFAULT 0  |  Nombres de likes de l'excuses   |
 |  commentaries  |  Entity   |  NULL  | Commentaires au sujet de l'excuses  |
 |  created_at  |  TIMESTAMP   | DEFAULT CURRENT_TIMESTAMP    | Date de création de l'excuses    |
 
@@ -196,3 +196,40 @@ CATEGORY: id, title, description, slug
 | author | VARCHAR(128) | NOT NULL | Auteur du commentaire  |
 | content | TEXT | NOT NULL | Contenu du commentaire |
 | created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP  | Date de création du commentaire |
+
+----------------------
+
+# ***Liste des routes de L'API***
+
+## ***Apology***
+|  EndPoint  | Méthode HTTP | Données a transmettre | Description |
+| -  |  :-:  |  :-: |  -  |
+| ```Api/v0/apologies ``` | GET |  | Récupérer toutes les excuses |
+| ```Api/v0/apologies/count ``` | GET |  | Récupérer le nombre total d'excuses |
+| ```Api/v0/apologies?best=[int] ``` | GET | Nombres de d'excuses a récuperer dans le paramètre | Récupérer un nombre spécifique d'excuses ayant le plus grand nombre de likes  |
+| ```Api/v0/apologies/author=[id] ``` | GET | Identifiant de l'utilisateur | Récupérer toutes les excuses de l'utilisateur correspondant a l'id transmis  |
+| ```Api/v0/apologies ``` | POST | titre, contenu, auteur | Création d'une excuse |
+| ```Api/v0/apologies/[id] ``` | PATCH | titre, auteur, contenu, date de création, nombre de likes  | Édition d'une excuse |
+| ```Api/v0/apologies/[id] ``` | DELETE |  |Suppression de l'excuse  |
+----------------------------------------------------------------------------
+
+
+## ***User***
+|  EndPoint  | Méthode HTTP | Données a transmettre | Description |
+| -  |  :-:  |  :-: |  -  |
+| ```Api/v0/users ``` | GET  |  | Récupérer tout les utilisateur  |
+| ```Api/v0/users/[id] ``` | GET | Identifiant de l'utilisateur | Récupérer un utilisateur |
+| ```Api/v0/users ``` | POST | firstname, lastname, email, password, pseudo et avatar | Création d'un utilisateur  |
+| ```Api/v0/users/[id] ``` | PATCH | firstname, lastname, email, password, pseudo et avatar | Modifiaction d'un utilisateur |
+| ```Api/v0/users/[id] ``` | DELETE |  | Suppresion d'un utilisateur  |
+
+
+
+## ***Commentary***
+|  EndPoint  | Méthode HTTP | Données a transmettre | Description |
+| -  |  :-:  |  :-: |  -  |
+| ```Api/v0/commentaries ``` | GET |  | Récupérer l'ensemble des commentaires |
+| ```Api/v0/commentaries?apologie=[id] ``` | GET | Id de l'excuse | Récupérer tous les commentaires selon une excuses  |
+| ```Api/v0/commentaries ``` | POST | titre, auteur, contenu | Création d'un commentaire  |
+
+
