@@ -125,7 +125,7 @@ chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge su
 - possède une date de création
 
 
-***Un commentaires***
+***Un commentaire***
 - possède un auteur
 - possède un contenu
 - possède un id
@@ -133,13 +133,13 @@ chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge su
 
 ```bash
 
-COMMENTARY: id, author, content
-have, 0N COMMENTARY, 11 APOLOGY
+COMMENTS: id, author, content
+have, 11 COMMENTS, 0N APOLOGY
 APOLOGY: id, author, content, slug, likes, commentaries,
 belongs to, 0N USERS , 11 APOLOGY
 USERS: id, firstname, lastname, role, email, password
 
-is linked to, 0N APOLOGY, 0N CATEGORY
+is linked to, 1N APOLOGY, 0N CATEGORY
 
 CATEGORY: id, title, description, slug
 
@@ -188,7 +188,7 @@ CATEGORY: id, title, description, slug
 
 ------------------------
 
-## ***Commentary***
+## ***Comment***
 
 |  Champ  | Type | Spécificités | Description |
 | -  |  :-:  |  :-: |  -  |
@@ -225,11 +225,11 @@ CATEGORY: id, title, description, slug
 
 
 
-## ***Commentary***
+## ***Comment***
 |  EndPoint  | Méthode HTTP | Données a transmettre | Description |
 | -  |  :-:  |  :-: |  -  |
-| ```Api/v0/commentaries ``` | GET |  | Récupérer l'ensemble des commentaires |
-| ```Api/v0/commentaries?apologie=[id] ``` | GET | Id de l'excuse | Récupérer tous les commentaires selon une excuses  |
-| ```Api/v0/commentaries ``` | POST | titre, auteur, contenu | Création d'un commentaire  |
-
+| ```Api/v0/comments ``` | GET |  | Récupérer l'ensemble des commentaires |
+| ```Api/v0/comments?apology=[id] ``` | GET | Id de l'excuse | Récupérer tous les commentaires selon une excuses  |
+| ```Api/v0/comments ``` | POST | titre, auteur, contenu | Création d'un commentaire  |
+| ```Api/v0/comments/[id] ``` | PATCH | Id du commentaire | Édition d'un commentaire  |
 

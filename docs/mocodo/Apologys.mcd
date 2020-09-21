@@ -1,11 +1,9 @@
-COMMENTARY: id, author, content
-have, 0N COMMENTARY, 11 APOLOGY
+COMMENTS: id, author, content
+have, 11 COMMENTS, 0N APOLOGY
 APOLOGY: id, author, content, slug, likes, commentaries,
 belongs to, 0N USERS , 11 APOLOGY
 USERS: id, firstname, lastname, role, email, password
 
-is linked to, 0N APOLOGY, 0N CATEGORY
+is linked to, 1N APOLOGY, 0N CATEGORY
 
 CATEGORY: id, title, description, slug
-
-
