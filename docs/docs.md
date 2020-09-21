@@ -43,6 +43,14 @@ Responsive design
 
 Le site devra implémenter un mamiximun de bonne pratique Opquast
 
+
+# __Le Versionning__ #
+
+Le versionning sera géré avec l'outils git. Le projet, dans ses versions de présentation et sa version final, sera sur "master".
+Le developpement du projet se fera sur la branche "develop".
+chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge sur la branche de developpment "develop" a l'aide de Pull Request uniquement.
+
+
 # __Les User Stories__ #
 
 - En tant qu'utilisateur je dois pouvoir accéder au service de visionnage des excuses dans la limite de 10 excuses si je ne suis pas conneccter
@@ -93,7 +101,6 @@ Le site devra implémenter un mamiximun de bonne pratique Opquast
 - possède un auteur
 - possède un titre 
 - possède un slug
-- possède une note
 - possède un contenu
 - possède un id
 - possède des likes
@@ -101,23 +108,28 @@ Le site devra implémenter un mamiximun de bonne pratique Opquast
 - possède une date de création
 
 ***Une catégorie*** :
+- possède un id
 - possède un titre
 - possède un slug
 - possède description
 
 ***Un User*** : 
+- possède un id
 - possède un Nom
 - possède un Prenom
+- possède un pseudo
 - possède un rôle
 - possède un email
 - possède un MDP
 - possède un avatar ou non
+- possède une date de création
 
 
 ***Un commentaires***
 - possède un auteur
 - possède un contenu
 - possède un id
+- possède une date de création
 
 ```bash
 
@@ -133,13 +145,54 @@ CATEGORY: id, title, description, slug
 
 ```
 
-# __Le Versionning__ #
+# __Le Dico de Données__ #
 
-Le versionning sera géré avec l'outils git. Le projet, dans ses versions de présentation et sa version final, sera sur "master".
-Le developpement du projet se fera sur la branche "develop".
-chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge sur la branche de developpment "develop" a l'aide de Pull Request uniquement.
+## ***Apology***
 
+|  Champ  | Type | Spécificités | Description |
+| -  |  :-:  |  :-: |  -  |
+|  id  |  INT   |  PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT  |  Identifiant de l'excuce   |
+|  title  |  VARCHAR(128)   | NOT NULL    | Titre de l'excuse     |
+|  slug  | VARCHAR(255)    | NOT NULL   | Slug du tire de l'excuse     |
+|  content  |  TEXT  |  NOT NULL  | Contenu de l'excuse    |
+|  author  |  Entity   |  NOT NULL  | Auteur de L'excuse     |
+|  like  |  INT   |  NULL  |  Note de l'excuses   |
+|  commentaries  |  Entity   |  NULL  | Commentaires au sujet de l'excuses  |
+|  created_at  |  TIMESTAMP   | DEFAULT CURRENT_TIMESTAMP    | Date de création de l'excuses    |
 
+---------------------------
 
+## ***User***
 
+|  Champ  | Type | Spécificités | Description |
+| -  |  :-:  |  :-: |  -  |
+|  id  |  INT   |  PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT  |  Identifiant de l'utilisateur   |
+| firstname | VARCHAR(128) | NOT NULL | Prénom de l'utilisateur |
+| lastname | VARCHAR(128) | NOT NULL | Nom de l'utilisateur |
+| nickname | VARCHAR(255) | NOT NULL | Pseudo de l'utilisateur  |
+| password | VARCHAR(128) | NOT NULL  | Mot de passe de l'utilisateur  |
+| email | VARCHAR(128) | NOT NULL, UNIQUE | Email de l'utilisateur  |
+| avatar | TEXT | NULL | Avatar de l'utilisateur  |
+|  created_at  |  TIMESTAMP   | DEFAULT CURRENT_TIMESTAMP    | Date de création du compte utilisateur    |
 
+--------------------------
+
+## ***Category***
+
+|  Champ  | Type | Spécificités | Description |
+| -  |  :-:  |  :-: |  -  |
+|  id  |  INT   |  PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT  |  Identifiant de la categorie  |
+| title | VARCHAR(64) | NOT NULL | Titre de la catégorie  |
+| slug | VARCHAR(64) | NOT NULL | Slug du titre de la catégorie  |
+| description | TEXT | NULL  | Description de la catégorie |
+
+------------------------
+
+## ***Commentary***
+
+|  Champ  | Type | Spécificités | Description |
+| -  |  :-:  |  :-: |  -  |
+|  id  |  INT   |  PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT  |  Identifiant du commentaire  |
+| author | VARCHAR(128) | NOT NULL | Auteur du commentaire  |
+| content | TEXT | NOT NULL | Contenu du commentaire |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP  | Date de création du commentaire |
