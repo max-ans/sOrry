@@ -31,7 +31,7 @@ Ce site est intégralement réaliser avec React et Redux pour ce qui est de la p
 
 # __Les impératifs__ #
 
-Le site aura pour icon une banane avec des lunettes de soleil.
+Le site aura pour icon une banane avec des lunettes de soleil (voir png banamix pour exemple).
 
 La couleur primaire sera le jaune.(#FADB2A)main, (#F1F094)secondary
 
@@ -53,7 +53,7 @@ chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge su
 
 # __Les User Stories__ #
 
-- En tant qu'utilisateur je dois pouvoir accéder au service de visionnage des excuses dans la limite de 10 excuses si je ne suis pas conneccter
+- En tant qu'utilisateur je dois pouvoir accéder au service de visionnage des excuses dans la limite de 10 excuses si je ne suis pas connecter
 
 - En tant qu'utilisateur, je dois pouvoir créer un compte personnel
 
