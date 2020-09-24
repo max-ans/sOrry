@@ -11,7 +11,7 @@
 <body>
 <div id='mld'>
 <div>
-  <span class='relation'>COMMENTS</span> (
+  <span class='relation'>COMMENT</span> (
     <span class='primary'>id</span>,
     <span class='normal'>author</span>,
     <span class='normal'>content</span>,
@@ -26,24 +26,25 @@
     <span class='normal'>slug</span>,
     <span class='normal'>likes</span>,
     <span class='normal'>commentaries</span>,
-    <span class='normal'></span>,
     <span class='foreign'>id.1</span>
-  )
-</div>
-<div>
-  <span class='relation'>USERS</span> (
-    <span class='primary'>id</span>,
-    <span class='normal'>firstname</span>,
-    <span class='normal'>lastname</span>,
-    <span class='normal'>role</span>,
-    <span class='normal'>email</span>,
-    <span class='normal'>password</span>
   )
 </div>
 <div>
   <span class='relation'>is linked to</span> (
     <span class='foreign primary'>id</span>,
     <span class='foreign primary'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>USER</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>firstname</span>,
+    <span class='normal'>lastname</span>,
+    <span class='normal'>role</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>password</span>,
+    <span class='normal'>nickname</span>,
+    <span class='foreign'>id.1</span>
   )
 </div>
 <div>

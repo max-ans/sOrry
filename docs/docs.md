@@ -133,14 +133,16 @@ chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge su
 
 ```bash
 
-COMMENTS: id, author, content
-have, 11 COMMENTS, 0N APOLOGY
-APOLOGY: id, author, content, slug, likes, commentaries,
-belongs to, 0N USERS , 11 APOLOGY
-USERS: id, firstname, lastname, role, email, password
+COMMENT: id, author, content
+have, 11 COMMENT, 0N APOLOGY
+:
 
+write , 11 USER, 0N COMMENT
+APOLOGY: id, author, content, slug, likes,commentaries
 is linked to, 1N APOLOGY, 0N CATEGORY
 
+USER: id, firstname, lastname, role, email, password, nickname
+belongs to, 0N USER , 11 APOLOGY
 CATEGORY: id, title, description, slug
 
 ```
