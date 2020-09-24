@@ -1,15 +1,17 @@
 <?php
 
-use Symfony\Component\String\Slugger\AsciiSlugger;
+namespace App\Service;
+
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 // this is an service. His Goal is return a slug of string given in parameter through slugify function
 class Slugger 
 {
-    private $slugger;
+    private $asciiSlugger;
 
-    public function __construct(AsciiSlugger $asciiSlugger)
+    public function __construct(SluggerInterface $asciiSlugger)
     {
-        $this->slugger = $asciiSlugger;
+       $this->asciiSlugger = $asciiSlugger;
     }
 
     public function slugify ($word) :string
@@ -21,6 +23,6 @@ class Slugger
         // second step : symfony asciiSlugger replace space by hyphen between each word if there are several
         // and he replace accented letter by same lettre but without accent thanks to slug function
 
-        return $this->slugger->slug($wordLower);
+        return $this->asciiSlugger->slug($wordLower);
     }
 }
