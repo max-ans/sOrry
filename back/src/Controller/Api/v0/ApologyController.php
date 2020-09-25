@@ -4,6 +4,7 @@ namespace App\Controller\Api\v0;
 
 use App\Repository\ApologyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -14,8 +15,31 @@ class ApologyController extends AbstractController
     /**
      * @Route("/api/v0/apologies", name="api_v0_apologies", methods={"GET"})
      */
-    public function list(ApologyRepository $apologyRepository, ObjectNormalizer $normalizer)
+    public function list(ApologyRepository $apologyRepository, ObjectNormalizer $normalizer, Request $request)
     {
+
+        if ($request->query->get('best')){
+
+            // transform type of request query value
+            $numberOfApologies = intval($request->query->get('best'));
+            
+            $bestApologies = $apologyRepository->findBestApologies($numberOfApologies);
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+          
+
+            // Strucure response
+            $normalizedBestApologies = $serializer->normalize($bestApologies, null, ['groups' => 'apologies_groups']);
+            
+
+            return $this->json([
+
+                $normalizedBestApologies,
+
+            ]);
+
+        }
+
         // ask apology repository to recovery all apology 
         $allApologies = $apologyRepository->findAll();
         
@@ -58,4 +82,5 @@ class ApologyController extends AbstractController
          ]);
 
     }
+
 }

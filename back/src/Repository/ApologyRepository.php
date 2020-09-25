@@ -19,32 +19,19 @@ class ApologyRepository extends ServiceEntityRepository
         parent::__construct($registry, Apology::class);
     }
 
-    // /**
-    //  * @return Apology[] Returns an array of Apology objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    // this function find Apologie based on their likes numbers.
+    // By default she return ten best Apologie, except if $number is different from ten
+    public function findBestApologies ($number = 10)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        // initialize query builder
+        $queryBuilder = $this->createQueryBuilder('apology');
+        $queryBuilder->orderBy('apology.likes', 'DESC');
+        $queryBuilder->setMaxResults($number);
 
-    /*
-    public function findOneBySomeField($value): ?Apology
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
     }
-    */
+    
 }
