@@ -23,8 +23,11 @@ class ApologyRepository extends ServiceEntityRepository
 
     // this function allows to find all Apologies in one request
     public function findAllApologies ()
-    {
+    { 
+        // initialize query builder
         $qb = $this->createQueryBuilder('apology');
+
+        // Inner join for reduce number of queries
         $qb->leftJoin('apology.comments', 'comments');
         $qb->addSelect('comments');
         $qb->leftJoin('apology.categories', 'categories');
@@ -53,6 +56,28 @@ class ApologyRepository extends ServiceEntityRepository
         $qb->addSelect('author');
         $qb->orderBy('apology.likes', 'DESC');
         $qb->setMaxResults($number);
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function findByAuthor ($authorId)
+    {
+        // initialize query builder
+        $qb = $this->createQueryBuilder('apology');
+        $qb->leftJoin('apology.comments', 'comments');
+        $qb->addSelect('comments');
+        $qb->leftJoin('apology.categories', 'categories');
+        $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+
+        // Where apology author equal a token which contains id author
+        $qb->where('apology.author = :authorId');
+
+        // definition of token which contains id author
+        $qb->setParameter('authorId', $authorId);
 
         $query = $qb->getQuery();
 

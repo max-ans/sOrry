@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Repository\ApologyRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,7 @@ class ApologyController extends AbstractController
     /**
      * @Route("/api/v0/apologies", name="api_v0_apologies", methods={"GET"})
      */
-    public function list(ApologyRepository $apologyRepository, ObjectNormalizer $normalizer, Request $request)
+    public function list(ApologyRepository $apologyRepository, ObjectNormalizer $normalizer, Request $request, UserRepository $userRepository)
     {
 
         if ($request->query->get('best')){
@@ -38,6 +39,40 @@ class ApologyController extends AbstractController
 
             ]);
 
+        } else if ($request->query->get('author')) {
+
+            $authorId = intval($request->query->get('author'));
+
+            $AuthorApologies = $apologyRepository->findByAuthor($authorId);
+
+
+            // if User is in Database
+            if ($userRepository->findBy(['id' => $authorId])) {
+                
+                $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+    
+                // Strucure response
+                $normalizedAuthorApologies = $serializer->normalize($AuthorApologies, null, ['groups' => 'apologies_groups']);
+                
+               
+                return $this->json([
+    
+                    $normalizedAuthorApologies,
+    
+                ]);
+            } else {
+                
+                return $this->json(
+                    ['message' => 'Aucun utilisateur ne correspond'], 404
+                ); 
+            }
+            
+
+        } else {
+
+            return $this->json(
+                ['message' => 'Un problème est survenu, peut-être avez vous mal formulé votre requête?'], 400
+            ); 
         }
 
         // ask apology repository to recovery all apology 
