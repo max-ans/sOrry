@@ -41,7 +41,8 @@ class ApologyController extends AbstractController
         }
 
         // ask apology repository to recovery all apology 
-        $allApologies = $apologyRepository->findAll();
+        $allApologies = $apologyRepository->findAllApologies();
+        
         
         if ( $allApologies ) {
             // instantiation of Serializer for to structure response

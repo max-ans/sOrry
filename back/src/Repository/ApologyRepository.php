@@ -19,17 +19,42 @@ class ApologyRepository extends ServiceEntityRepository
         parent::__construct($registry, Apology::class);
     }
 
+    // qb = query builder
+
+    // this function allows to find all Apologies in one request
+    public function findAllApologies ()
+    {
+        $qb = $this->createQueryBuilder('apology');
+        $qb->leftJoin('apology.comments', 'comments');
+        $qb->addSelect('comments');
+        $qb->leftJoin('apology.categories', 'categories');
+        $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+
+
+    }
     
     // this function find Apologie based on their likes numbers.
     // By default she return ten best Apologie, except if $number is different from ten
     public function findBestApologies ($number = 10)
     {
         // initialize query builder
-        $queryBuilder = $this->createQueryBuilder('apology');
-        $queryBuilder->orderBy('apology.likes', 'DESC');
-        $queryBuilder->setMaxResults($number);
+        $qb = $this->createQueryBuilder('apology');
+        $qb->leftJoin('apology.comments', 'comments');
+        $qb->addSelect('comments');
+        $qb->leftJoin('apology.categories', 'categories');
+        $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+        $qb->orderBy('apology.likes', 'DESC');
+        $qb->setMaxResults($number);
 
-        $query = $queryBuilder->getQuery();
+        $query = $qb->getQuery();
 
         return $query->getResult();
     }
