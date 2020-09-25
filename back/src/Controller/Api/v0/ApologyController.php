@@ -43,4 +43,19 @@ class ApologyController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/api/v0/apologies/count" , name="api_v0_apologies_count", methods={"GET"})
+     */
+    public function count (ApologyRepository $apologyRepository) 
+    {
+         // ask apology repository to recovery all apology 
+         $allApologies = $apologyRepository->findAll();
+         $countApologies = count($allApologies);
+
+         return $this->json([
+             'allApologiesNumber' => $countApologies,
+         ]);
+
+    }
 }
