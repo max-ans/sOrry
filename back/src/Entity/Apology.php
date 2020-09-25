@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ApologyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,47 +17,56 @@ class Apology
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("apologies_groups")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("apologies_groups")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("apologies_groups")
      */
     private $slug;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("apologies_groups")
      */
     private $content;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("apologies_groups")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("apologies_groups")
      */
     private $createdAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology")
+     * @Groups("apologies_groups")
      */
     private $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="apologies")
+     * @Groups("apologies_groups")
      */
     private $categories;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="apologies")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups("apologies_groups")
      */
     private $author;
 
