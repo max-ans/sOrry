@@ -6,6 +6,8 @@ use App\Entity\Apology;
 use App\Form\ApologyType;
 use App\Repository\ApologyRepository;
 use App\Repository\UserRepository;
+use App\Service\Slugger;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -119,7 +121,7 @@ class ApologyController extends AbstractController
     /**
      * @Route("/api/v0/apologies" , name="api_v0_apologies_add" , methods={"POST"})
      */
-    public function add (Request $request) 
+    public function add (Request $request, Slugger $slugger, ApologyRepository $apologyRepository, ObjectNormalizer $normalizer ) 
     {
         $apology = new Apology;
 
@@ -129,7 +131,42 @@ class ApologyController extends AbstractController
         // recovery information of new Apology
         $jsonText = $request->getContent();
 
-        dd($jsonText);
+        // update jsonText structure
+        $jsonArray = json_decode($jsonText, true);
+
+        $form->submit($jsonArray, true);
+
+        // if request content is Ok 
+        if ($form->isValid()){
+            // set Slug of apology
+            $apology->setSlug($slugger->slugify($apology->getTitle()));
+            // set created date
+            $apology->setCreatedAt(new DateTime());
+
+            $apology->setLikes(0);
+            
+            if ($apologyRepository->findOneBy(['slug'=> $apology->getSlug()])) {
+                return $this->json([
+                    "message" => "This apology already exist",
+                ], 409 );
+            }
+            
+            // dd($apology);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($apology);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedApologies = $serializer->normalize($apology, null , ['groups' => 'apologies_groups'] );
+
+            return $this->json([
+                $normalizedApologies,
+            ], 201);
+
+        }
+
+        return $this->json((string) $form->getErrors(true, false), 400);
     }
 
 }

@@ -26,7 +26,7 @@ class Apology
      * @ORM\Column(type="string", length=128)
      * @Groups("apologies_groups")
      * @Assert\NotBlank(message="Le titre est obligatoire")
-     * @Assert\Length(min=3, message="Le titre doit avoir au minimum 3 lettre", max=128)
+     * @Assert\Length(min=3)
      */
     private $title;
 
@@ -39,11 +39,13 @@ class Apology
     /**
      * @ORM\Column(type="text")
      * @Groups("apologies_groups")
+     * @Assert\NotBlank
+     * @Assert\Length(min=20)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default" : 0})
      * @Groups("apologies_groups")
      */
     private $likes;
@@ -63,6 +65,7 @@ class Apology
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="apologies")
      * @Groups("apologies_groups")
+     * @Assert\NotBlank
      */
     private $categories;
 
@@ -70,6 +73,7 @@ class Apology
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="apologies")
      * @ORM\JoinColumn(nullable=true)
      * @Groups("apologies_groups")
+     * @Assert\NotBlank
      */
     private $author;
 
