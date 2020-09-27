@@ -2,6 +2,8 @@
 
 namespace App\Controller\Api\v0;
 
+use App\Entity\Apology;
+use App\Form\ApologyType;
 use App\Repository\ApologyRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +16,7 @@ use Symfony\Component\Serializer\Serializer;
 class ApologyController extends AbstractController
 {
     /**
-     * @Route("/api/v0/apologies", name="api_v0_apologies", methods={"GET"})
+     * @Route("/api/v0/apologies", name="api_v0_apologies_list", methods={"GET"})
      */
     public function list(ApologyRepository $apologyRepository, ObjectNormalizer $normalizer, Request $request, UserRepository $userRepository)
     {
@@ -61,19 +63,14 @@ class ApologyController extends AbstractController
     
                 ]);
             } else {
-                
+
                 return $this->json(
                     ['message' => 'Aucun utilisateur ne correspond'], 404
                 ); 
             }
             
 
-        } else {
-
-            return $this->json(
-                ['message' => 'Un problème est survenu, peut-être avez vous mal formulé votre requête?'], 400
-            ); 
-        }
+        } 
 
         // ask apology repository to recovery all apology 
         $allApologies = $apologyRepository->findAllApologies();
@@ -117,6 +114,22 @@ class ApologyController extends AbstractController
              'allApologiesNumber' => $countApologies,
          ]);
 
+    }
+
+    /**
+     * @Route("/api/v0/apologies" , name="api_v0_apologies_add" , methods={"POST"})
+     */
+    public function add (Request $request) 
+    {
+        $apology = new Apology;
+
+        // create form for recovery informations 
+        $form = $this->createForm(ApologyType::class, $apology, ['csrf_protection' => false]);
+        
+        // recovery information of new Apology
+        $jsonText = $request->getContent();
+
+        dd($jsonText);
     }
 
 }

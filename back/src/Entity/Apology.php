@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ApologyRepository::class)
@@ -24,6 +25,8 @@ class Apology
     /**
      * @ORM\Column(type="string", length=128)
      * @Groups("apologies_groups")
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3, message="Le titre doit avoir au minimum 3 lettre", max=128)
      */
     private $title;
 

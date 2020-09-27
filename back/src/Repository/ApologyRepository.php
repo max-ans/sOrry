@@ -44,21 +44,22 @@ class ApologyRepository extends ServiceEntityRepository
     
     // this function find Apologie based on their likes numbers.
     // By default she return ten best Apologie, except if $number is different from ten
-    public function findBestApologies ($number = 10)
+    public function findBestApologies ($number = 5)
     {
         // initialize query builder
         $qb = $this->createQueryBuilder('apology');
-        $qb->leftJoin('apology.comments', 'comments');
-        $qb->addSelect('comments');
-        $qb->leftJoin('apology.categories', 'categories');
-        $qb->addSelect('categories');
+        // $qb->leftJoin('apology.comments', 'comments');
+        // $qb->addSelect('comments');
+        // $qb->leftJoin('apology.categories', 'categories');
+        // $qb->addSelect('categories');
         $qb->leftJoin('apology.author', 'author');
         $qb->addSelect('author');
         $qb->orderBy('apology.likes', 'DESC');
+        $qb->setFirstResult(0);
         $qb->setMaxResults($number);
-
+        
         $query = $qb->getQuery();
-
+    
         return $query->getResult();
     }
 
