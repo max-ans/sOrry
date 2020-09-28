@@ -169,4 +169,48 @@ class ApologyController extends AbstractController
         return $this->json((string) $form->getErrors(true, false), 400);
     }
 
+    /**
+     * @Route("/api/v0/apologies/{slug}" , name="api_v0_apologies_edit" , methods={"PATCH"})
+     */
+    public function edit (Apology $apology, ApologyRepository $apologyRepository, Request $request, Slugger $slugger, ObjectNormalizer $normalizer) 
+    {
+        
+
+        $jsonArray = json_decode($request->getContent(), true);
+
+        $form = $this->createForm(ApologyType::class, $apology, ['csrf_protection' => false]);
+        
+        $form->submit($jsonArray, true);
+
+        if ($form->isValid()){
+           
+            if($apology->getSlug() !==  $slugger->slugify($apology->getTitle()) ){
+
+                if ($apologyRepository->findOneBy(['slug' => $slugger->slugify($apology->getTitle())])) {
+
+                    return $this->json(['message' => 'This apology title already exists'], 409);
+
+                }
+            }
+            // dd($apology , $apology->getSlug(), $slugger->slugify($apology->getTitle()));  
+            $apology->setSlug($slugger->slugify($apology->getTitle()));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedApologies = $serializer->normalize($apology, null , ['groups' => 'apologies_groups'] );
+
+            return $this->json([
+                $normalizedApologies,
+            ], 201);
+            
+        }
+       
+
+
+        return $this->json((string) $form->getErrors(true, false), 400);
+    }
+
 }
