@@ -213,4 +213,15 @@ class ApologyController extends AbstractController
         return $this->json((string) $form->getErrors(true, false), 400);
     }
 
+    /**
+     * @Route("/api/v0/apologies/{slug}", name="api_v0_apologies_delete", methods={"DELETE"})
+     */
+    public function delete (Apology $apology)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($apology);
+        $em->flush();
+
+        return $this->json([], 204);
+    }
 }

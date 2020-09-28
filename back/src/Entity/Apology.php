@@ -57,7 +57,7 @@ class Apology
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology", cascade={"persist", "remove"})
      * @Groups("apologies_groups")
      */
     private $comments;
