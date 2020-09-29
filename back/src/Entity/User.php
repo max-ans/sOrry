@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -18,37 +19,44 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("user_groups")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("user_groups")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("user_groups")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups("user_groups")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("user_groups")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("user_groups")
      */
     private $lastname;
 
     /**
      * @ORM\OneToMany(targetEntity=Apology::class, mappedBy="author")
+     * @Groups("user_groups")
      */
     private $apologies;
 
@@ -60,6 +68,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="author")
+     * @Groups("user_groups")
      */
     private $comments;
 
