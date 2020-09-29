@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -49,7 +50,7 @@ class UserController extends AbstractController
     /**
      * @Route("api/v0/user" , name="api_v0_user_add" , methods={"POST"})
      */
-    public function add (ObjectNormalizer $normalizer, Request $request, UserRepository $userRepository)
+    public function add (ObjectNormalizer $normalizer, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder )
     {
         $user = new User;
 
@@ -62,9 +63,36 @@ class UserController extends AbstractController
 
         if ($form->isValid()){
 
+            if ($userRepository->findOneBy(['email' => $user->getEmail()]))
+            {
+                return $this->json([
+                    'message' => 'this user already exist',
+                ], 409);
+            }
+            if ($userRepository->findOneBy(['nickname' => $user->getNickname()]))
+            {
+                return $this->json([
+                    'message' => 'this nickname already exist',
+                ], 409);
+            }
 
+            $userPassword = $user->getPassword();
             
-            dd($user);
+            $user->setPassword($passwordEncoder->encodePassword($user, $userPassword));
+            $user->setFirstname(ucfirst($user->getFirstname()));
+            $user->setLastname(ucfirst($user->getLastname()));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_groups']);
+
+            return $this->json([
+                $normalizedUser,
+            ], 201);
         
         }
        
