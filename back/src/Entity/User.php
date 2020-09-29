@@ -26,6 +26,9 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups("user_groups")
+     * @Assert\Email(
+     *     message = "Le format email n'est pas respecté."
+     * )
      */
     private $email;
 
@@ -39,18 +42,43 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Groups("user_groups")
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/",
+     *      message="Votre mot de passe ne respecte pas les règles de sécurité"
+     * )
+     * the regex assert matches only when all the following are true:
+     * password must contain 1 number (0-9)
+     * password must contain 1 uppercase letters
+     * password must contain 1 lowercase letters
+     * password must contain 1 non-alpha numeric number
+     * password is 8-16 characters with no spac
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Groups("user_groups")
+     * @Assert\NotBlank(message="Le prénom est obligatoire")
+     * @Assert\Length(
+     *  min = 2,
+     *  max = 128,
+     *  minMessage = "Your first name must be at least {{ limit }} characters long",
+     *  maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Groups("user_groups")
+     * @Assert\NotBlank(message="Le Nom de famille est obligatoire")
+     * @Assert\Length(
+     *  min = 2,
+     *  max = 128,
+     *  minMessage = "Your first name must be at least {{ limit }} characters long",
+     *  maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     * )
      */
     private $lastname;
 
@@ -63,6 +91,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("apologies_groups")
+     * @Assert\NotBlank(message="Le pseudo est obligatoire")
      */
     private $nickname;
 
