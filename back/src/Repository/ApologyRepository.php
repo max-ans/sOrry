@@ -19,32 +19,70 @@ class ApologyRepository extends ServiceEntityRepository
         parent::__construct($registry, Apology::class);
     }
 
-    // /**
-    //  * @return Apology[] Returns an array of Apology objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // qb = query builder
 
-    /*
-    public function findOneBySomeField($value): ?Apology
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    // this function allows to find all Apologies in one request
+    public function findAllApologies ()
+    { 
+        // initialize query builder
+        $qb = $this->createQueryBuilder('apology');
+
+        // Inner join for reduce number of queries
+        $qb->leftJoin('apology.comments', 'comments');
+        $qb->addSelect('comments');
+        $qb->leftJoin('apology.categories', 'categories');
+        $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+
+
     }
-    */
+    
+    // this function find Apologie based on their likes numbers.
+    // By default she return ten best Apologie, except if $number is different from ten
+    public function findBestApologies ($number = 5)
+    {
+        // initialize query builder
+        $qb = $this->createQueryBuilder('apology');
+        // $qb->leftJoin('apology.comments', 'comments');
+        // $qb->addSelect('comments');
+        // $qb->leftJoin('apology.categories', 'categories');
+        // $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+        $qb->orderBy('apology.likes', 'DESC');
+        $qb->setFirstResult(0);
+        $qb->setMaxResults($number);
+        
+        $query = $qb->getQuery();
+    
+        return $query->getResult();
+    }
+
+    public function findByAuthor ($authorId)
+    {
+        // initialize query builder
+        $qb = $this->createQueryBuilder('apology');
+        $qb->leftJoin('apology.comments', 'comments');
+        $qb->addSelect('comments');
+        $qb->leftJoin('apology.categories', 'categories');
+        $qb->addSelect('categories');
+        $qb->leftJoin('apology.author', 'author');
+        $qb->addSelect('author');
+
+        // Where apology author equal a token which contains id author
+        $qb->where('apology.author = :authorId');
+
+        // definition of token which contains id author
+        $qb->setParameter('authorId', $authorId);
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+    
 }

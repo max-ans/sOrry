@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\ApologyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ApologyRepository::class)
@@ -16,47 +18,62 @@ class Apology
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("apologies_groups")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("apologies_groups")
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("apologies_groups")
      */
     private $slug;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("apologies_groups")
+     * @Assert\NotBlank
+     * @Assert\Length(min=20)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default" : 0})
+     * @Groups("apologies_groups")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("apologies_groups")
      */
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology", cascade={"persist", "remove"})
+     * @Groups("apologies_groups")
      */
     private $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="apologies")
+     * @Groups("apologies_groups")
+     * @Assert\NotBlank
      */
     private $categories;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="apologies")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups("apologies_groups")
+     * @Assert\NotBlank
      */
     private $author;
 
