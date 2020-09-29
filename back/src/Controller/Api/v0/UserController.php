@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api\v0;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,8 +19,6 @@ class UserController extends AbstractController
     {
         $allUsers = $userRepository->findAll();
 
-       
-
         $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
         $normalizedUsers = $serializer->normalize($allUsers, null, ['groups' => 'user_groups']);
@@ -29,4 +28,20 @@ class UserController extends AbstractController
             $normalizedUsers,
         ]);
     }
+
+    /**
+     * @Route("/api/v0/user/{id}" , name="api_v0_user_show" , methods={"GET"})
+     */
+    public function show(User $user, ObjectNormalizer $normalizer)
+    {
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_groups']);
+
+
+        return $this->json([
+            $normalizedUser,
+        ]);
+    }
+
 }
