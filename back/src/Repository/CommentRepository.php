@@ -19,32 +19,31 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
-    // /**
-    //  * @return Comment[] Returns an array of Comment objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllwithDatas ()
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder('comment');
+        $qb->leftJoin('comment.apology', 'apology');
+        $qb->addSelect('apology');
+        $qb->leftJoin('comment.author', 'user');
+        $qb->addSelect('user');
 
-    /*
-    public function findOneBySomeField($value): ?Comment
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = $qb->getQuery();
+
+        return $query->getResult();
     }
-    */
+  
+    public function findByApology ($apologyId)
+    {
+        $qb = $this->createQueryBuilder('comment');
+        $qb->leftJoin('comment.apology', 'apology');
+        $qb->addSelect('apology');
+        $qb->leftJoin('comment.author', 'user');
+        $qb->addSelect('user');
+        $qb->where('comment.apology = :apologyId');
+        $qb->setParameter('apologyId' , $apologyId);
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }
