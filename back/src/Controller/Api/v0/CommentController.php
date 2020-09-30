@@ -2,6 +2,8 @@
 
 namespace App\Controller\Api\v0;
 
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,5 +66,63 @@ class CommentController extends AbstractController
         return $this->json([
             $allCommentsNormalized,
         ]);
+    }
+
+    /** 
+     * @Route("/api/v0/comment" , name="api_v0_comment_add", methods={"POST"})
+     */
+    public function add (Request $request)
+    {
+        $comment = new Comment;
+
+        $form = $this->createForm(CommentType::class, $comment, ['csrf_protection' => false]);
+
+        $commentInfos = json_decode($request->getContent(), true);
+
+        $form->submit($commentInfos, true);
+
+        if ($form ->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
+
+            $commentNormalized = $serializer->normalize($comment, null, ['groups' => 'comment_groups']);
+
+            return $this->json([
+                $commentNormalized,
+            ], 201);
+        }
+
+        return $this->json((string) $form->getErrors(true, false), 400);
+    }
+
+    /**
+     * @Route("/api/v0/comment/{id}", name="api_v0_comment_edit", methods={"PATCH"})
+     */
+    public function edit (Comment $comment, Request $request)
+    {
+        $form = $this->createForm(CommentType::class, $comment, ['csrf_protection' => false]);
+
+        $newCommentInfos = json_decode($request->getContent(), true);
+
+        $form->submit($newCommentInfos, true);
+
+        if ($form ->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
+
+            $commentNormalized = $serializer->normalize($comment, null, ['groups' => 'comment_groups']);
+
+            return $this->json([
+                $commentNormalized,
+            ], 200);
+        }
+
+        return $this->json((string) $form->getErrors(true, false), 400);
     }
 }
