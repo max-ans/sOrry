@@ -145,4 +145,17 @@ class UserController extends AbstractController
         return $this->json((string) $form->getErrors(true, false), 400);
 
     }
+
+    /**
+     * @Route("api/v0/user/{nickname}" , name="api_v0_user_delete", methods={"DELETE"})
+     */
+    public function delete (User $user)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        return $this->json([], 204);
+    }
 }
