@@ -15,12 +15,14 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("user_groups")
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
      * @Groups("apologies_groups")
+     * @Groups("user_groups")
      */
     private $content;
 
