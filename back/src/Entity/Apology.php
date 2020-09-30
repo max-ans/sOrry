@@ -20,6 +20,7 @@ class Apology
      * @ORM\Column(type="integer")
      * @Groups("apologies_groups")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $id;
 
@@ -29,6 +30,7 @@ class Apology
      * @Assert\NotBlank(message="Le titre est obligatoire")
      * @Assert\Length(min=3)
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $title;
 
@@ -44,6 +46,7 @@ class Apology
      * @Assert\NotBlank
      * @Assert\Length(min=20)
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $content;
 

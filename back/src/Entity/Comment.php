@@ -16,6 +16,7 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $id;
 
@@ -23,11 +24,13 @@ class Comment
      * @ORM\Column(type="text")
      * @Groups("apologies_groups")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Apology::class, inversedBy="comments")
+     * @Groups("comment_groups")
      */
     private $apology;
 
@@ -35,6 +38,7 @@ class Comment
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      * @Groups("apologies_groups")
+     * @Groups("comment_groups")
      */
     private $author;
 

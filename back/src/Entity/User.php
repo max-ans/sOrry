@@ -20,6 +20,7 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $id;
 
@@ -93,6 +94,7 @@ class User implements UserInterface
      * @Groups("apologies_groups")
      * @Assert\NotBlank(message="Le pseudo est obligatoire")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $nickname;
 
