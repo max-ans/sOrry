@@ -92,6 +92,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups("apologies_groups")
      * @Assert\NotBlank(message="Le pseudo est obligatoire")
+     * @Groups("user_groups")
      */
     private $nickname;
 

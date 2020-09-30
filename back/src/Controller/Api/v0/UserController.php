@@ -56,10 +56,10 @@ class UserController extends AbstractController
 
         $form = $this->createForm(UserType::class, $user, ['csrf_protection' => false]);
 
-        $newUserInfos = json_decode($request->getContent(), true);
+        $userInfos = json_decode($request->getContent(), true);
 
 
-        $form->submit($newUserInfos);
+        $form->submit($userInfos);
 
         if ($form->isValid()){
 
@@ -98,6 +98,51 @@ class UserController extends AbstractController
        
         
         return $this->json((string) $form->getErrors(true, false), 400);
-      
+    }
+
+    /**
+     * @Route("api/v0/user/{nickname}", name="api_v0_user_edit", methods={"PATCH"})
+     */
+    public function edit (User $user, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder, ObjectNormalizer $normalizer)
+    {
+        
+        $form = $this->createForm(UserType::class, $user, ['csrf_protection' => false]);
+
+        $newUserInfos = json_decode($request->getContent(), true);
+        
+
+        $form->submit($newUserInfos);
+
+        if ($form->isValid()){
+            if ($userRepository->findOneBy(['nickname' => $user->getNickname()]))
+            {
+                return $this->json([
+                    'message' => 'this nickname already exist',
+                ], 409);
+            }
+            
+            $userPassword = $user->getPassword();
+            
+            $user->setPassword($passwordEncoder->encodePassword($user, $userPassword));
+            $user->setFirstname(ucfirst($user->getFirstname()));
+            $user->setLastname(ucfirst($user->getLastname()));
+            
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_groups']);
+
+            return $this->json([
+                $normalizedUser,
+            ], 201);
+
+        }
+
+        return $this->json((string) $form->getErrors(true, false), 400);
+
     }
 }
