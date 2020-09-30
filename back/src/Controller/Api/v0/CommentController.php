@@ -38,8 +38,20 @@ class CommentController extends AbstractController
             return $this->json([
                 $commentsByApologyNormalized,
             ]);
+        }
 
+        if ($request->query->get('author')) {
+            $authorId = intval($request->query->get('author'));
+            
+            $commentsByAuthor = $commentRepository->findByAuthor($authorId);
+            
+            $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
 
+            $commentsByAuthorNormalized = $serializer->normalize($commentsByAuthor, null, ['groups' => 'comment_groups']);
+
+            return $this->json([
+                $commentsByAuthorNormalized,
+            ]);
         }
 
         $allComments = $commentRepository->findAllwithDatas();

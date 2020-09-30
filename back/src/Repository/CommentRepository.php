@@ -46,4 +46,19 @@ class CommentRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function findByAuthor ($authorId)
+    {
+        $qb = $this->createQueryBuilder('comment');
+        $qb->leftJoin('comment.apology', 'apology');
+        $qb->addSelect('apology');
+        $qb->leftJoin('comment.author', 'user');
+        $qb->addSelect('user');
+        $qb->where('comment.author = :authorId');
+        $qb->setParameter('authorId' , $authorId);
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }
