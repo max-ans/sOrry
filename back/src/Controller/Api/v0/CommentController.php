@@ -125,4 +125,16 @@ class CommentController extends AbstractController
 
         return $this->json((string) $form->getErrors(true, false), 400);
     }
+
+    /**
+     * @Route("/api/v0/comment/{id}" , name="api_v0_comment_delete", methods={"DELETE"} )
+     */
+    public function delete (Comment $comment)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($comment);
+        $em->flush();
+
+        return $this->json([], 204);
+    }
 }
