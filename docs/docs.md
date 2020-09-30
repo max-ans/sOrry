@@ -234,4 +234,19 @@ CATEGORY: id, title, description, slug
 | ```Api/v0/comments?apology=[id] ``` | GET | Id de l'excuse | Récupérer tous les commentaires selon une excuses  |
 | ```Api/v0/comments ``` | POST | titre, auteur, contenu | Création d'un commentaire  |
 | ```Api/v0/comments/[id] ``` | PATCH | Id du commentaire | Édition d'un commentaire  |
+-----------------------------
 
+
+# __Prochaines Feature__ #
+- User :
+    - Possibilité d'upload une image afin de la définir comme avatar
+  
+- Category :
+    - Possibilité de choisir un excuse par catégorie
+
+- Jeux :
+    - Instauration d'un jeu de type "Limite Limite " avec des carte comportant des début d'excuses que les joueur devront compléter avec l'une des six cartes en leurs possession. Les six cartes de chaque joueurs contiendront elle, une seconde partie d'excuses . 
+    Exemple: 
+      - il est inscrit sur la carte centrale : ` Je suis en retard au travail ce matin parceque... `
+      - chaque joueur dispose de six cartes avec lesquelles il devrat tenter de terminer au mieux l'excuses : ` Mon raton laveur domestique a fait tomber mon réveil dans l'eau en faisant la vaiselle`.
+  
