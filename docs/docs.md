@@ -121,7 +121,7 @@ chaques nouvelles features fera l'objet d'une nouvelle branche qui sera merge su
 - possède un rôle
 - possède un email
 - possède un MDP
-- possède un avatar ou non
+- (possède un avatar ou non)
 - possède une date de création
 
 
@@ -211,8 +211,8 @@ CATEGORY: id, title, description, slug
 | ```Api/v0/apologies?best=[int] ``` | GET | Nombres de d'excuses a récuperer dans le paramètre | Récupérer un nombre spécifique d'excuses ayant le plus grand nombre de likes  |
 | ```Api/v0/apologies/author=[id] ``` | GET | Identifiant de l'utilisateur | Récupérer toutes les excuses de l'utilisateur correspondant a l'id transmis  |
 | ```Api/v0/apologies ``` | POST | titre, contenu, auteur | Création d'une excuse |
-| ```Api/v0/apologies/[id] ``` | PATCH | titre, auteur, contenu, date de création, nombre de likes  | Édition d'une excuse |
-| ```Api/v0/apologies/[id] ``` | DELETE |  |Suppression de l'excuse  |
+| ```Api/v0/apologies/[slug] ``` | PATCH | titre, auteur, contenu, date de création, nombre de likes  | Édition d'une excuse |
+| ```Api/v0/apologies/[slug] ``` | DELETE |  |Suppression de l'excuse  |
 ----------------------------------------------------------------------------
 
 
@@ -222,8 +222,8 @@ CATEGORY: id, title, description, slug
 | ```Api/v0/users ``` | GET  |  | Récupérer tout les utilisateur  |
 | ```Api/v0/users/[id] ``` | GET | Identifiant de l'utilisateur | Récupérer un utilisateur |
 | ```Api/v0/users ``` | POST | firstname, lastname, email, password, pseudo et avatar | Création d'un utilisateur  |
-| ```Api/v0/users/[id] ``` | PATCH | firstname, lastname, email, password, pseudo et avatar | Modifiaction d'un utilisateur |
-| ```Api/v0/users/[id] ``` | DELETE |  | Suppresion d'un utilisateur  |
+| ```Api/v0/users/[nickname] ``` | PATCH | firstname, lastname, email, password, pseudo et avatar | Modifiaction d'un utilisateur |
+| ```Api/v0/users/[nickname] ``` | DELETE |  | Suppresion d'un utilisateur  |
 
 
 
@@ -232,7 +232,8 @@ CATEGORY: id, title, description, slug
 | -  |  :-:  |  :-: |  -  |
 | ```Api/v0/comments ``` | GET |  | Récupérer l'ensemble des commentaires |
 | ```Api/v0/comments?apology=[id] ``` | GET | Id de l'excuse | Récupérer tous les commentaires selon une excuses  |
-| ```Api/v0/comments ``` | POST | titre, auteur, contenu | Création d'un commentaire  |
+| ```Api/v0/comments?author=[id] ``` | GET | Id de L'author | Récupérer tous les commentaires selon une auteur |
+| ```Api/v0/comments ``` | POST | excuse, auteur, contenu | Création d'un commentaire  |
 | ```Api/v0/comments/[id] ``` | PATCH | Id du commentaire | Édition d'un commentaire  |
 -----------------------------
 
@@ -248,5 +249,5 @@ CATEGORY: id, title, description, slug
     - Instauration d'un jeu de type "Limite Limite " avec des carte comportant des début d'excuses que les joueur devront compléter avec l'une des six cartes en leurs possession. Les six cartes de chaque joueurs contiendront elle, une seconde partie d'excuses . 
     Exemple: 
       - il est inscrit sur la carte centrale : ` Je suis en retard au travail ce matin parceque... `
-      - chaque joueur dispose de six cartes avec lesquelles il devrat tenter de terminer au mieux l'excuses : ` Mon raton laveur domestique a fait tomber mon réveil dans l'eau en faisant la vaiselle`.
+      - chaque joueur dispose de six cartes avec lesquelles il devrat tenter de terminer au mieux l'excuses : ` Mon raton laveur domestique a fait tomber mon réveil dans l'eau en faisant la vaiselle... vu que c'est un laveur... mon raton.`.
   
