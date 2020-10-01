@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -16,6 +18,7 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
      */
     private $id;
 
@@ -23,11 +26,17 @@ class Comment
      * @ORM\Column(type="text")
      * @Groups("apologies_groups")
      * @Groups("user_groups")
+     * @Groups("comment_groups")
+     * @Assert\NotBlank(message="Le commentaires de peut pas être vide")
+     * @Assert\Length(min=3)
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Apology::class, inversedBy="comments")
+     * @Groups("comment_groups")
+     * @Assert\NotBlank(message="Un commentaire doit avoir une excuse a laquelle il est rattaché")
+     * 
      */
     private $apology;
 
@@ -35,6 +44,8 @@ class Comment
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      * @Groups("apologies_groups")
+     * @Groups("comment_groups")
+     * @Assert\NotBlank(message="Un commentaire doit avoir un auteur")
      */
     private $author;
 

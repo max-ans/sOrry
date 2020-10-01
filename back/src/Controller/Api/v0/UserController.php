@@ -48,7 +48,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("api/v0/user" , name="api_v0_user_add" , methods={"POST"})
+     * @Route("/api/v0/user" , name="api_v0_user_add" , methods={"POST"})
      */
     public function add (ObjectNormalizer $normalizer, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder )
     {
@@ -101,7 +101,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("api/v0/user/{nickname}", name="api_v0_user_edit", methods={"PATCH"})
+     * @Route("/api/v0/user/{nickname}", name="api_v0_user_edit", methods={"PATCH"})
      */
     public function edit (User $user, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder, ObjectNormalizer $normalizer)
     {
@@ -147,7 +147,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("api/v0/user/{nickname}" , name="api_v0_user_delete", methods={"DELETE"})
+     * @Route("/api/v0/user/{nickname}" , name="api_v0_user_delete", methods={"DELETE"})
      */
     public function delete (User $user)
     {
