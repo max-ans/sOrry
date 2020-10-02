@@ -55,6 +55,7 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "@react-hook/window-size": "^3.0.7",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",

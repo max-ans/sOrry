@@ -40,16 +40,43 @@
       color: $primaryPurple; 
       font-weight: bold;
       
+
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 }
 
-// .header-nav-items{
-//   flex-grow: 1;
-//   color: $primaryPurple;
-//   background-color: $primaryYellow;
-//   border: 1px solid $primaryPurple;
-//   font-family: 'Lato', sans-serif;
-//   font-weight: bold;
-  
-// }
+@media only screen and (min-width: 768px) {
+  .header{
+    z-index: 10;
+    border: none;
+    .header-title{
+
+    }
+
+    .header-burgerButton {
+      display:none;
+    }
+
+    .header-nav{
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      bottom: 0;
+      height: 15%;
+      border: none;
+      .header-nav-items{
+        flex-grow: 1;
+        color: $primaryPurple;
+        background-color: $secondaryYellow;
+        border: 2px solid $primaryPurple;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+
+      }
+    }
+  }
+}
+

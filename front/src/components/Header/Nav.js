@@ -12,7 +12,7 @@ const Nav = () => (
       Proposer une excuses
     </div>
     <div className="header-nav-items">
-      À propos
+      Se connecter
     </div>
     <div className="header-nav-items">
       Contact

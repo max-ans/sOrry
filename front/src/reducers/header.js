@@ -1,5 +1,6 @@
 import {
   TOGGLE_MENU,
+  SET_OPEN_MENU,
 } from 'src/actions/headerAction';
 
 const initialState = {
@@ -12,6 +13,11 @@ const header = (state = initialState, action = {}) => {
       return {
         ...state,
         openMenu: !state.openMenu,
+      };
+    case SET_OPEN_MENU:
+      return {
+        ...state,
+        openMenu: true,
       };
     default:
       return state;

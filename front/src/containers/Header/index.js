@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleMenu } from 'src/actions/headerAction';
+import { toggleMenu, setOpenMenu } from 'src/actions/headerAction';
 // === on importe le composant de présentation
 import Header from 'src/components/Header';
 
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
   toggleMenu: () => {
     dispatch(toggleMenu());
+  },
+  setOpenMenu: () => {
+    dispatch(setOpenMenu());
   },
 });
 
