@@ -1,0 +1,55 @@
+@import '../../styles/vars';
+
+.header{
+  background-color: $primaryYellow;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1.1em solid $primaryPurple;
+  
+
+  .header-title{
+    font-family: 'Bubblegum', sans-serif;
+    text-align: center;
+    color: $primaryPurple;
+    padding: 2em;
+    font-size: 2.5em
+  }
+
+  .header-burgerButton{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: $primaryPurple;
+    z-index: 3;
+  }
+
+  .header-nav{
+    position: absolute;
+    border: 2px solid $primaryPurple;
+    background-color: $primaryYellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 0;
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+  
+    .header-nav-items{
+      color: $primaryPurple; 
+      font-weight: bold;
+      
+    }
+  }
+}
+
+// .header-nav-items{
+//   flex-grow: 1;
+//   color: $primaryPurple;
+//   background-color: $primaryYellow;
+//   border: 1px solid $primaryPurple;
+//   font-family: 'Lato', sans-serif;
+//   font-weight: bold;
+  
+// }
