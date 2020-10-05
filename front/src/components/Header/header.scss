@@ -1,0 +1,52 @@
+@import '../../styles/vars';
+
+.header {
+
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .header-banner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    
+    .header-title {
+      
+      font-family: 'Bubble', sans-serif;
+      color: $primaryPurple;
+      font-size: 2em;
+      padding: 0.5em;
+      
+      
+      
+    }
+    
+    .header-buttonMenu {
+      color: $primaryPurple;
+      margin-right: 1.5em;
+    }
+  }
+}
+
+@media screen and (min-width : 756px) {
+  
+  .header {
+
+    .header-banner {
+      display: flex;
+      align-items: baseline;
+
+      .header-title {
+        font-size: 4em;
+      }
+      
+      .header-buttonMenu {
+        display: none;
+      }
+    }
+  }
+  
+}
+
