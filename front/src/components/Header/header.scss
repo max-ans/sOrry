@@ -6,6 +6,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  position: relative;
+  background-color: rgba(121, 37, 201, 0.39);
+  border: solid;
+  border-width: 0px 0px 50px 0px;
+  border-color:  rgba(121, 37, 201, 0.39);
+  border-radius: 0 0 100% 0;
 
   .header-banner {
     display: flex;
