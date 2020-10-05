@@ -1,13 +1,16 @@
 // == Import npm
 import React from 'react';
 
+// == Import Components
+import Header from 'src/containers/Header/Header';
+
 // == Import
 import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Composant : App</h1>
+    <Header />
   </div>
 );
 
