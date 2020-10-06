@@ -1,1 +1,15 @@
 @import '../../styles/vars';
+
+.main {
+
+  margin: 5% 0%;
+ 
+
+  .main-title {
+    text-transform: uppercase;
+    font-family: 'GM';
+    font-size: 0.7em;
+    color: $primaryPurple;
+    padding-left: 0.5em;
+  }
+}

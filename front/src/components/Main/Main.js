@@ -1,12 +1,15 @@
 import React from 'react';
 
+import Carousel from 'src/containers/Carousel/Carousel';
+
 import './main.scss';
 
 const Main = () => (
   <main className="main">
     <h2 className="main-title">
-      Les meilleurs excuses
+      les meilleurs excuses
     </h2>
+    <Carousel />
   </main>
 );
 
