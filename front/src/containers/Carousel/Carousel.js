@@ -4,7 +4,7 @@ import { fetchBestApologies } from 'src/actions/carousel';
 import Carousel from 'src/components/Carousel/Carousel';
 
 const mapStateToProps = (state) => ({
-  bestApologie: state.carousel.bestApologies,
+  bestApologies: state.carousel.bestApologies,
 });
 
 const mapDispatchToProps = (dispatch) => ({
