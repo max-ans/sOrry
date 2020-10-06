@@ -9,9 +9,9 @@ import Header from 'src/components/Header/Header';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
-// eslint-disable-next-line no-unused-vars
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir : élément à récupérer dans le state
+  menuIsOpen: state.header.menuIsOpen,
 });
 
 // === mapDispatchToProps

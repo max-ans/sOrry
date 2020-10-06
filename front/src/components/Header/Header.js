@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'react-feather';
+import className from 'classnames';
 
 import Nav from 'src/containers/Nav/Nav';
 
 import './header.scss';
 
-const Header = ({ setMenuIsOpen }) => (
+const Header = ({ setMenuIsOpen, menuIsOpen }) => (
   <header className="header">
     <div className="header-banner">
       <h1 className="header-title">
         s'Orry
       </h1>
       <Menu
-        className="header-buttonMenu"
+        className={className('header-buttonMenu', { 'header-buttonMenu isClose': menuIsOpen })}
         onClick={setMenuIsOpen}
       />
     </div>
@@ -22,6 +23,7 @@ const Header = ({ setMenuIsOpen }) => (
 );
 Header.propTypes = {
   setMenuIsOpen: PropTypes.func.isRequired,
+  menuIsOpen: PropTypes.bool.isRequired,
 };
 
 export default Header;

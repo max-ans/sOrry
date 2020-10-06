@@ -6,6 +6,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  position: relative;
+  background-color: $primaryYellow;
+  border: solid;
+  border-width: 0px 0px 50px 0px;
+  border-color:  $primaryYellow;
+  border-radius: 0 0 100% 0;
 
   .header-banner {
     display: flex;
@@ -26,6 +32,12 @@
     .header-buttonMenu {
       color: $primaryPurple;
       margin-right: 1.5em;
+      transform: rotate(-90deg);
+      transition: transform 0.5s;
+
+      &.isClose {
+        transform: rotate(0deg);
+      }
     }
   }
 }
