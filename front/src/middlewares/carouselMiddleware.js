@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {
   FETCH_BEST_APOLOGIES,
+  saveBestApologies,
+  hideLoader,
 } from 'src/actions/carousel';
 
 import { baseURL } from 'src/utils';
@@ -8,12 +10,15 @@ import { baseURL } from 'src/utils';
 const carouselMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_BEST_APOLOGIES:
-      axios.get(`${baseURL}/api/v0/apologies`)
+      axios.get(`${baseURL}/api/v0/apologies?best=10`)
         .then((response) => {
-          console.log(response);
+          store.dispatch(saveBestApologies(response.data[0]));
         })
         .catch((error) => {
           console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(hideLoader());
         });
       next(action);
       break;
