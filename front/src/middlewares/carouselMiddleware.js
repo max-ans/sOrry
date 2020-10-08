@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   FETCH_BEST_APOLOGIES,
   saveBestApologies,
+  hideLoader,
 } from 'src/actions/carousel';
 
 import { baseURL } from 'src/utils';
@@ -15,6 +16,9 @@ const carouselMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(hideLoader());
         });
       next(action);
       break;

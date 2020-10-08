@@ -5,6 +5,7 @@ import Carousel from 'src/components/Carousel/Carousel';
 
 const mapStateToProps = (state) => ({
   bestApologies: state.carousel.bestApologies,
+  loader: state.carousel.loader,
 });
 
 const mapDispatchToProps = (dispatch) => ({
