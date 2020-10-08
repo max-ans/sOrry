@@ -1,1 +1,34 @@
 @import '../../styles/vars';
+
+.carousel {
+  background-color: $secondaryYellow;
+  margin-top: 5%;
+
+  .carousel-item {
+    max-width: 90%;
+    margin: 2% auto;
+    .carousel-item-title {
+
+      color: $primaryPurple;
+      font-weight: bold;
+      font-size: 1.2em;
+      font-family: 'Lato', sans-serif;
+      padding: 1em 1em 0 1em;
+    }
+    .carousel-item-content {
+      font-style: italic;
+      padding: 0.5em 1em 0 1em;
+      color: $primaryPurple;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .carousel-item-small {
+      display: block;
+      padding: 1.5em 0 0 1.2em;
+      color: rgba(128, 128, 128, 0.747);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7em;
+      
+    }
+  }
+}
