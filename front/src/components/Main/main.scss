@@ -14,3 +14,21 @@
     padding-left: 0.5em;
   }
 }
+
+
+@media screen and (min-width : 756px) {
+  .main {
+
+    margin: 2% 2em;
+   
+  
+    .main-title {
+      text-transform: uppercase;
+      
+      font-family: 'GM';
+      font-size: 0.9em;
+      color: $primaryPurple;
+      padding-left: 0.5em;
+    }
+  }
+}

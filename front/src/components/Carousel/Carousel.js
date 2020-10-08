@@ -22,7 +22,7 @@ const Carousel = ({ bestApologies, fetchBestApologies, loader }) => {
       {loader && <Loader />}
       {!loader
         && (
-        <Slider {...settings} autoplay autoplaySpeed={5000}>
+        <Slider {...settings} autoplay autoplaySpeed={5000} centerMode>
           {bestApologies.map((bestApologie) => (
             <div key={bestApologie.id} className="carousel-item">
               <h2 className="carousel-item-title">
