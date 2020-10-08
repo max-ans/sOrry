@@ -32,11 +32,11 @@
     .header-buttonMenu {
       color: $primaryPurple;
       margin-right: 1.5em;
-      transform: rotate(-90deg);
+      transform: rotate(0deg);
       transition: transform 0.5s;
 
-      &.isClose {
-        transform: rotate(0deg);
+      &.isActive {
+        transform: rotate(-450deg);
       }
     }
   }
