@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Slider from 'react-slick';
 
 import Loader from 'src/components/Loader/Loader';
 
@@ -9,10 +10,34 @@ const Carousel = ({ bestApologies, fetchBestApologies, loader }) => {
   useEffect(() => {
     fetchBestApologies();
   }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div className="carousel">
       {loader && <Loader />}
-      {console.log(bestApologies)}
+      {!loader
+        && (
+        <Slider {...settings} autoplay autoplaySpeed={5000}>
+          {bestApologies.map((bestApologie) => (
+            <div key={bestApologie.id} className="carousel-item">
+              <h2 className="carousel-item-title">
+                {bestApologie.title}
+              </h2>
+              <div className="carousel-item-content">
+                &ldquo; {bestApologie.content} &bdquo;
+              </div>
+              <small className="carousel-item-small">
+                {bestApologie.author.nickname}, le {bestApologie.createdAt}
+              </small>
+            </div>
+          ))}
+        </Slider>
+        )}
     </div>
   );
 };
