@@ -35,7 +35,7 @@ class CommentController extends AbstractController
 
             $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
 
-            $commentsByApologyNormalized = $serializer->normalize($commentsByApology, null, ['groups' => 'comment_groups']);
+            $commentsByApologyNormalized = $serializer->normalize($commentsByApology, null, ['groups' => 'comment_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
 
             return $this->json([
                 $commentsByApologyNormalized,
@@ -49,7 +49,7 @@ class CommentController extends AbstractController
             
             $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
 
-            $commentsByAuthorNormalized = $serializer->normalize($commentsByAuthor, null, ['groups' => 'comment_groups']);
+            $commentsByAuthorNormalized = $serializer->normalize($commentsByAuthor, null, ['groups' => 'comment_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
 
             return $this->json([
                 $commentsByAuthorNormalized,
@@ -60,7 +60,7 @@ class CommentController extends AbstractController
 
         $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
 
-        $allCommentsNormalized = $serializer->normalize($allComments, null, ['groups' => 'comment_groups']);
+        $allCommentsNormalized = $serializer->normalize($allComments, null, ['groups' => 'comment_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
 
 
         return $this->json([
