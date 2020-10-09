@@ -34,7 +34,7 @@ class ApologyController extends AbstractController
           
 
             // Strucure response
-            $normalizedBestApologies = $serializer->normalize($bestApologies, null, ['groups' => 'apologies_groups']);
+            $normalizedBestApologies = $serializer->normalize($bestApologies, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
             
 
             return $this->json([
@@ -56,7 +56,7 @@ class ApologyController extends AbstractController
                 $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
     
                 // Strucure response
-                $normalizedAuthorApologies = $serializer->normalize($AuthorApologies, null, ['groups' => 'apologies_groups']);
+                $normalizedAuthorApologies = $serializer->normalize($AuthorApologies, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
                 
                
                 return $this->json([
@@ -84,7 +84,7 @@ class ApologyController extends AbstractController
           
 
             // Strucure response
-            $normalizedApologies = $serializer->normalize($allApologies, null, ['groups' => 'apologies_groups']);
+            $normalizedApologies = $serializer->normalize($allApologies, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
             
 
             return $this->json([
