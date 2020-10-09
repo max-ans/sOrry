@@ -2,59 +2,31 @@
 
 
 .carousel {
-  
-  
-  margin-top: 1%;
+  background-color: #FFFEF1 ;
+  border-radius: 0 0 50px 50px;
+  width: 100%;
+  border: 1px solid $primaryPurple;
+  border-top: none;
 
-  .carousel-item {
-    margin: 2% auto;
-    .carousel-item-title {
-      color: $primaryPurple;
-      font-weight: bold;
-      font-size: 1.2em;
-      font-family: 'Lato', sans-serif;
-      padding: 1em 1em 0 1em;
-    }
-    .carousel-item-content {
-      font-style: italic;
-      padding: 0.5em 1em 0 1em;
-      color: $primaryPurple;
-      font-family: 'Lato', sans-serif;
-    }
-
-    .carousel-item-small {
-      display: block;
-      padding: 1.5em 0 0 1.5em;
-      color: rgba(128, 128, 128, 0.747);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.7em;
-      
-    }
-  }
-}
-
-
-@media screen and (min-width : 756px) {
-  .carousel {
-    margin-top: 1%;
-    width: 100%;
-  
+  .carousel-slider {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 1em;
+    
     .carousel-item {
-      width: 200px;
+      
       .carousel-item-title {
-  
         color: $primaryPurple;
         font-weight: bold;
         font-size: 1.2em;
         font-family: 'Lato', sans-serif;
-        padding: 1em 1em 0.5em 1.5em;
+        padding: 1em 1em 0 1em;
       }
       .carousel-item-content {
         font-style: italic;
         padding: 0.5em 1em 0 1em;
         color: $primaryPurple;
         font-family: 'Lato', sans-serif;
-        width: 90%;
       }
   
       .carousel-item-small {
@@ -67,4 +39,53 @@
       }
     }
   }
+
 }
+
+
+@media screen and (min-width : 756px) {
+  .carousel {
+    width: 100%;
+
+    .carousel-slider {
+      
+      .carousel-item {
+        width: 200px;
+        .carousel-item-title {
+          text-align: center;
+          color: $primaryPurple;
+          font-weight: bold;
+          font-size: 1.2em;
+          font-family: 'Lato', sans-serif;
+          padding: 1em 1em 0.5em 1.5em;
+        }
+        .carousel-item-content {
+          font-style: italic;
+          padding: 0.5em 1em 0 1em;
+          color: $primaryPurple;
+          font-family: 'Lato', sans-serif;
+          width: 50%;
+          margin: 0 auto;
+        }
+    
+        .carousel-item-small {
+          display: block;
+          padding: 1.5em 0 0 1.5em;
+          color: rgba(128, 128, 128, 0.747);
+          font-family: 'Lato', sans-serif;
+          font-size: 0.7em;
+          width: 50%;
+          margin: 0 auto 1em;
+        }
+      }
+    }
+  }
+}
+
+
+/* 
+ width: 90%;
+    margin: 0 auto;
+    padding-bottom: 1em;
+
+    */
