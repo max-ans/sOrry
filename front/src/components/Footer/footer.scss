@@ -1,0 +1,147 @@
+@import '../../styles/vars';
+.footer {
+  background-color:#78317bf3;;
+  color: #ffffff;
+  
+  .footer-flex{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+
+    .footer-left {
+      
+     display: flex;
+     justify-content: space-around;
+     align-items: baseline;
+     align-self: baseline;
+
+      .footer-left-left {
+ 
+        
+
+        .footer-left-navleft{
+
+          display: block;
+         
+          .navleft-items {
+            display: block;
+            width: 100px;
+            margin: 0.5em;
+            
+          }
+        }
+      }
+  
+      .footer-left-right {
+        
+        border-left: 1px solid #fff;
+        
+        
+        .footer-left-navright {
+
+          .navright-items {
+            display: block;
+            margin: 1em;
+          }
+        }
+      }
+    }
+  
+    .footer-right {
+  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+
+
+      .footer-right-icon {
+        width: 55%;
+        border-radius: 50%;
+      }
+
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 0.5em;
+    color: rgba(128, 128, 128, 0.747);
+  }
+
+}
+
+@media screen and (min-width : 756px) {
+
+  .footer {
+    background-color:#78317bf3;;
+    color: #ffffff;
+    
+    .footer-flex{
+      display: flex;
+      justify-content: space-between;
+      padding: 1em;
+  
+      .footer-left {
+        
+       display: flex;
+       justify-content: space-around;
+       align-items: baseline;
+       align-self: baseline;
+  
+        .footer-left-left {
+   
+          
+  
+          .footer-left-navleft{
+  
+            display: block;
+           
+            .navleft-items {
+              display: block;
+              width: 300px;
+              margin: 0.5em;
+              
+            }
+          }
+        }
+    
+        .footer-left-right {
+          
+          border-left: 1px solid #fff;
+          
+          
+          .footer-left-navright {
+  
+            .navright-items {
+              display: block;
+              margin: 1em;
+            }
+          }
+        }
+      }
+    
+      .footer-right {
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+  
+  
+        .footer-right-icon {
+          width: 75%;
+          border-radius: 50%;
+        }
+  
+      }
+    }
+  
+    .footer-bottom {
+      text-align: center;
+      padding: 0.5em;
+      color: rgba(128, 128, 128, 0.747);
+    }
+  
+  }
+}
