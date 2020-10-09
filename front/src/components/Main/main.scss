@@ -1,15 +1,14 @@
 @import '../../styles/vars';
 
 .main {
-
   margin: 5% 0%;
- 
 
   .main-title {
     text-transform: uppercase;
     
-    font-family: 'GM';
-    font-size: 0.9em;
+    font-family: 'Cp';
+    font-size: 1.5em;
+    font-style: italic;
     color: $primaryPurple;
     padding-left: 0.5em;
   }
@@ -19,16 +18,14 @@
 @media screen and (min-width : 756px) {
   .main {
 
-    margin: 2% 2em;
-   
   
     .main-title {
+      text-decoration: underline;
       text-transform: uppercase;
-      
-      font-family: 'GM';
-      font-size: 0.9em;
+      font-family: 'Cp';
+      font-size: 3em;
       color: $primaryPurple;
-      padding-left: 0.5em;
+      padding-left: 2em;
     }
   }
 }
