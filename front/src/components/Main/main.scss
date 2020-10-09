@@ -1,16 +1,38 @@
 @import '../../styles/vars';
 
 .main {
-
   margin: 5% 0%;
  
-
+  
   .main-title {
     text-transform: uppercase;
-    
-    font-family: 'GM';
-    font-size: 0.9em;
+    background-color: #FFFEF1;
+    font-family: 'Cp';
+    font-size: 1.5em;
+    font-style: italic;
     color: $primaryPurple;
-    padding-left: 0.5em;
+    padding:0.5em 0 0em 1em;
+    border-radius: 50px 50px 0 0;
+    border: 1px solid $primaryPurple;
+    border-bottom: none;
+    
+    
+  }
+}
+
+
+@media screen and (min-width : 756px) {
+  .main {
+
+  
+    .main-title {
+      text-decoration: underline;
+      text-transform: uppercase;
+      font-family: 'Cp';
+      font-size: 3em;
+      color: $primaryPurple;
+      padding-left: 3em;
+      padding-bottom: 1em;
+    }
   }
 }

@@ -6,7 +6,7 @@ import className from 'classnames';
 import './nav.scss';
 
 const Nav = ({ menuIsOpen }) => (
-  <nav className={className('header-nav', { 'header-nav isClose': menuIsOpen })}>
+  <nav className={className('header-nav', { 'header-nav isClose': !menuIsOpen })}>
     <a href="" className="header-nav-items">
       Top excuses
     </a>
