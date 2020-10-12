@@ -1,10 +1,12 @@
 // == Import npm
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 // == Import Components
 import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
 import Footer from 'src/components/Footer/Footer';
+import Connection from 'src/components/Connection/Connection';
 
 // == Import
 import './styles.scss';
@@ -13,7 +15,14 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <Header />
-    <Main />
+    <Switch>
+      <Route exact path="/">
+        <Main />
+      </Route>
+      <Route exact path="/connexion">
+        <Connection />
+      </Route>
+    </Switch>
     <Footer />
   </div>
 );
