@@ -15,6 +15,28 @@ use Symfony\Component\Serializer\Serializer;
 
 class UserController extends AbstractController
 {
+
+    /**
+     * @Route("/api/v0/user/login", name="api_v0_user_login", methods={"POST"})
+     */
+    public function login (Request $request, ObjectNormalizer $normalizer)
+    {
+        $user = $this->getUser();
+
+        $user->setApiToken(uuid_create(UUID_TYPE_RANDOM)); 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();      
+
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedUser = $serializer->normalize($user, null ,['groups' => 'user_groups']);
+
+        return $this->json([
+            $normalizedUser
+        ]); 
+    }
+
     /**
      * @Route("/api/v0/user", name="api_v0_user_list" , methods={"GET"})
      */
