@@ -1,8 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './connection.scss';
 
-const Connection = () => (
+const Connection = ({
+  login,
+  password,
+  rememberMe,
+  updateConnectionInput,
+}) => (
   <div className="connection">
     <form action="" className="connection-form">
       <fieldset className="connection-form-fieldset">
@@ -15,6 +21,10 @@ const Connection = () => (
             type="text"
             name="nickname"
             id="nickname"
+            value={login}
+            onChange={(evt) => {
+              updateConnectionInput(evt.target.value, 'login');
+            }}
             required
             className="connection-form-input "
           />
@@ -27,9 +37,13 @@ const Connection = () => (
           className="connection-form-label"
         > Mot de passe
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
+            value={password}
+            onChange={(evt) => {
+              updateConnectionInput(evt.target.value, 'password');
+            }}
             required
             className="connection-form-input "
           />
@@ -53,6 +67,7 @@ const Connection = () => (
             name="checkbox"
             id="checkbox"
             className="connection-form-input checkbox"
+            // checked={rememberMe}
           />
         </label>
         <button
@@ -68,5 +83,12 @@ const Connection = () => (
     </form>
   </div>
 );
+
+Connection.propTypes = {
+  login: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  rememberMe: PropTypes.bool.isRequired,
+  updateConnectionInput: PropTypes.func.isRequired,
+};
 
 export default Connection;

@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
 import Footer from 'src/components/Footer/Footer';
-import Connection from 'src/components/Connection/Connection';
+import Connection from 'src/containers/Connection/Connection';
 
 // == Import
 import './styles.scss';
