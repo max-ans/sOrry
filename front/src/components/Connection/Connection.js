@@ -10,14 +10,17 @@ const Connection = () => (
         <label
           className="connection-form-label"
           htmlFor="nickname"
-        > Pseudo ou adresse mail
+        > Identifiant
           <input
             type="text"
             name="nickname"
             id="nickname"
             required
-            className="connection-form-input"
+            className="connection-form-input "
           />
+          <span className="connection-form-input-info login">
+            Adresse e-mail ou pseudo
+          </span>
         </label>
         <label
           htmlFor="password"
@@ -28,8 +31,18 @@ const Connection = () => (
             name="password"
             id="password"
             required
-            className="connection-form-input"
+            className="connection-form-input "
           />
+          <span className="connection-form-input-info password">
+            Votre mot de passe doit respecter ce format:
+            <ul className="info-list">
+              <li className="info-list-item">Une lettre majuscule</li>
+              <li className="info-list-item">Une lettre minuscule</li>
+              <li className="info-list-item">Un chiffre</li>
+              <li className="info-list-item">Un caractère spécial</li>
+              <li className="info-list-item">Entre 8 et 16 caractères</li>
+            </ul>
+          </span>
         </label>
         <label
           htmlFor="checkbox"
