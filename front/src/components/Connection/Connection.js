@@ -8,6 +8,7 @@ const Connection = ({
   password,
   rememberMe,
   updateConnectionInput,
+  setRememberMe,
 }) => (
   <div className="connection">
     <form action="" className="connection-form">
@@ -67,7 +68,8 @@ const Connection = ({
             name="checkbox"
             id="checkbox"
             className="connection-form-input checkbox"
-            // checked={rememberMe}
+            checked={rememberMe}
+            onChange={setRememberMe}
           />
         </label>
         <button
@@ -89,6 +91,7 @@ Connection.propTypes = {
   password: PropTypes.string.isRequired,
   rememberMe: PropTypes.bool.isRequired,
   updateConnectionInput: PropTypes.func.isRequired,
+  setRememberMe: PropTypes.func.isRequired,
 };
 
 export default Connection;
