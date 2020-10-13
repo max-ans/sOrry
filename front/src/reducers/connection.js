@@ -7,6 +7,8 @@ const initialState = {
   login: '',
   password: '',
   rememberMe: false,
+  isLogged: false,
+  user: {},
 };
 
 const connection = (state = initialState, action = {}) => {

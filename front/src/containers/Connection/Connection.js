@@ -4,6 +4,7 @@ import Connection from 'src/components/Connection/Connection';
 import {
   updateConnectionInput,
   setRememberMe,
+  sendLoginForm,
 } from 'src/actions/connection';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +19,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setRememberMe: () => {
     dispatch(setRememberMe());
+  },
+  sendLoginForm: () => {
+    dispatch(sendLoginForm());
   },
 });
 
