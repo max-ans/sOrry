@@ -104,6 +104,12 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true, unique=true)
+     * @Groups("user_groups")
+     */
+    private $apiToken;
+
     public function __construct()
     {
         $this->apologies = new ArrayCollection();
@@ -282,6 +288,18 @@ class User implements UserInterface
                 $comment->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getApiToken(): ?string
+    {
+        return $this->apiToken;
+    }
+
+    public function setApiToken(?string $apiToken): self
+    {
+        $this->apiToken = $apiToken;
 
         return $this;
     }
