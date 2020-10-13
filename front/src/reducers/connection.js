@@ -1,6 +1,7 @@
 import {
   UPDATE_CONNECTION_INPUT,
   SET_REMEMBER_ME,
+  SAVE_USER,
 } from 'src/actions/connection';
 
 const initialState = {
@@ -22,6 +23,14 @@ const connection = (state = initialState, action = {}) => {
       return {
         ...state,
         rememberMe: !state.rememberMe,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        user: { ...action.user },
+        login: '',
+        password: '',
+        isLogged: true,
       };
     default:
       return state;
