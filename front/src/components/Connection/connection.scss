@@ -25,7 +25,7 @@
       .connection-form-legend {
         font-weight: bold;
         font-size: 1.2em;
-        padding: 0.2em;
+        padding: 0.1em;
        
         
       }
@@ -64,63 +64,6 @@
         .connection-form-input-info {
           display: none;
         }
-        
-        &:hover {
-          .connection-form-input-info {
-            display: block;
-            position: absolute;
-            color: #ffffff;
-            background-color: $primaryPurple;
-            padding: 1em;
-            border-radius: 10px;
-            font-weight: normal;
-
-            &.login {
-              top: 10%;
-              right: 20%;
-              &::before {
-                content: "";
-                display : inline-block;
-                height : 0;
-                width : 0;
-                border-top : 15px solid $primaryPurple;
-                border-right : 15px solid transparent;
-                position: relative;
-                bottom: -2.1em;
-              }
-              
-            }
-            
-            &.password {
-             
-              right: -50px;
-              bottom: 5%;
-              &::before {
-                content: "";
-                display : inline-block;
-                height : 0;
-                width : 0;
-                border-right : 20px solid transparent;
-                border-bottom : 20px solid $primaryPurple;
-                position: relative;
-                top: -2.2em;
-                left: 20%;
-              }
-            }
-
-            .info-list {
-              
-              .info-list-item {
-                text-decoration: none;
-                text-align: start;
-                &::before {
-                  content: "- ";
-                }
-              }
-            }
-            
-          }
-        }
       }
 
       .connection-form-button {
@@ -156,6 +99,99 @@
         width: 60vw;
         .connection-form-legend{
           font-size: 2em;
+        }
+
+        .connection-form-label {
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em;
+          font-weight: bold;
+  
+  
+          &.checkbox {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            font-weight: normal;
+        
+          }
+  
+  
+          .connection-form-input {
+            margin-top: 0.5em;
+            border: 1px solid $primaryPurple;
+            font-size: 1em;
+            line-height: 2em;
+            color: $primaryPurple;
+            padding-left: 0.5em;
+            border-radius: 5px;
+  
+            &.checkbox {
+              order: -1;
+              margin-right: 10px;
+            }
+          }
+          
+          .connection-form-input-info {
+            display: none;
+          }
+          
+          &:hover {
+            .connection-form-input-info {
+              display: block;
+              position: absolute;
+              color: #ffffff;
+              background-color: $primaryPurple;
+              padding: 1em;
+              border-radius: 10px;
+              font-weight: normal;
+  
+              &.login {
+                top: 10%;
+                right: 20%;
+                &::before {
+                  content: "";
+                  display : inline-block;
+                  height : 0;
+                  width : 0;
+                  border-top : 15px solid $primaryPurple;
+                  border-right : 15px solid transparent;
+                  position: relative;
+                  bottom: -2.1em;
+                }
+                
+              }
+              
+              &.password {
+               
+                right: -50px;
+                bottom: 5%;
+                &::before {
+                  content: "";
+                  display : inline-block;
+                  height : 0;
+                  width : 0;
+                  border-right : 20px solid transparent;
+                  border-bottom : 20px solid $primaryPurple;
+                  position: relative;
+                  top: -2.2em;
+                  left: 20%;
+                }
+              }
+  
+              .info-list {
+                
+                .info-list-item {
+                  text-decoration: none;
+                  text-align: start;
+                  &::before {
+                    content: "- ";
+                  }
+                }
+              }
+              
+            }
+          }
         }
       }
     }
