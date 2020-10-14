@@ -22,27 +22,42 @@
       
       font-family: 'Bubble', sans-serif;
       color: $primaryPurple;
-      font-size: 2em;
+      font-size: 3em;
       padding: 0.5em;
-      
-      
+      transition: transform 0.5s;
       
     }
     
     .header-buttonMenu {
       color: $primaryPurple;
       margin-right: 1.5em;
-      transform: rotate(0deg);
+      transform: rotate(0deg) ;
       transition: transform 0.5s;
 
       &.isActive {
-        transform: rotate(-450deg);
+        transform: rotate(-90deg);
       }
     }
   }
 }
 
-@media screen and (min-width : 756px) {
+@media screen and (min-width : 656px) {
+  .header {
+    .header-banner {
+      .header-title {
+        
+        transition: transform 0.5s;
+        transform: translate(1em, 0.5em) scale(1.5);
+      }
+
+      .header-buttonMenu {
+        transform: scale(1.5);
+      }
+    }
+  }
+}
+
+@media screen and (min-width : 912px) {
   
   .header {
 
@@ -50,9 +65,6 @@
       display: flex;
       align-items: baseline;
 
-      .header-title {
-        font-size: 4em;
-      }
       
       .header-buttonMenu {
         display: none;
