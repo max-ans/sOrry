@@ -42,7 +42,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups("user_groups")
      * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      * @Assert\Regex(
      *      pattern="/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/",
