@@ -24,6 +24,7 @@
     font-weight: bold;
     color: $primaryPurple;
     padding: 2em;
+    font-size: 1.1em;
    
   }
 
@@ -39,7 +40,7 @@
   }
 }
 
-@media screen and (min-width : 756px) {
+@media screen and (min-width : 912px) {
  
   .header-nav {
 
@@ -65,7 +66,7 @@
     }
     .header-nav-items {
   
-      font-size: 1.1em;
+      font-size: 1.2em;
       
 
       &:hover {
