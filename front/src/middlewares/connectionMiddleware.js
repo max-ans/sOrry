@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   SEND_LOGIN_FORM,
   saveUser,
+  credentialsLoginError,
 } from 'src/actions/connection';
 
 import { baseURL } from 'src/utils';
@@ -16,17 +17,16 @@ const connectionMiddleware = (store) => (next) => (action) => {
         password,
       })
         .then((response) => {
-          console.log(response.data[0]);
           store.dispatch(saveUser(response.data[0]));
           if (rememberMe) {
-            localStorage.setItem('user', JSON.stringify(response.data[0]));
+            localStorage.setItem('s\'OrryUserLogged', JSON.stringify(response.data[0]));
           }
           else {
-            sessionStorage.setItem('user', JSON.stringify(response.data[0]));
+            sessionStorage.setItem('s\'OrryUserLogged', JSON.stringify(response.data[0]));
           }
         })
-        .catch((error) => {
-          console.warn(error);
+        .catch(() => {
+          store.dispatch(credentialsLoginError());
         });
       next(action);
       break;

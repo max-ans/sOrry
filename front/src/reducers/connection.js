@@ -2,6 +2,7 @@ import {
   UPDATE_CONNECTION_INPUT,
   SET_REMEMBER_ME,
   SAVE_USER,
+  CREDENTIALS_LOGIN_ERROR,
 } from 'src/actions/connection';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   password: '',
   rememberMe: false,
   isLogged: false,
+  loginError: false,
   user: {},
 };
 
@@ -31,6 +33,13 @@ const connection = (state = initialState, action = {}) => {
         login: '',
         password: '',
         isLogged: true,
+        loginError: false,
+      };
+    case CREDENTIALS_LOGIN_ERROR:
+      return {
+        ...state,
+        loginError: true,
+        password: '',
       };
     default:
       return state;

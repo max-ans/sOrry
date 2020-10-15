@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { AlertOctagon } from 'react-feather';
 
 import './connection.scss';
 
@@ -7,6 +8,7 @@ const Connection = ({
   login,
   password,
   rememberMe,
+  loginError,
   updateConnectionInput,
   setRememberMe,
   sendLoginForm,
@@ -15,12 +17,23 @@ const Connection = ({
     evt.preventDefault();
     sendLoginForm();
   };
+  // give focus at first input in form when
+  // component was mount and after, only when
+  // loginError status was update
+  useEffect(() => {
+    document.getElementById('nickname').focus();
+  }, [loginError]);
 
   return (
     <div className="connection">
       <form action="" className="connection-form" onSubmit={handleSubmit}>
         <fieldset className="connection-form-fieldset">
           <legend className="connection-form-legend">Connexion</legend>
+          {loginError && (
+            <span className="connection-form-error">
+              <AlertOctagon className="connection-form-error-icon" /> Identifiants incorrects.
+            </span>
+          )}
           <label
             className="connection-form-label"
             htmlFor="nickname"
@@ -100,6 +113,7 @@ Connection.propTypes = {
   updateConnectionInput: PropTypes.func.isRequired,
   setRememberMe: PropTypes.func.isRequired,
   sendLoginForm: PropTypes.func.isRequired,
+  loginError: PropTypes.bool.isRequired,
 };
 
 export default Connection;

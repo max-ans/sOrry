@@ -29,6 +29,17 @@
        
         
       }
+      .connection-form-error{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .connection-form-error-icon {
+          color: red;
+          padding: 0.1em;
+        }
+      }
 
       .connection-form-label {
         display: flex;

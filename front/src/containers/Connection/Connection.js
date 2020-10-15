@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
   login: state.connection.login,
   password: state.connection.password,
   rememberMe: state.connection.rememberMe,
+  loginError: state.connection.loginError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-
 // == Import Components
 import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
