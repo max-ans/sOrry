@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { User } from 'react-feather';
 import className from 'classnames';
+import { Link } from 'react-router-dom';
 
 import './nav.scss';
 
@@ -19,11 +20,14 @@ const Nav = ({ menuIsOpen }) => (
     <a href="" className="header-nav-items">
       Contact
     </a>
-    <a href="" className="header-nav-items--user">
+    <Link
+      className="header-nav-items--user"
+      to="/connexion"
+    >
       <User
         className="header-nav-items-icon"
       />
-    </a>
+    </Link>
   </nav>
 );
 Nav.propTypes = {
