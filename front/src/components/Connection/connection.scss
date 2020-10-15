@@ -158,8 +158,8 @@
               font-weight: normal;
   
               &.login {
-                top: 10%;
-                right: 20%;
+                top: 15%;
+                right: 0;
                 &::before {
                   content: "";
                   display : inline-block;
@@ -176,7 +176,7 @@
               &.password {
                
                 right: -50px;
-                bottom: 5%;
+                top: 55%;
                 &::before {
                   content: "";
                   display : inline-block;
