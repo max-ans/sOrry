@@ -1,18 +1,20 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Import Components
 import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
 import Footer from 'src/components/Footer/Footer';
 import Connection from 'src/containers/Connection/Connection';
+import ProfilPage from 'src/components/ProfilPage/ProfilPage';
 
 // == Import
 import './styles.scss';
 
 // == Composant
-const App = () => {
+const App = ({ isLogged }) => {
   useEffect(() => {
     document.title = "s'Orry";
   });
@@ -24,12 +26,19 @@ const App = () => {
           <Main />
         </Route>
         <Route exact path="/connexion">
-          <Connection />
+          {isLogged ? <Redirect to="/mon-profil" /> : <Connection />}
+        </Route>
+        <Route exact path="/mon-profil">
+          {isLogged ? <ProfilPage /> : <Redirect to="/connexion" />}
         </Route>
       </Switch>
       <Footer />
     </div>
   );
+};
+
+App.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
 };
 
 // == Export
