@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './footer.scss';
 import Banana from 'src/assets/images/banana.jpeg';
@@ -18,7 +19,12 @@ const Footer = () => (
           <nav className="footer-left-navright">
             <a className="navright-items" href="">À propos</a>
             <a className="navright-items" href="">Contact</a>
-            <a className="navright-items" href="">Mon profil</a>
+            <Link
+              className="navright-items"
+              to="/connexion"
+            >
+              Mon profil
+            </Link>
           </nav>
         </div>
       </div>
