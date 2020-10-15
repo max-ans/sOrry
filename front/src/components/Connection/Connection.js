@@ -50,7 +50,7 @@ const Connection = ({
               className="connection-form-input "
             />
             <span className="connection-form-input-info login">
-              Adresse e-mail ou pseudo
+              Adresse e-mail
             </span>
           </label>
           <label
