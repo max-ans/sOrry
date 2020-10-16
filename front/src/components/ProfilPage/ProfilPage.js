@@ -91,7 +91,7 @@ const ProfilPage = ({ user }) => (
             </p>
             <p className="list-empty-info">
               Rendez-vous <a href="" className="list-empty-redirect">ici</a> pour publier votre
-              première excuses ;-)
+              première excuses &#128521;
             </p>
           </div>
         )}
