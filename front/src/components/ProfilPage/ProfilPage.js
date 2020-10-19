@@ -84,7 +84,7 @@ const ProfilPage = ({ user, updateUserInput }) => (
               </div>
               <div className="items-right">
                 <p className="items-likes">
-                  <ThumbsUp /> <br /> 46658
+                  <ThumbsUp /> <br /> {apologie.likes}
                 </p>
               </div>
             </li>
