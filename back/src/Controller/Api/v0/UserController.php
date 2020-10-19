@@ -149,7 +149,7 @@ class UserController extends AbstractController
                     ], 409);
                 }
             }
-            
+        
             $userPassword = $user->getPassword();
             
             $user->setPassword($passwordEncoder->encodePassword($user, $userPassword));

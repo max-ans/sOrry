@@ -3,20 +3,25 @@ import axios from 'axios';
 import {
   SEND_USER_FORM,
 } from 'src/actions/profilPage';
+import {
+  saveUser,
+} from 'src/actions/connection';
 
 import { baseURL } from 'src/utils';
 
 const profilPageMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_USER_FORM: {
+      const { nickname: oldNickname } = store.getState().user.user;
       const {
-        email,
         password,
+        email,
         firstname,
         lastname,
         nickname,
       } = store.getState().user;
-      axios.patch(`${baseURL}/api/v0/user/${nickname}`, {
+
+      axios.patch(`${baseURL}/api/v0/user/${oldNickname}`, {
         email,
         password,
         firstname,
@@ -25,6 +30,7 @@ const profilPageMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(saveUser(response.data[0]));
         })
         .catch((error) => {
           console.log(error);
