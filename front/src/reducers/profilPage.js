@@ -13,6 +13,8 @@ const initialState = {
   firstname: '',
   lastname: '',
   nickname: '',
+  failure: false,
+  success: false,
 };
 
 const profilPage = (state = initialState, action = {}) => {
