@@ -40,6 +40,18 @@
           }
         }
       }
+
+      .form-submit {
+        width: 100%;
+        background-color: $primaryPurple;
+        color: #fff;
+        font-family: inherit;
+        border-radius: 15px;
+        border: none;
+        padding: 0.5em;
+        font-size: 1em;
+
+      }
     }
   }
 
@@ -130,7 +142,10 @@
         display: block;
         margin: 0 auto;
         transform: scale(1.1);
-        // transition: ease-in-out 2s;
+        
+        .form-submit {
+          margin-bottom: 1em;
+        }
         
       }
     }
@@ -150,6 +165,10 @@
       .profil-left-form {
         margin: auto;
         
+        .form-submit {
+         margin-top: 1em;
+          
+        }
       }
     }
   

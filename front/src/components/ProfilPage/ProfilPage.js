@@ -57,6 +57,12 @@ const ProfilPage = ({ user, updateUserInput }) => (
             }}
           />
         </label>
+        <button
+          type="submit"
+          className="form-submit"
+        >
+          Enregistrer les modifications
+        </button>
       </form>
     </div>
     <hr />

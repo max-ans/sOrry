@@ -4,6 +4,7 @@ import {
 import {
   UPDATE_USER_INPUT,
 } from 'src/actions/profilPage';
+
 const initialState = {
   user: {},
 
