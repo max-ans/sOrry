@@ -4,7 +4,7 @@ import { ThumbsUp } from 'react-feather';
 
 import './profilPage.scss';
 
-const ProfilPage = ({ user }) => (
+const ProfilPage = ({ user, updateUserInput }) => (
   <section className="profilPage">
     <div className="profil-left">
       <form action="" className="profil-left-form">
@@ -15,7 +15,9 @@ const ProfilPage = ({ user }) => (
             id="firstname"
             value={user.firstname}
             name="firstname"
-            onChange={() => console.log('tape')}
+            onChange={(evt) => {
+              updateUserInput(evt.target.value, 'firstname');
+            }}
           />
         </label>
         <label htmlFor="lastname" className="form-label"> Nom :
@@ -25,7 +27,9 @@ const ProfilPage = ({ user }) => (
             id="lastname"
             name="lastname"
             value={user.lastname}
-            onChange={() => console.log('tape')}
+            onChange={(evt) => {
+              updateUserInput(evt.target.value, 'lastname');
+            }}
           />
         </label>
         <label htmlFor="nickname" className="form-label"> Pseudo :
@@ -35,7 +39,9 @@ const ProfilPage = ({ user }) => (
             id="nickname"
             name="nickname"
             value={user.nickname}
-            onChange={() => console.log('tape')}
+            onChange={(evt) => {
+              updateUserInput(evt.target.value, 'nickname');
+            }}
 
           />
         </label>
@@ -46,7 +52,9 @@ const ProfilPage = ({ user }) => (
             id="mail"
             name="mail"
             value={user.email}
-            onChange={() => console.log('tape')}
+            onChange={(evt) => {
+              updateUserInput(evt.target.value, 'email');
+            }}
           />
         </label>
       </form>
@@ -104,6 +112,7 @@ ProfilPage.propTypes = {
       }).isRequired,
     ).isRequired,
   }).isRequired,
+  updateUserInput: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;
