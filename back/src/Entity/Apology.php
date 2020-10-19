@@ -53,6 +53,7 @@ class Apology
     /**
      * @ORM\Column(type="integer", options={"default" : 0})
      * @Groups("apologies_groups")
+     * @Groups("user_groups")
      */
     private $likes;
 
