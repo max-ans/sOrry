@@ -131,16 +131,23 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user, ['csrf_protection' => false]);
 
         $newUserInfos = json_decode($request->getContent(), true);
-        
+
+        // save old user nickname
+        $oldUserNickname = $user->getNickname();
 
         $form->submit($newUserInfos);
-
+        
         if ($form->isValid()){
-            if ($userRepository->findOneBy(['nickname' => $user->getNickname()]))
-            {
-                return $this->json([
-                    'message' => 'this nickname already exist',
-                ], 409);
+            
+            // if new user nickname is not equal at old user nickname 
+            if ( $user->getNickname() !== $oldUserNickname){
+                // check if the new user nickname is unique
+                if ($userRepository->findOneBy(['nickname' => $user->getNickname()]))
+                {
+                    return $this->json([
+                        'message' => 'this nickname already exist',
+                    ], 409);
+                }
             }
             
             $userPassword = $user->getPassword();
