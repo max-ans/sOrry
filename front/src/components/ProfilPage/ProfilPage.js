@@ -49,15 +49,6 @@ const ProfilPage = ({ user }) => (
             onChange={() => console.log('tape')}
           />
         </label>
-        <label htmlFor="password" className="form-label"> Mot de passe :
-          <input
-            type="password"
-            className="form-input password"
-            id="password"
-            name="password"
-            readOnly
-          />
-        </label>
       </form>
     </div>
     <hr />
