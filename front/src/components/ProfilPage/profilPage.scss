@@ -52,6 +52,11 @@
             background-color: #fff;
             
           }
+
+          &.wrong {
+            border: double 1px red;
+            box-shadow: 2px 2px 5px red;
+          }
         }
       }
 

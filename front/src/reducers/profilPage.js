@@ -5,6 +5,7 @@ import {
   UPDATE_USER_INPUT,
   UPDATE_PASSWORD_INPUT,
   FORM_FAILURE,
+  INPUT_FORMAT_WRONG,
 } from 'src/actions/profilPage';
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   nickname: '',
   failure: false,
   success: false,
+  format: false,
 };
 
 const profilPage = (state = initialState, action = {}) => {
@@ -48,6 +50,11 @@ const profilPage = (state = initialState, action = {}) => {
       return {
         ...state,
         failure: true,
+      };
+    case INPUT_FORMAT_WRONG:
+      return {
+        ...state,
+        format: action.bool,
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import {
   updateUserInput,
   sendUserForm,
   updatePasswordInput,
+  inputFormatWrong,
 } from 'src/actions/profilPage';
 
 import ProfilPage from 'src/components/ProfilPage/ProfilPage';
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => ({
   lastname: state.user.lastname,
   nickname: state.user.nickname,
   failure: state.user.failure,
+  format: state.user.format,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -26,6 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sendUserForm: () => {
     dispatch(sendUserForm());
+  },
+  inputFormatWrong: (bool) => {
+    dispatch(inputFormatWrong(bool));
   },
 });
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, AlertOctagon } from 'react-feather';
+import className from 'classnames';
+
 import { validateEmailFormat } from 'src/utils';
 
 import './profilPage.scss';
@@ -16,6 +18,8 @@ const ProfilPage = ({
   sendUserForm,
   updatePasswordInput,
   failure,
+  format,
+  inputFormatWrong,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -33,7 +37,8 @@ const ProfilPage = ({
           <label htmlFor="mail" className="form-label"> Email :
             <input
               type="email"
-              className="form-input mail"
+              // eslint-disable-next-line quote-props
+              className={className('form-input mail', { 'wrong': format })}
               id="mail"
               name="mail"
               value={email}
@@ -41,7 +46,12 @@ const ProfilPage = ({
                 updateUserInput(evt.target.value, 'email');
               }}
               onBlur={(evt) => {
-                console.log(validateEmailFormat(evt.target.value));
+                if (!validateEmailFormat(evt.target.value)) {
+                  inputFormatWrong(!validateEmailFormat(evt.target.value));
+                }
+                else {
+                  inputFormatWrong(!validateEmailFormat(evt.target.value));
+                }
               }}
             />
           </label>
@@ -165,6 +175,8 @@ ProfilPage.propTypes = {
   sendUserForm: PropTypes.func.isRequired,
   updatePasswordInput: PropTypes.func.isRequired,
   failure: PropTypes.bool.isRequired,
+  format: PropTypes.bool.isRequired,
+  inputFormatWrong: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;
