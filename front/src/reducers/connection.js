@@ -11,7 +11,6 @@ const initialState = {
   rememberMe: false,
   isLogged: false,
   loginError: false,
-  user: {},
 };
 
 const connection = (state = initialState, action = {}) => {
@@ -29,7 +28,6 @@ const connection = (state = initialState, action = {}) => {
     case SAVE_USER:
       return {
         ...state,
-        user: { ...action.user },
         login: '',
         password: '',
         isLogged: true,
