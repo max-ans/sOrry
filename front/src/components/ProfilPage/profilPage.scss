@@ -28,7 +28,7 @@
     
 
     .profil-left-form {
-
+      position: relative;
       
       .form-label {
         display: flex;
@@ -58,6 +58,23 @@
             box-shadow: 2px 2px 5px red;
           }
         }
+      }
+      .form-error-message {
+        background-color: #fff;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 0.8em;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: red;
+        width: 100%;
+        padding: 0.2em;
+        margin-top: 0.5em;
+        position: relative;
+        right: 0px;
+        
+        
       }
 
       .form-submit {

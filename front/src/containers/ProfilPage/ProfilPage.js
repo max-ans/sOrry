@@ -16,7 +16,8 @@ const mapStateToProps = (state) => ({
   lastname: state.user.lastname,
   nickname: state.user.nickname,
   failure: state.user.failure,
-  format: state.user.format,
+  emailFormat: state.user.emailFormat,
+  passwordFormat: state.user.passwordFormat,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,8 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
   sendUserForm: () => {
     dispatch(sendUserForm());
   },
-  inputFormatWrong: (bool) => {
-    dispatch(inputFormatWrong(bool));
+  inputFormatWrong: (bool, field) => {
+    dispatch(inputFormatWrong(bool, field));
   },
 });
 

@@ -17,7 +17,8 @@ const initialState = {
   nickname: '',
   failure: false,
   success: false,
-  format: false,
+  emailFormat: false,
+  passwordFormat: false,
 };
 
 const profilPage = (state = initialState, action = {}) => {
@@ -54,7 +55,7 @@ const profilPage = (state = initialState, action = {}) => {
     case INPUT_FORMAT_WRONG:
       return {
         ...state,
-        format: action.bool,
+        [action.field]: action.bool,
       };
     default:
       return state;

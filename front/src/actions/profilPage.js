@@ -23,7 +23,8 @@ export const formFailure = () => ({
   type: FORM_FAILURE,
 });
 
-export const inputFormatWrong = (bool) => ({
+export const inputFormatWrong = (bool, field) => ({
   type: INPUT_FORMAT_WRONG,
   bool,
+  field,
 });

@@ -1,9 +1,10 @@
+/* eslint-disable quote-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, AlertOctagon } from 'react-feather';
 import className from 'classnames';
 
-import { validateEmailFormat } from 'src/utils';
+import { validateEmailFormat, validatePasswordFormat } from 'src/utils';
 
 import './profilPage.scss';
 
@@ -18,7 +19,8 @@ const ProfilPage = ({
   sendUserForm,
   updatePasswordInput,
   failure,
-  format,
+  emailFormat,
+  passwordFormat,
   inputFormatWrong,
 }) => {
   const handleSubmitForm = (evt) => {
@@ -37,8 +39,7 @@ const ProfilPage = ({
           <label htmlFor="mail" className="form-label"> Email :
             <input
               type="email"
-              // eslint-disable-next-line quote-props
-              className={className('form-input mail', { 'wrong': format })}
+              className={className('form-input mail', { 'wrong': emailFormat })}
               id="mail"
               name="mail"
               value={email}
@@ -47,27 +48,47 @@ const ProfilPage = ({
               }}
               onBlur={(evt) => {
                 if (!validateEmailFormat(evt.target.value)) {
-                  inputFormatWrong(!validateEmailFormat(evt.target.value));
+                  inputFormatWrong(!validateEmailFormat(evt.target.value), 'emailFormat');
                 }
                 else {
-                  inputFormatWrong(!validateEmailFormat(evt.target.value));
+                  inputFormatWrong(!validateEmailFormat(evt.target.value), 'emailFormat');
                 }
               }}
             />
           </label>
+          {emailFormat && (
+            <div className="form-error-message">
+              <AlertOctagon />
+              <p> Le format de l'email ne correspond pas</p>
+            </div>
+          )}
           <label htmlFor="password" className="form-label"> Mot de passe :
             <input
               type="password"
-              className="form-input "
+              className={className('form-input', { 'wrong': passwordFormat })}
               id="password"
               name="password"
               value={password}
               onChange={(evt) => {
                 updatePasswordInput(evt.target.value);
               }}
+              onBlur={(evt) => {
+                if (!validatePasswordFormat(evt.target.value)) {
+                  inputFormatWrong(!validatePasswordFormat(evt.target.value), 'passwordFormat');
+                }
+                else {
+                  inputFormatWrong(!validatePasswordFormat(evt.target.value), 'passwordFormat');
+                }
+              }}
 
             />
           </label>
+          {passwordFormat && (
+            <div className="form-error-message">
+              <AlertOctagon />
+              <p>Ce mot de passe ne respecte pas les règles de sécurité</p>
+            </div>
+          )}
           <label htmlFor="firstname" className="form-label">Prénom :
             <input
               type="text"
@@ -175,7 +196,8 @@ ProfilPage.propTypes = {
   sendUserForm: PropTypes.func.isRequired,
   updatePasswordInput: PropTypes.func.isRequired,
   failure: PropTypes.bool.isRequired,
-  format: PropTypes.bool.isRequired,
+  emailFormat: PropTypes.bool.isRequired,
+  passwordFormat: PropTypes.bool.isRequired,
   inputFormatWrong: PropTypes.func.isRequired,
 };
 

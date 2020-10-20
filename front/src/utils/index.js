@@ -9,3 +9,12 @@ export const validateEmailFormat = (mail) => {
   }
   return false;
 };
+
+export const validatePasswordFormat = (password) => {
+  const format = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/;
+
+  if (password.match(format)) {
+    return true;
+  }
+  return false;
+};
