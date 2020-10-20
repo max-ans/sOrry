@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   firstname: state.user.firstname,
   lastname: state.user.lastname,
   nickname: state.user.nickname,
+  failure: state.user.failure,
 });
 
 const mapDispatchToProps = (dispatch) => ({

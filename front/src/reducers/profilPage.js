@@ -4,6 +4,7 @@ import {
 import {
   UPDATE_USER_INPUT,
   UPDATE_PASSWORD_INPUT,
+  FORM_FAILURE,
 } from 'src/actions/profilPage';
 
 const initialState = {
@@ -42,6 +43,11 @@ const profilPage = (state = initialState, action = {}) => {
       return {
         ...state,
         password: action.value,
+      };
+    case FORM_FAILURE:
+      return {
+        ...state,
+        failure: true,
       };
     default:
       return state;

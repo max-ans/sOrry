@@ -11,6 +11,20 @@
   .profil-left {
     display: flex;
     flex-direction: column;
+
+    .form-message {
+      background-color: #fff;
+      text-align: center;
+      padding: 1em;
+      border-radius: 15px;
+      display: flex;
+      align-items: center; 
+      border: 1px solid red;
+      margin-top: 1em;
+      .message {
+        margin-left: 0.5em;
+      }
+    }
     
 
     .profil-left-form {

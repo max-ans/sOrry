@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThumbsUp } from 'react-feather';
+import { ThumbsUp, AlertOctagon } from 'react-feather';
+import { validateEmailFormat } from 'src/utils';
 
 import './profilPage.scss';
 
@@ -14,6 +15,7 @@ const ProfilPage = ({
   updateUserInput,
   sendUserForm,
   updatePasswordInput,
+  failure,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -23,6 +25,11 @@ const ProfilPage = ({
     <section className="profilPage">
       <div className="profil-left">
         <form action="" className="profil-left-form" onSubmit={handleSubmitForm}>
+          {failure && (
+            <div className="form-message">
+              <AlertOctagon /> <span className="message">Il y a un problème dans le formulaire</span>
+            </div>
+          )}
           <label htmlFor="mail" className="form-label"> Email :
             <input
               type="email"
@@ -32,6 +39,9 @@ const ProfilPage = ({
               value={email}
               onChange={(evt) => {
                 updateUserInput(evt.target.value, 'email');
+              }}
+              onBlur={(evt) => {
+                console.log(validateEmailFormat(evt.target.value));
               }}
             />
           </label>
@@ -154,6 +164,7 @@ ProfilPage.propTypes = {
   updateUserInput: PropTypes.func.isRequired,
   sendUserForm: PropTypes.func.isRequired,
   updatePasswordInput: PropTypes.func.isRequired,
+  failure: PropTypes.bool.isRequired,
 };
 
 export default ProfilPage;

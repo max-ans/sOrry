@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   SEND_USER_FORM,
-  formFailure
+  formFailure,
 } from 'src/actions/profilPage';
 import {
   saveUser,
@@ -21,7 +21,6 @@ const profilPageMiddleware = (store) => (next) => (action) => {
         lastname,
         nickname,
       } = store.getState().user;
-
       axios.patch(`${baseURL}/api/v0/user/${oldNickname}`, {
         email,
         password,
@@ -35,6 +34,7 @@ const profilPageMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          store.dispatch(formFailure());
         });
       next(action);
       break;
