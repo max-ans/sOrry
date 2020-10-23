@@ -6,6 +6,10 @@ import {
   inputFormatWrong,
 } from 'src/actions/profilPage';
 
+import {
+  closeHeaderMenu,
+} from 'src/actions/header';
+
 import ProfilPage from 'src/components/ProfilPage/ProfilPage';
 
 const mapStateToProps = (state) => ({
@@ -33,6 +37,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   inputFormatWrong: (bool, field) => {
     dispatch(inputFormatWrong(bool, field));
+  },
+  closeHeaderMenu: () => {
+    dispatch(closeHeaderMenu());
   },
 });
 

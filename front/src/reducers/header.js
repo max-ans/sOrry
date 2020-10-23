@@ -1,5 +1,6 @@
 import {
   SET_MENU_IS_OPEN,
+  CLOSE_HEADER_MENU,
 } from 'src/actions/header';
 
 const initialState = {
@@ -12,6 +13,12 @@ const header = (state = initialState, action = {}) => {
       return {
         ...state,
         menuIsOpen: !state.menuIsOpen,
+      };
+
+    case CLOSE_HEADER_MENU:
+      return {
+        ...state,
+        menuIsOpen: false,
       };
     default: return state;
   }
