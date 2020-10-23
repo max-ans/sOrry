@@ -7,6 +7,8 @@ import {
   sendLoginForm,
 } from 'src/actions/connection';
 
+import { closeHeaderMenu } from 'src/actions/header';
+
 const mapStateToProps = (state) => ({
   login: state.connection.login,
   password: state.connection.password,
@@ -23,6 +25,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sendLoginForm: () => {
     dispatch(sendLoginForm());
+  },
+  closeHeaderMenu: () => {
+    dispatch(closeHeaderMenu());
   },
 });
 

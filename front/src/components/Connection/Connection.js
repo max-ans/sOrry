@@ -12,6 +12,7 @@ const Connection = ({
   updateConnectionInput,
   setRememberMe,
   sendLoginForm,
+  closeHeaderMenu,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -23,6 +24,9 @@ const Connection = ({
   useEffect(() => {
     document.getElementById('nickname').focus();
   }, [loginError]);
+  useEffect(() => {
+    closeHeaderMenu();
+  });
 
   return (
     <div className="connection">
@@ -114,6 +118,7 @@ Connection.propTypes = {
   setRememberMe: PropTypes.func.isRequired,
   sendLoginForm: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
+  closeHeaderMenu: PropTypes.func.isRequired,
 };
 
 export default Connection;

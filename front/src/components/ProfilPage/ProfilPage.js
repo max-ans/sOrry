@@ -1,5 +1,5 @@
 /* eslint-disable quote-props */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, AlertOctagon } from 'react-feather';
 import className from 'classnames';
@@ -23,11 +23,15 @@ const ProfilPage = ({
   emailFormat,
   passwordFormat,
   inputFormatWrong,
+  closeHeaderMenu,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
     sendUserForm();
   };
+  useEffect(() => {
+    closeHeaderMenu();
+  });
   return (
     <section className="profilPage">
       <div className="profil-left">
@@ -207,6 +211,7 @@ ProfilPage.propTypes = {
   emailFormat: PropTypes.bool.isRequired,
   passwordFormat: PropTypes.bool.isRequired,
   inputFormatWrong: PropTypes.func.isRequired,
+  closeHeaderMenu: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;
