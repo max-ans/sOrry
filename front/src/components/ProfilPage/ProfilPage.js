@@ -18,6 +18,7 @@ const ProfilPage = ({
   updateUserInput,
   sendUserForm,
   updatePasswordInput,
+  success,
   failure,
   emailFormat,
   passwordFormat,
@@ -34,6 +35,12 @@ const ProfilPage = ({
           {failure && (
             <div className="form-message">
               <AlertOctagon /> <span className="message">Il y a un problème dans le formulaire</span>
+            </div>
+          )}
+
+          {success && (
+            <div className="form-message success">
+              <ThumbsUp /> <span className="message">Vos modifications ont été prise en compte</span>
             </div>
           )}
           <label htmlFor="mail" className="form-label"> Email :
@@ -195,6 +202,7 @@ ProfilPage.propTypes = {
   updateUserInput: PropTypes.func.isRequired,
   sendUserForm: PropTypes.func.isRequired,
   updatePasswordInput: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired,
   failure: PropTypes.bool.isRequired,
   emailFormat: PropTypes.bool.isRequired,
   passwordFormat: PropTypes.bool.isRequired,

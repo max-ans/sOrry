@@ -24,6 +24,10 @@
       .message {
         margin-left: 0.5em;
       }
+
+      &.success {
+        border: 1px solid green;
+      }
     }
     
 

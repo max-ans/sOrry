@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   SEND_USER_FORM,
   formFailure,
+  formSucces,
 } from 'src/actions/profilPage';
 import {
   saveUser,
@@ -31,6 +32,7 @@ const profilPageMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveUser(response.data[0]));
+          store.dispatch(formSucces());
         })
         .catch((error) => {
           console.warn(error);

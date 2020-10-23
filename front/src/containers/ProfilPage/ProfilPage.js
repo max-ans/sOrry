@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   failure: state.user.failure,
   emailFormat: state.user.emailFormat,
   passwordFormat: state.user.passwordFormat,
+  success: state.user.success,
 });
 
 const mapDispatchToProps = (dispatch) => ({

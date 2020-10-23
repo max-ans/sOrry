@@ -5,6 +5,7 @@ import {
   UPDATE_USER_INPUT,
   UPDATE_PASSWORD_INPUT,
   FORM_FAILURE,
+  FORM_SUCCES,
   INPUT_FORMAT_WRONG,
 } from 'src/actions/profilPage';
 
@@ -15,8 +16,8 @@ const initialState = {
   firstname: '',
   lastname: '',
   nickname: '',
-  failure: false,
   success: false,
+  failure: false,
   emailFormat: false,
   passwordFormat: false,
 };
@@ -51,6 +52,14 @@ const profilPage = (state = initialState, action = {}) => {
       return {
         ...state,
         failure: true,
+      };
+    case FORM_SUCCES:
+      return {
+        ...state,
+        failure: false,
+        emailFormat: false,
+        passwordFormat: false,
+        success: true,
       };
     case INPUT_FORMAT_WRONG:
       return {
