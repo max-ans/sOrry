@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import Registration from 'src/components/Registration/Registration';
 
+import { changeInputValue } from 'src/actions/registration';
+
 const mapStateToProps = (state) => ({
   email: state.registration.email,
   password: state.registration.password,
@@ -11,6 +13,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  changeInputValue: (field, value) => {
+    dispatch(changeInputValue(field, value));
+  },
 
 });
 

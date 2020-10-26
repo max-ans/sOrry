@@ -12,6 +12,7 @@ const Registration = ({
   firstname,
   lastname,
   nickname,
+  changeInputValue,
 }) => {
   console.log(email);
   return (
@@ -24,30 +25,35 @@ const Registration = ({
             identifier="email"
             label="E-mail"
             value={email}
+            changeField={changeInputValue}
           />
           <Field
             className="registration-form-field"
             identifier="password"
             label="Mot de passe"
             value={password}
+            changeField={changeInputValue}
           />
           <Field
             className="registration-form-field"
             identifier="firstname"
             label="Prénom"
             value={firstname}
+            changeField={changeInputValue}
           />
           <Field
             className="registration-form-field"
             identifier="lastname"
             label="Nom"
             value={lastname}
+            changeField={changeInputValue}
           />
           <Field
             className="registration-form-field"
             identifier="nickname"
             label="Pseudo"
             value={nickname}
+            changeField={changeInputValue}
           />
           <button className="registration-form-button" type="submit">S'enregistrer</button>
           <p className="registration-form-paragraphe">
@@ -64,6 +70,7 @@ Registration.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
+  changeInputValue: PropTypes.func.isRequired,
 };
 
 export default Registration;
