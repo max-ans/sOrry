@@ -44,7 +44,7 @@ Field.propTypes = {
   /** identifier for the input : used both for name and id => must be unique */
   identifier: PropTypes.string.isRequired,
   /** text used as placeholder */
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   /** text used as label */
   label: PropTypes.string.isRequired,
   /** type of the input */
@@ -61,6 +61,7 @@ Field.propTypes = {
 Field.defaultProps = {
   type: 'text',
   value: '',
+  placeholder: '',
 };
 
 export default Field;

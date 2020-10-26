@@ -8,7 +8,7 @@ import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
 import Footer from 'src/components/Footer/Footer';
 import Connection from 'src/containers/Connection/Connection';
-import Registration from 'src/components/Registration/Registration';
+import Registration from 'src/containers/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
 
 // == Import
