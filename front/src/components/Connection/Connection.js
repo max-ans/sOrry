@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AlertOctagon } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 import './connection.scss';
 
@@ -103,7 +104,7 @@ const Connection = ({
             Connexion
           </button>
           <p className="connection-register-paragraphe ">
-            Vous n'êtes pas inscrit ? cliquez <a href="" className="connection-register-link"> ici</a>
+            Vous n'êtes pas inscrit ? cliquez <Link to="/inscription" className="connection-register-link"> ici</Link>
           </p>
         </fieldset>
       </form>

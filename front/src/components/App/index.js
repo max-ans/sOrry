@@ -8,6 +8,7 @@ import Header from 'src/containers/Header/Header';
 import Main from 'src/components/Main/Main';
 import Footer from 'src/components/Footer/Footer';
 import Connection from 'src/containers/Connection/Connection';
+import Registration from 'src/components/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
 
 // == Import
@@ -30,6 +31,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/mon-profil">
           {isLogged ? <ProfilPage /> : <Redirect to="/connexion" />}
+        </Route>
+        <Route exact path="/inscription">
+          {isLogged ? <Redirect to="/" /> : <Registration /> }
         </Route>
       </Switch>
       <Footer />
