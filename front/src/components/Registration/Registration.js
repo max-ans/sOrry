@@ -13,11 +13,19 @@ const Registration = ({
   lastname,
   nickname,
   changeInputValue,
+  submitForm,
 }) => {
-  console.log(email);
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    submitForm();
+  };
   return (
     <div className="registration">
-      <form action="" className="registration-form">
+      <form
+        action=""
+        className="registration-form"
+        onSubmit={handleFormSubmit}
+      >
         <fieldset className="registration-form fieldset">
           <legend className="registration-form legend">Inscription</legend>
           <Field
@@ -71,6 +79,7 @@ Registration.propTypes = {
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
   changeInputValue: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired,
 };
 
 export default Registration;
