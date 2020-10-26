@@ -31,6 +31,7 @@ const Registration = ({
           <Field
             className="registration-form-field"
             identifier="email"
+            type="email"
             label="E-mail"
             value={email}
             changeField={changeInputValue}
@@ -38,6 +39,7 @@ const Registration = ({
           <Field
             className="registration-form-field"
             identifier="password"
+            type="password"
             label="Mot de passe"
             value={password}
             changeField={changeInputValue}
