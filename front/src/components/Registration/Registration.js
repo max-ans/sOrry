@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field/Field';
-import { AlertOctagon } from 'react-feather';
+import { AlertOctagon, HelpCircle } from 'react-feather';
 
 import { Link } from 'react-router-dom';
 
@@ -31,6 +31,27 @@ const Registration = ({
       >
         <fieldset className="registration-form fieldset">
           <legend className="registration-form legend">Inscription</legend>
+          <div className="registration-form-information">
+            <HelpCircle className="help" />
+            <ul className="information-list">
+              <li className="list-items">
+                - Le format doit convenir au format e-mail : votre@email.com
+              </li>
+              <li className="list-items">
+                - Le mot de passe doit contenir 1 caractère majuscule, 1 caractère minuscule,
+                1 caractère spécial, 1 chiffre et entre 8 et 16 caractères
+              </li>
+              <li className="list-items">
+                - Le prénom ne doit pas dépasser 50 caractères
+              </li>
+              <li className="list-items">
+                - Le nom ne doit pas dépasser 50 caractères
+              </li>
+              <li className="list-items">
+                - Le pseudo ne doit pas dépasser 50 caractères
+              </li>
+            </ul>
+          </div>
           {registrationError && (
             <div className="registration-form-error">
               <AlertOctagon />

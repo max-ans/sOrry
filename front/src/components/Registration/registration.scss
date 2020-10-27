@@ -19,6 +19,48 @@
       padding: 2em ;
       color: $primaryPurple;
       font-weight: bold;
+      position: relative;
+
+      .registration-form-information {
+
+        .help {
+          position: absolute;
+          top: 5%;
+          right: 5%;
+          transition: transform 1s;
+
+        }
+        .information-list {
+          display: none;
+        }
+
+        &:hover {
+
+          .information-list {
+            display: block;
+            width: 80%;
+            background-color: $primaryPurple;
+            color: #fff;
+            font-weight: normal;
+            padding: 1em;
+            position: absolute;
+            right: 10px;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px rgb(57, 32, 80);
+
+            .list-items {
+              margin-bottom: 1em ;
+
+            
+
+              &:last-child {
+                margin-bottom: 0em;
+              }
+            }
+          }
+        }
+
+      }
 
       .legend {
         font-size: 1.2em;
@@ -89,7 +131,45 @@
       
       &.fieldset {
        
-        
+        .registration-form-information {
+
+          .help {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            transition: transform 1s;
+  
+          }
+          .information-list {
+            display: none;
+          }
+  
+          &:hover {
+  
+            .information-list {
+              display: block;
+              width: 50%;
+              background-color: $primaryPurple;
+              color: #fff;
+              font-weight: normal;
+              padding: 1em;
+              position: absolute;
+              right: 10px;
+              border-radius: 10px;
+  
+              .list-items {
+                margin-bottom: 1em ;
+  
+              
+  
+                &:last-child {
+                  margin-bottom: 0em;
+                }
+              }
+            }
+          }
+  
+        }
         
         .registration-form-error {
           display: flex;
@@ -125,6 +205,12 @@
       
       &.fieldset {
        
+        .help {
+          transform: scale(1.5) translate(0px 5px);
+          transition: transform 1s;
+          
+        }
+
         .legend {
           font-size: 2em;
         }
