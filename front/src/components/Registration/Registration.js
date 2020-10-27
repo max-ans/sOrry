@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field/Field';
+import { AlertOctagon } from 'react-feather';
 
 import { Link } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ const Registration = ({
   nickname,
   changeInputValue,
   submitForm,
+  registrationError,
 }) => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -28,6 +30,14 @@ const Registration = ({
       >
         <fieldset className="registration-form fieldset">
           <legend className="registration-form legend">Inscription</legend>
+          {registrationError && (
+            <div className="registration-form-error">
+              <AlertOctagon />
+              <span className="message">
+                Certains champs ne sont pas conformes...
+              </span>
+            </div>
+          )}
           <Field
             className="registration-form-field"
             identifier="email"
@@ -80,6 +90,7 @@ Registration.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
+  registrationError: PropTypes.bool.isRequired,
   changeInputValue: PropTypes.func.isRequired,
   submitForm: PropTypes.func.isRequired,
 };

@@ -28,6 +28,21 @@
           font-size: 1em;
         }
       }
+      .registration-form-error {
+        
+        display: flex;
+        margin-bottom: 1em;
+        border: 1px solid red;
+        border-radius: 5px;
+        padding: 0.5em;
+        justify-content: center;
+        align-items: center;
+        .message {
+          font-size: 0.8em;
+          margin-left: 10px;
+          text-align: center;
+        }
+      }
       .registration-form-button {
         line-height: 2em;
         margin-top: 5%;
@@ -62,42 +77,70 @@
 
   }
 }
-
-@media screen and (min-width : 756px) {
+@media screen and (min-width : 512px) {
   .registration {
 
     margin: 5% auto;
     padding: 1em;
-    width: 60%;
+    width: 80%;
     
     .registration-form {
   
-     
+      
+      &.fieldset {
+       
+        
+        
+        .registration-form-error {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          margin: 0 auto 1em auto;
+          width: 80%;
+          
+          .message {
+            font-size: 1em;
+            
+            text-align: center;
+          }
+        }
+        
+      }
+  
+    }
+  }
+}
+
+@media screen and (min-width : 756px) {
+  .registration {
+
+    margin: 2% auto;
+    padding: 1em;
+    width: 80%;
+    max-width: 1000px;
+    
+    .registration-form {
+  
       
       &.fieldset {
        
         .legend {
-         
           font-size: 2em;
-  
-          .registration-form-field{
+        }
+        
+        .registration-form-error {
+          display: block;
+          justify-content: center;
+          text-align: center;
+          margin: 0 auto 1em auto;
+          width: 80%;
+          
+          .message {
+            font-size: 1.1em;
             
+            text-align: center;
           }
         }
-        .registration-form-button {
-         
-        }
-  
-        .registration-form-paragraphe {
-         
-          .paragraphe-link {
-  
-            &:hover {
-              
-            }
-          }
-        }
-  
         
       }
   
