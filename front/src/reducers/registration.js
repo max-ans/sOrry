@@ -2,6 +2,8 @@ import {
   CHANGE_INPUT_VALUE,
   REGISTRATION_FORM_ERROR,
   REGISTRATION_FORM_SUCCESS,
+  REGISTRATION_FORM_FIELD_ERROR,
+  RESET_FORM_ERRORS,
 } from 'src/actions/registration';
 
 const initialState = {
@@ -11,6 +13,7 @@ const initialState = {
   lastname: '',
   nickname: '',
   registrationError: false,
+  emptyField: false,
 };
 
 const registration = (state = initialState, action = {}) => {
@@ -35,6 +38,20 @@ const registration = (state = initialState, action = {}) => {
         lastname: '',
         nickname: '',
         registrationError: false,
+        emptyField: false,
+      };
+
+    case REGISTRATION_FORM_FIELD_ERROR:
+      return {
+        ...state,
+        emptyField: true,
+      };
+
+    case RESET_FORM_ERRORS:
+      return {
+        ...state,
+        registrationError: false,
+        emptyField: false,
       };
     default:
       return state;

@@ -16,6 +16,7 @@ const Registration = ({
   changeInputValue,
   submitForm,
   registrationError,
+  emptyField,
 }) => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -34,7 +35,7 @@ const Registration = ({
             <div className="registration-form-error">
               <AlertOctagon />
               <span className="message">
-                Certains champs ne sont pas conformes...
+                {emptyField ? 'Tous les champs ne sont pas remplis...' : 'Certains champs ne sont pas conformes...'}
               </span>
             </div>
           )}
@@ -93,6 +94,7 @@ Registration.propTypes = {
   registrationError: PropTypes.bool.isRequired,
   changeInputValue: PropTypes.func.isRequired,
   submitForm: PropTypes.func.isRequired,
+  emptyField: PropTypes.bool.isRequired,
 };
 
 export default Registration;
