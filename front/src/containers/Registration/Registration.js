@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   nickname: state.registration.nickname,
   registrationError: state.registration.registrationError,
   emptyField: state.registration.emptyField,
+  redirect: state.registration.redirect,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -28,7 +28,7 @@ const registrationMiddleware = (store) => (next) => (action) => {
         nickname,
       })
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           store.dispatch(registrationFormSuccess());
         })
         .catch((error) => {

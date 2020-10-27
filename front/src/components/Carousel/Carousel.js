@@ -6,10 +6,18 @@ import Loader from 'src/components/Loader/Loader';
 
 import './carousel.scss';
 
-const Carousel = ({ bestApologies, fetchBestApologies, loader }) => {
+const Carousel = ({
+  bestApologies,
+  fetchBestApologies,
+  loader,
+  resetRedirect,
+}) => {
   useEffect(() => {
     fetchBestApologies();
   }, []);
+  useEffect(() => {
+    resetRedirect();
+  });
   const settings = {
     dots: true,
     infinite: true,
@@ -77,6 +85,7 @@ Carousel.propTypes = {
   ).isRequired,
   fetchBestApologies: PropTypes.func.isRequired,
   loader: PropTypes.bool.isRequired,
+  resetRedirect: PropTypes.func.isRequired,
 };
 
 export default Carousel;

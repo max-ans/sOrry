@@ -6,6 +6,8 @@ import {
   RESET_FORM_ERRORS,
 } from 'src/actions/registration';
 
+import { RESET_REDIRECT } from 'src/actions/carousel';
+
 const initialState = {
   email: '',
   password: '',
@@ -14,6 +16,7 @@ const initialState = {
   nickname: '',
   registrationError: false,
   emptyField: false,
+  redirect: false,
 };
 
 const registration = (state = initialState, action = {}) => {
@@ -39,6 +42,7 @@ const registration = (state = initialState, action = {}) => {
         nickname: '',
         registrationError: false,
         emptyField: false,
+        redirect: true,
       };
 
     case REGISTRATION_FORM_FIELD_ERROR:
@@ -52,6 +56,11 @@ const registration = (state = initialState, action = {}) => {
         ...state,
         registrationError: false,
         emptyField: false,
+      };
+    case RESET_REDIRECT:
+      return {
+        ...state,
+        redirect: false,
       };
     default:
       return state;

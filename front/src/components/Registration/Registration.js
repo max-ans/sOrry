@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field/Field';
 import { AlertOctagon, HelpCircle } from 'react-feather';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './registration.scss';
 
@@ -17,6 +17,7 @@ const Registration = ({
   submitForm,
   registrationError,
   emptyField,
+  redirect,
 }) => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -24,6 +25,7 @@ const Registration = ({
   };
   return (
     <div className="registration">
+      { redirect && <Redirect to="/" /> }
       <form
         action=""
         className="registration-form"
@@ -116,6 +118,7 @@ Registration.propTypes = {
   changeInputValue: PropTypes.func.isRequired,
   submitForm: PropTypes.func.isRequired,
   emptyField: PropTypes.bool.isRequired,
+  redirect: PropTypes.bool.isRequired,
 };
 
 export default Registration;
