@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchBestApologies, resetRedirect } from 'src/actions/carousel';
+import { fetchBestApologies } from 'src/actions/carousel';
 
 import Carousel from 'src/components/Carousel/Carousel';
 
@@ -11,9 +11,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchBestApologies: () => {
     dispatch(fetchBestApologies());
-  },
-  resetRedirect: () => {
-    dispatch(resetRedirect());
   },
 });
 

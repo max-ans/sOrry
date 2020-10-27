@@ -14,6 +14,7 @@ const Connection = ({
   setRememberMe,
   sendLoginForm,
   closeHeaderMenu,
+  resetRedirect,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -27,6 +28,7 @@ const Connection = ({
   }, [loginError]);
   useEffect(() => {
     closeHeaderMenu();
+    resetRedirect();
   });
 
   return (
@@ -120,6 +122,7 @@ Connection.propTypes = {
   sendLoginForm: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
+  resetRedirect: PropTypes.func.isRequired,
 };
 
 export default Connection;

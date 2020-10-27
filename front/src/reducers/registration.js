@@ -6,7 +6,7 @@ import {
   RESET_FORM_ERRORS,
 } from 'src/actions/registration';
 
-import { RESET_REDIRECT } from 'src/actions/carousel';
+import { RESET_REDIRECT } from 'src/actions/connection';
 
 const initialState = {
   email: '',

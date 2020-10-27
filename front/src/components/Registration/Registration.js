@@ -25,7 +25,7 @@ const Registration = ({
   };
   return (
     <div className="registration">
-      { redirect && <Redirect to="/" /> }
+      { redirect && <Redirect to="/connexion" /> }
       <form
         action=""
         className="registration-form"
