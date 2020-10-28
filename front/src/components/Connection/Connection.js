@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AlertOctagon } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 import './connection.scss';
 
@@ -13,6 +14,7 @@ const Connection = ({
   setRememberMe,
   sendLoginForm,
   closeHeaderMenu,
+  resetRedirect,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -26,6 +28,7 @@ const Connection = ({
   }, [loginError]);
   useEffect(() => {
     closeHeaderMenu();
+    resetRedirect();
   });
 
   return (
@@ -103,7 +106,7 @@ const Connection = ({
             Connexion
           </button>
           <p className="connection-register-paragraphe ">
-            Vous n'êtes pas inscrit ? cliquez <a href="" className="connection-register-link"> ici</a>
+            Vous n'êtes pas inscrit ? cliquez <Link to="/inscription" className="connection-register-link"> ici</Link>
           </p>
         </fieldset>
       </form>
@@ -119,6 +122,7 @@ Connection.propTypes = {
   sendLoginForm: PropTypes.func.isRequired,
   loginError: PropTypes.bool.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
+  resetRedirect: PropTypes.func.isRequired,
 };
 
 export default Connection;

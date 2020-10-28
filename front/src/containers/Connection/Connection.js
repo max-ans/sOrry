@@ -5,6 +5,7 @@ import {
   updateConnectionInput,
   setRememberMe,
   sendLoginForm,
+  resetRedirect,
 } from 'src/actions/connection';
 
 import { closeHeaderMenu } from 'src/actions/header';
@@ -28,6 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   closeHeaderMenu: () => {
     dispatch(closeHeaderMenu());
+  },
+  resetRedirect: () => {
+    dispatch(resetRedirect());
   },
 });
 

@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import carousel from 'src/middlewares/carouselMiddleware';
 import connection from 'src/middlewares/connectionMiddleware';
 import profilPage from 'src/middlewares/profilPageMiddleware';
+import registration from 'src/middlewares/registrationMiddleware';
 import reducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
@@ -10,6 +11,7 @@ const enhancers = composeWithDevTools(
     carousel,
     connection,
     profilPage,
+    registration,
   ),
 );
 

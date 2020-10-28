@@ -1,0 +1,33 @@
+@import '../../styles/vars';
+.field {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 0.5em;
+  
+  
+  &:not(:last-child) {
+  
+  }
+
+  .label {
+  
+  }
+
+  .input {
+    
+    margin-top: 0.5em;
+          border: 1px solid $primaryPurple;
+          font-size: 1em;
+          line-height: 2em;
+          color: $primaryPurple;
+          padding-left: 0.5em;
+          border-radius: 5px;
+    
+    &:focus {
+      
+      & + .label {
+      
+      }
+    }
+  }
+}

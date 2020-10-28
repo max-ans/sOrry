@@ -6,7 +6,11 @@ import Loader from 'src/components/Loader/Loader';
 
 import './carousel.scss';
 
-const Carousel = ({ bestApologies, fetchBestApologies, loader }) => {
+const Carousel = ({
+  bestApologies,
+  fetchBestApologies,
+  loader,
+}) => {
   useEffect(() => {
     fetchBestApologies();
   }, []);
