@@ -28,26 +28,28 @@ class ContactController extends AbstractController
             $message->setFrom($requestSent['sendFrom']);
             $message->setTo('royer.maxence.dev@gmail.com');
             $message->setBody(
-                'email/contact.html.twig',
-                [
-                    'message' => $requestSent['message'],
-                    'authorization' => $requestSent['responseAccept']
-                ], 
+                $this->renderView(
+                    'contact/email.html.twig',
+                    [
+                        'mail' => $requestSent['sendFrom'],
+                        'message' => $requestSent['message'],
+                        'authorization' => $requestSent['responseAccept']
+                    ], 
+                ),
+                'text/html'
                
             );
 
             $mailer->send($message);
 
-
             return $this->json([
-                'message' => "Your request has been send",
+                'message' => "Votre demande à été envoyée et sera traitée dans les plus brefs delais",
             ], 200);
         }
-
-        
+       
         return $this->json([
             'message' => "Your request has been send",
-            'reasons' => (string) $form->getErrors(true, true),
+            'reasons' => (string) $form->getErrors(true , true),
         ], 400);
         
     }

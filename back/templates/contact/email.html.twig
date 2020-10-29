@@ -1,0 +1,21 @@
+{% block body %}
+    <h1> Message de l'utilisateur :</h1>   
+    
+    {{message}}
+
+    <h2>Mail de l'utilisateur :</h2>
+
+    {{mail}}
+
+    <h2> J'accepte d'être recontacter :</h2>
+
+    {% if authorization %}
+        <p>OUI</p>
+    {% else %}
+        <p>NON</p>
+    {% endif %}
+
+
+    Ce message est envoyer automatiquement depuis le site s'Orry
+    !!!!!! ne pas y repondre !!!!!!
+{% endblock %}
