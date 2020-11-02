@@ -17,9 +17,12 @@ const Nav = ({ menuIsOpen }) => (
     <a href="" className="header-nav-items">
       À propos
     </a>
-    <a href="" className="header-nav-items">
+    <Link
+      className="header-nav-items"
+      to="/contact"
+    >
       Contact
-    </a>
+    </Link>
     <Link
       className="header-nav-items--user"
       to="/connexion"

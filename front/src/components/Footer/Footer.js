@@ -18,7 +18,12 @@ const Footer = () => (
         <div className="footer-left-right">
           <nav className="footer-left-navright">
             <a className="navright-items" href="">À propos</a>
-            <a className="navright-items" href="">Contact</a>
+            <Link
+              to="/contact"
+              className="navright-items"
+            >
+              Contact
+            </Link>
             <Link
               className="navright-items"
               to="/connexion"
