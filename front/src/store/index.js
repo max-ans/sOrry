@@ -4,6 +4,7 @@ import carousel from 'src/middlewares/carouselMiddleware';
 import connection from 'src/middlewares/connectionMiddleware';
 import profilPage from 'src/middlewares/profilPageMiddleware';
 import registration from 'src/middlewares/registrationMiddleware';
+import contact from 'src/middlewares/contactMiddleware';
 import reducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
@@ -12,6 +13,7 @@ const enhancers = composeWithDevTools(
     connection,
     profilPage,
     registration,
+    contact,
   ),
 );
 

@@ -6,6 +6,7 @@ import {
   emailFormatWrong,
   emailFormatGood,
   toggleCheckbox,
+  sendContactForm,
 } from 'src/actions/contact';
 
 // === mapStateToProps
@@ -29,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleCheckbox: () => {
     dispatch(toggleCheckbox());
+  },
+  sendContactForm: () => {
+    dispatch(sendContactForm());
   },
 });
 
