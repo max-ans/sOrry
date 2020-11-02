@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import {
   SEND_CONTACT_FORM,
+  sendContactFormSuccess,
 } from 'src/actions/contact';
 
 import { baseURL } from 'src/utils';
@@ -17,6 +18,7 @@ const contactMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response);
+          store.dispatch(sendContactFormSuccess());
         })
         .catch((error) => {
           console.log(error.response.data);

@@ -17,6 +17,7 @@ const Contact = ({
   emailFormatGood,
   toggleCheckbox,
   sendContactForm,
+  formSent,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -91,7 +92,12 @@ const Contact = ({
               onChange={toggleCheckbox}
             />
           </label>
-          <button className="form-submit" type="submit">Envoyer</button>
+          <button
+            className="form-submit"
+            type="submit"
+          >
+            { formSent ? 'Votre message a bien été transmis' : 'Envoyer'}
+          </button>
         </fieldset>
       </form>
     </div>
@@ -107,6 +113,8 @@ Contact.propTypes = {
   emailFormatGood: PropTypes.func.isRequired,
   toggleCheckbox: PropTypes.func.isRequired,
   sendContactForm: PropTypes.func.isRequired,
+  formSent: PropTypes.bool.isRequired,
+
 };
 
 export default Contact;

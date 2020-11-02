@@ -3,6 +3,7 @@ export const EMAIL_FORMAT_WRONG = 'EMAIL_FORMAT_WRONG';
 export const EMAIL_FORMAT_GOOD = 'EMAIL_FORMAT_GOOD';
 export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX';
 export const SEND_CONTACT_FORM = 'SEND_CONTACT_FORM';
+export const SEND_CONTACT_FORM_SUCCESS = 'SEND_CONTACT_FORM_SUCCESS';
 
 export const updateInputValue = (value, field) => ({
   type: UPDATE_INPUT_VALUE,
@@ -24,4 +25,8 @@ export const toggleCheckbox = () => ({
 
 export const sendContactForm = () => ({
   type: SEND_CONTACT_FORM,
+});
+
+export const sendContactFormSuccess = () => ({
+  type: SEND_CONTACT_FORM_SUCCESS,
 });
