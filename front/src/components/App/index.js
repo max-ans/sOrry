@@ -10,7 +10,7 @@ import Footer from 'src/components/Footer/Footer';
 import Connection from 'src/containers/Connection/Connection';
 import Registration from 'src/containers/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
-import Contact from 'src/components/Contact/Contact';
+import Contact from 'src/containers/Contact/Contact';
 
 // == Import
 import './styles.scss';

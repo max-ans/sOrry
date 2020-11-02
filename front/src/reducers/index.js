@@ -4,6 +4,7 @@ import carouselReducer from 'src/reducers/carousel';
 import connectionReducer from 'src/reducers/connection';
 import profilPageReducer from 'src/reducers/profilPage';
 import registrationReducer from 'src/reducers/registration';
+import contactReducer from 'src/reducers/contact';
 
 const mainReducer = combineReducers({
   header: headerReducer,
@@ -11,6 +12,7 @@ const mainReducer = combineReducers({
   connection: connectionReducer,
   registration: registrationReducer,
   user: profilPageReducer,
+  contact: contactReducer,
 });
 
 export default mainReducer;
