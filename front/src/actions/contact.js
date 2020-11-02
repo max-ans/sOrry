@@ -1,6 +1,7 @@
 export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const EMAIL_FORMAT_WRONG = 'EMAIL_FORMAT_WRONG';
 export const EMAIL_FORMAT_GOOD = 'EMAIL_FORMAT_GOOD';
+export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX';
 
 export const updateInputValue = (value, field) => ({
   type: UPDATE_INPUT_VALUE,
@@ -14,4 +15,8 @@ export const emailFormatWrong = () => ({
 
 export const emailFormatGood = () => ({
   type: EMAIL_FORMAT_GOOD,
+});
+
+export const toggleCheckbox = () => ({
+  type: TOGGLE_CHECKBOX,
 });

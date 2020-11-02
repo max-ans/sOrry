@@ -15,6 +15,7 @@ const Contact = ({
   emailFormatAlert,
   emailFormatWrong,
   emailFormatGood,
+  toggleCheckbox,
 }) => (
   <div className="contact">
     <div className="contact-header">
@@ -76,10 +77,12 @@ const Contact = ({
           J'accepte d'être contacté par l'équipe :
           <input
             type="checkbox"
-            className="form-input"
+            className="form-input checkbox"
             id="checkbox"
             name="checkbox"
             value={checkbox}
+            checked={checkbox}
+            onClick={toggleCheckbox}
           />
         </label>
         <button className="form-submit" type="submit">Envoyer</button>
@@ -96,6 +99,7 @@ Contact.propTypes = {
   emailFormatAlert: PropTypes.bool.isRequired,
   emailFormatWrong: PropTypes.func.isRequired,
   emailFormatGood: PropTypes.func.isRequired,
+  toggleCheckbox: PropTypes.func.isRequired,
 };
 
 export default Contact;

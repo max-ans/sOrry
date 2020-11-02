@@ -2,6 +2,7 @@ import {
   UPDATE_INPUT_VALUE,
   EMAIL_FORMAT_WRONG,
   EMAIL_FORMAT_GOOD,
+  TOGGLE_CHECKBOX,
 } from 'src/actions/contact';
 
 const initialState = {
@@ -28,6 +29,11 @@ const contact = (state = initialState, action = {}) => {
       return {
         ...state,
         emailFormatAlert: false,
+      };
+    case TOGGLE_CHECKBOX:
+      return {
+        ...state,
+        checkbox: !state.checkbox,
       };
 
     default: return state;
