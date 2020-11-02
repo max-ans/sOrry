@@ -10,6 +10,7 @@ import Footer from 'src/components/Footer/Footer';
 import Connection from 'src/containers/Connection/Connection';
 import Registration from 'src/containers/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
+import Contact from 'src/components/Contact/Contact';
 
 // == Import
 import './styles.scss';
@@ -34,6 +35,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/inscription">
           {isLogged ? <Redirect to="/" /> : <Registration /> }
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
         </Route>
       </Switch>
       <Footer />
