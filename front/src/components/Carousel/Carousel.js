@@ -10,10 +10,14 @@ const Carousel = ({
   bestApologies,
   fetchBestApologies,
   loader,
+  closeHeaderMenu,
 }) => {
   useEffect(() => {
     fetchBestApologies();
   }, []);
+  useEffect(() => {
+    closeHeaderMenu();
+  });
   const settings = {
     dots: true,
     infinite: true,
@@ -81,6 +85,7 @@ Carousel.propTypes = {
   ).isRequired,
   fetchBestApologies: PropTypes.func.isRequired,
   loader: PropTypes.bool.isRequired,
+  closeHeaderMenu: PropTypes.func.isRequired,
 };
 
 export default Carousel;

@@ -9,6 +9,10 @@ import {
   sendContactForm,
 } from 'src/actions/contact';
 
+import {
+  closeHeaderMenu,
+} from 'src/actions/header';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   email: state.contact.email,
@@ -35,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sendContactForm: () => {
     dispatch(sendContactForm());
+  },
+  closeHeaderMenu: () => {
+    dispatch(closeHeaderMenu());
   },
 });
 

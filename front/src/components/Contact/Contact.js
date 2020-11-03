@@ -1,5 +1,5 @@
 /* eslint-disable quote-props */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AlertOctagon } from 'react-feather';
@@ -20,11 +20,15 @@ const Contact = ({
   sendContactForm,
   formSent,
   formError,
+  closeHeaderMenu,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     sendContactForm();
   };
+  useEffect(() => {
+    closeHeaderMenu();
+  });
   return (
     <div className="contact">
       <div className="contact-header">
@@ -130,6 +134,7 @@ Contact.propTypes = {
   sendContactForm: PropTypes.func.isRequired,
   formSent: PropTypes.bool.isRequired,
   formError: PropTypes.bool.isRequired,
+  closeHeaderMenu: PropTypes.func.isRequired,
 };
 
 export default Contact;

@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { fetchBestApologies } from 'src/actions/carousel';
 
+import {
+  closeHeaderMenu,
+} from 'src/actions/header';
+
 import Carousel from 'src/components/Carousel/Carousel';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +15,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchBestApologies: () => {
     dispatch(fetchBestApologies());
+  },
+  closeHeaderMenu: () => {
+    dispatch(closeHeaderMenu());
   },
 });
 
