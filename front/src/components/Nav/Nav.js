@@ -14,9 +14,12 @@ const Nav = ({ menuIsOpen }) => (
     <a href="" className="header-nav-items">
       Excuses par Catégories
     </a>
-    <a href="" className="header-nav-items">
+    <Link
+      className="header-nav-items"
+      to="/a-propos"
+    >
       À propos
-    </a>
+    </Link>
     <Link
       className="header-nav-items"
       to="/contact"
