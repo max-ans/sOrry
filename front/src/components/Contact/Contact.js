@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { AlertOctagon } from 'react-feather';
 
 import './contact.scss';
 
@@ -18,6 +19,7 @@ const Contact = ({
   toggleCheckbox,
   sendContactForm,
   formSent,
+  formError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -43,9 +45,22 @@ const Contact = ({
       <form action="" className="contact-form" onSubmit={handleSubmit}>
         <fieldset className="form-fieldset">
           <legend className="form-legend">Contact</legend>
+          { formError && (
+            <p className="form-problem">
+              L'envoie de votre message a échoué car un ou plusieurs
+              élément(s) du formulaire est/sont incorrect(s). <br /><br />
+              - L'email doit être fourni et correspondre au format suivant : <br />
+              ex :  votre@email.com <br /><br />
+              - Votre message doit comporter au minimum 3 caractères et au maximum 1200 .
+            </p>
+          )}
           <label htmlFor="email" className="form-label">
             Votre adresse email :
-            {emailFormatAlert && <span className="label-alert"> Le format ne correspond pas a celui d'un email</span>}
+            {emailFormatAlert && (
+            <div className="label-alert">
+              <AlertOctagon /> Le format ne correspond pas a celui d'un email
+            </div>
+            )}
             <input
               type="email"
               className={classNames('form-input', { 'wrong': emailFormatAlert })}
@@ -94,7 +109,7 @@ const Contact = ({
           </label>
           <button
             className="form-submit"
-            type="submit"
+            type={formSent ? 'button' : 'submit'}
           >
             { formSent ? 'Votre message a bien été transmis' : 'Envoyer'}
           </button>
@@ -114,7 +129,7 @@ Contact.propTypes = {
   toggleCheckbox: PropTypes.func.isRequired,
   sendContactForm: PropTypes.func.isRequired,
   formSent: PropTypes.bool.isRequired,
-
+  formError: PropTypes.bool.isRequired,
 };
 
 export default Contact;

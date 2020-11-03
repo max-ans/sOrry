@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   SEND_CONTACT_FORM,
   sendContactFormSuccess,
+  wrongRequestFormat,
 } from 'src/actions/contact';
 
 import { baseURL } from 'src/utils';
@@ -16,12 +17,11 @@ const contactMiddleware = (store) => (next) => (action) => {
         message: text,
         responseAccept: checkbox,
       })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           store.dispatch(sendContactFormSuccess());
         })
-        .catch((error) => {
-          console.log(error.response.data);
+        .catch(() => {
+          store.dispatch(wrongRequestFormat());
         });
       next(action);
       break;

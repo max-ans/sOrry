@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   checkbox: state.contact.checkbox,
   emailFormatAlert: state.contact.emailFormatAlert,
   formSent: state.contact.formSent,
+  formError: state.contact.formError,
 });
 
 // === mapDispatchToProps

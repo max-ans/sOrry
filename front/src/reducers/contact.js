@@ -4,6 +4,7 @@ import {
   EMAIL_FORMAT_GOOD,
   TOGGLE_CHECKBOX,
   SEND_CONTACT_FORM_SUCCESS,
+  WRONG_REQUEST_FORMAT,
 } from 'src/actions/contact';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   checkbox: false,
   emailFormatAlert: false,
   formSent: false,
+  formError: false,
 };
 
 const contact = (state = initialState, action = {}) => {
@@ -40,7 +42,17 @@ const contact = (state = initialState, action = {}) => {
     case SEND_CONTACT_FORM_SUCCESS:
       return {
         ...state,
+        email: '',
+        text: '',
+        checkbox: false,
         formSent: true,
+        formError: false,
+      };
+    case WRONG_REQUEST_FORMAT:
+      return {
+        ...state,
+        formSent: false,
+        formError: true,
       };
 
     default: return state;
