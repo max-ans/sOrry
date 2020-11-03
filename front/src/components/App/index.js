@@ -11,7 +11,7 @@ import Connection from 'src/containers/Connection/Connection';
 import Registration from 'src/containers/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
 import Contact from 'src/containers/Contact/Contact';
-import About from 'src/components/About/About';
+import About from 'src/containers/About/About';
 
 // == Import
 import './styles.scss';
