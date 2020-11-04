@@ -1,13 +1,15 @@
 /* eslint-disable quote-props */
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { shape } from 'prop-types';
 import { User, UserCheck } from 'react-feather';
 import className from 'classnames';
 import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import './nav.scss';
 
-const Nav = ({ menuIsOpen, isLogged }) => (
+const Nav = ({ menuIsOpen, isLogged, user }) => (
   <nav className={className('header-nav', { 'header-nav isClose': !menuIsOpen })}>
     <a href="" className="header-nav-items">
       Top excuses
@@ -37,9 +39,36 @@ const Nav = ({ menuIsOpen, isLogged }) => (
         />
       )}
       {isLogged && (
-        <UserCheck
-          className="header-nav-items-icon connected"
-        />
+        <Tippy
+          className="user-icon-tooltip"
+          interactive
+          animation
+          inertia
+          placement="bottom"
+          duration={100}
+          zIndex={9999}
+          content={(
+            <>
+              <h3 className="tooltip-title">
+                Connecté en tant que:
+              </h3>
+              <ul className="tooltip-list">
+                <li className="tooltip-items">Email: {user.email}</li>
+                <li className="tooltip-items">Pseudo: {user.nickname}</li>
+              </ul>
+              <button
+                type="button"
+                className="tooltip-button"
+              >
+                Se déconnecter
+              </button>
+            </>
+          )}
+        >
+          <UserCheck
+            className="header-nav-items-icon connected"
+          />
+        </Tippy>
       )}
     </Link>
   </nav>
@@ -47,6 +76,10 @@ const Nav = ({ menuIsOpen, isLogged }) => (
 Nav.propTypes = {
   menuIsOpen: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    email: PropTypes.string,
+    nickname: PropTypes.string,
+  }).isRequired,
 };
 
 export default Nav;

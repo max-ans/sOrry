@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir : élément à récupérer dans le state
   menuIsOpen: state.header.menuIsOpen,
   isLogged: state.connection.isLogged,
+  user: state.user.user,
 });
 
 // === mapDispatchToProps

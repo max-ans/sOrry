@@ -15,7 +15,7 @@
     width: 0vw;
     height: 0vh;
     opacity: 0;
-    overflow: hidden;
+    
   }
 
   .header-nav-items {
@@ -33,6 +33,48 @@
     background-color: $primaryYellow;
     padding: 0.5em;
     border-radius: 50%;
+
+    .user-icon-tooltip {
+
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+      color: $primaryPurple;
+      border: 2px solid $primaryPurple;
+      text-align: center;
+      font-size: 1em;
+      
+
+      .tooltip-title{
+        font-weight: bold;
+      }
+
+      .tooltip-list {
+
+        .tooltip-items {
+          margin: 0.5em;
+        }
+      }
+
+      .tooltip-button {
+        border: none;
+        background-color: $primaryPurple;
+        border-radius: 5px;
+        width: 100%;
+        color: #fff;
+        font-size: 1em;
+      }
+      .header-nav-items-icon {
+        color: $primaryPurple;
+       
+  
+        &.connected {
+          color: #fff;
+          background-color: $primaryPurple;
+  
+        }
+      }
+    }
 
     &.connected {
       background-color: $primaryPurple;
@@ -85,22 +127,6 @@
       }
      
     }
-    .header-nav-items--user {
-
-  
-     
-  
-      .header-nav-items-icon {
-        color: $primaryPurple;
-       
-  
-        &.connected {
-          color: #fff;
-          background-color: $primaryPurple;
-  
-        }
-      }
-    }
-  
+    
   }
 }
