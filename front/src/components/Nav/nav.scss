@@ -34,8 +34,19 @@
     padding: 0.5em;
     border-radius: 50%;
 
+    &.connected {
+      background-color: $primaryPurple;
+      border: 5px solid $primaryYellow;
+    }
+
     .header-nav-items-icon {
       color: $primaryPurple;
+
+      &.connected {
+        color: #fff;
+        background-color: $primaryPurple;
+
+      }
     }
   }
 }
@@ -73,6 +84,22 @@
         text-decoration: underline;
       }
      
+    }
+    .header-nav-items--user {
+
+  
+     
+  
+      .header-nav-items-icon {
+        color: $primaryPurple;
+       
+  
+        &.connected {
+          color: #fff;
+          background-color: $primaryPurple;
+  
+        }
+      }
     }
   
   }
