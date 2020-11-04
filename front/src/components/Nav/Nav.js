@@ -5,8 +5,9 @@ import { User, UserCheck } from 'react-feather';
 import className from 'classnames';
 import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
 
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale.css';
 import './nav.scss';
 
 const Nav = ({
@@ -16,11 +17,20 @@ const Nav = ({
   disconnectCurrentUser,
 }) => (
   <nav className={className('header-nav', { 'header-nav isClose': !menuIsOpen })}>
+    {isLogged && (
+      <Link
+        to="/"
+        className="header-nav-items disconnect"
+        onClick={disconnectCurrentUser}
+      >
+        Se deconnecter
+      </Link>
+    )}
     <a href="" className="header-nav-items">
       Top excuses
     </a>
     <a href="" className="header-nav-items">
-      Excuses par Catégories
+      Excuses par catégories
     </a>
     <Link
       className="header-nav-items"
@@ -47,10 +57,10 @@ const Nav = ({
         <Tippy
           className="user-icon-tooltip"
           interactive
-          animation
+          animation="scale"
           inertia
-          placement="bottom"
-          duration={100}
+          placement="bottom-start"
+          duration={500}
           zIndex={9999}
           content={(
             <>

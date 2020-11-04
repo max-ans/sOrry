@@ -123,6 +123,9 @@
   
       font-size: 1.2em;
       
+      &.disconnect {
+        display: none;
+      }
 
       &:hover {
         text-decoration: underline;
