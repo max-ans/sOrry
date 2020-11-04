@@ -22,7 +22,6 @@ class UserController extends AbstractController
     public function login (Request $request, ObjectNormalizer $normalizer)
     {
         $user = $this->getUser();
-
         $user->setApiToken(uuid_create(UUID_TYPE_RANDOM)); 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -35,6 +34,36 @@ class UserController extends AbstractController
         return $this->json([
             $normalizedUser
         ]); 
+    }
+
+    /**
+     * @Route("/api/v0/user/logout", name="api_v0_user_logout", methods={"POST"})
+     */
+    public function logout (Request $request, UserRepository $userRepository)
+    {
+        $userMail = json_decode($request->getContent(), true);
+        
+       if ($userRepository->findOneBy(['email' => $userMail['login']])) {
+
+        $user = $userRepository->findOneBy(['email' => $userMail['login']]);
+        
+        $user->setApiToken(uuid_create(UUID_TYPE_RANDOM));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        
+        // request ok but no body returned -> http code = 204
+        return $this->json([], 204);
+           
+       } 
+
+       return $this->json([
+           'message' => 'no user found'
+       ], 404);
+        
+       
+
     }
 
     /**
