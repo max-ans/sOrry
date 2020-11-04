@@ -1,6 +1,6 @@
 /* eslint-disable quote-props */
 import React from 'react';
-import PropTypes, { shape } from 'prop-types';
+import PropTypes from 'prop-types';
 import { User, UserCheck } from 'react-feather';
 import className from 'classnames';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,12 @@ import 'tippy.js/dist/tippy.css';
 
 import './nav.scss';
 
-const Nav = ({ menuIsOpen, isLogged, user }) => (
+const Nav = ({
+  menuIsOpen,
+  isLogged,
+  user,
+  disconnectCurrentUser,
+}) => (
   <nav className={className('header-nav', { 'header-nav isClose': !menuIsOpen })}>
     <a href="" className="header-nav-items">
       Top excuses
@@ -59,6 +64,7 @@ const Nav = ({ menuIsOpen, isLogged, user }) => (
               <button
                 type="button"
                 className="tooltip-button"
+                onClick={disconnectCurrentUser}
               >
                 Se déconnecter
               </button>
@@ -80,6 +86,7 @@ Nav.propTypes = {
     email: PropTypes.string,
     nickname: PropTypes.string,
   }).isRequired,
+  disconnectCurrentUser: PropTypes.func.isRequired,
 };
 
 export default Nav;
