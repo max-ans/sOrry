@@ -29,7 +29,7 @@ const Connection = ({
   useEffect(() => {
     closeHeaderMenu();
     resetRedirect();
-  });
+  }, []);
 
   return (
     <div className="connection">

@@ -4,6 +4,7 @@ import {
   SEND_LOGIN_FORM,
   saveUser,
   credentialsLoginError,
+  DISCONNECT_CURRENT_USER,
 } from 'src/actions/connection';
 
 import { baseURL } from 'src/utils';
@@ -31,6 +32,18 @@ const connectionMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
+    case DISCONNECT_CURRENT_USER:
+      try {
+        localStorage.removeItem('s\'OrryUserLogged');
+        sessionStorage.removeItem('s\'OrryUserLogged');
+      }
+      catch (error) {
+        console.log(error);
+      }
+      next(action);
+      break;
+
     default:
       next(action);
       break;

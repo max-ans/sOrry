@@ -3,6 +3,7 @@ import {
   SET_REMEMBER_ME,
   SAVE_USER,
   CREDENTIALS_LOGIN_ERROR,
+  DISCONNECT_CURRENT_USER,
 } from 'src/actions/connection';
 
 const initialState = {
@@ -38,6 +39,11 @@ const connection = (state = initialState, action = {}) => {
         ...state,
         loginError: true,
         password: '',
+      };
+    case DISCONNECT_CURRENT_USER:
+      return {
+        ...state,
+        isLogged: false,
       };
     default:
       return state;

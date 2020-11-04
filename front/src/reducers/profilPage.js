@@ -1,5 +1,6 @@
 import {
   SAVE_USER,
+  DISCONNECT_CURRENT_USER,
 } from 'src/actions/connection';
 import {
   UPDATE_USER_INPUT,
@@ -65,6 +66,16 @@ const profilPage = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.field]: action.bool,
+      };
+    case DISCONNECT_CURRENT_USER:
+      return {
+        ...state,
+        user: {},
+        password: '',
+        email: '',
+        firstname: '',
+        lastname: '',
+        nickname: '',
       };
     default:
       return state;
