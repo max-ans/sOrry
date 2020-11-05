@@ -11,6 +11,7 @@ const ApologyCreate = ({
     fetchAllCategories();
   }, []);
 
+  console.log(categories);
   return (
     <div className="apology-create">
       <form
@@ -40,6 +41,17 @@ const ApologyCreate = ({
               name="apology"
             />
           </label>
+          { categories.forEach((category) => (
+            <label htmlFor="checkbox" className="form-label checkbox">
+              {category.title}
+              <input
+                type="checkbox"
+                className="form-input checkbox"
+                id="checkbox"
+                name="checkbox"
+              />
+            </label>
+          ))}
           <button
             type="submit"
             className="form-submit"

@@ -1,11 +1,12 @@
 import {
   SAVE_BEST_APOLOGIES,
   HIDE_LOADER,
+  DISPLAY_LOADER,
 } from 'src/actions/carousel';
 
 const initialState = {
   bestApologies: [],
-  loader: true,
+  loader: false,
 };
 
 const carousel = (state = initialState, action = {}) => {
@@ -20,6 +21,12 @@ const carousel = (state = initialState, action = {}) => {
       return {
         ...state,
         loader: false,
+      };
+
+    case DISPLAY_LOADER:
+      return {
+        ...state,
+        loader: true,
       };
     default: return state;
   }

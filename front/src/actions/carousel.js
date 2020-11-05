@@ -1,5 +1,6 @@
 export const FETCH_BEST_APOLOGIES = 'FETCH_BEST_APOLOGIES';
 export const SAVE_BEST_APOLOGIES = 'SAVE_BEST_APOLOGIES';
+export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
 
 export const fetchBestApologies = () => ({
@@ -13,4 +14,8 @@ export const saveBestApologies = (newApologies) => ({
 
 export const hideLoader = () => ({
   type: HIDE_LOADER,
+});
+
+export const displayLoader = () => ({
+  type: DISPLAY_LOADER,
 });
