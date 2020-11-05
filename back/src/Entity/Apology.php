@@ -31,12 +31,15 @@ class Apology
      * @Assert\Length(min=3)
      * @Groups("user_groups")
      * @Groups("comment_groups")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("apologies_groups")
+     * @Groups("category_groups")
      */
     private $slug;
 
@@ -47,6 +50,7 @@ class Apology
      * @Assert\Length(min=20)
      * @Groups("user_groups")
      * @Groups("comment_groups")
+     * @Groups("category_groups")
      */
     private $content;
 
@@ -54,18 +58,22 @@ class Apology
      * @ORM\Column(type="integer", options={"default" : 0})
      * @Groups("apologies_groups")
      * @Groups("user_groups")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups("apologies_groups")
+     * @Groups("category_groups")
      */
     private $createdAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="apology", cascade={"persist", "remove"})
      * @Groups("apologies_groups")
+     * @Groups("category_groups")
      */
     private $comments;
 
@@ -81,6 +89,7 @@ class Apology
      * @ORM\JoinColumn(nullable=true)
      * @Groups("apologies_groups")
      * @Assert\NotBlank
+     * @Groups("category_groups")
      */
     private $author;
 

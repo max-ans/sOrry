@@ -23,21 +23,29 @@ class Category
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("apologies_groups")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $slug;
 
     /**
      * @ORM\ManyToMany(targetEntity=Apology::class, mappedBy="categories")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $apologies;
 
