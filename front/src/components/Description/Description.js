@@ -1,25 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './description.scss';
 
 const Description = () => (
   <section className="description">
     <h2 className="description-title">
-      <span className="description-title-span">sorry</span>
-      ,&nbsp;mais pourquoi ?
+      <span className="description-title-span">en retard ?</span>
     </h2>
     <p className="description-content">
-      Combien de fois vous est-il arrivé d'être en retard au travail,
-      repas de famille ou tout simplement un rendez-vous ?
-      Et combien de fois avez-vous dû chercher des excuses,
-      toutes aussi foireuses les une que les autres ?
-      sOrry est un solution qui vous permettra de ne plus avoir à
-      chercher pendant de longues minutes un excuses de retard (valable... ou pas)
-      pour vous justifier.
-      Cette solution se veut humoristique et n'as pas pour but de promouvoir le retard!
-      Son but est simplement de vous faire passer un bon moment,
-      en vous faisant lire les perles des excuses de retards.
-      Et qui sait ?! Ça vous sauveras peut être les miches.... ou pas.
+      Vous arrivez au travail avec un heure de retard, le boss
+      vous regarde comme si vous aviez flinguer sa journée...
+      Et la, euréka!!! Vous avez l'excuse imparable, il est imossible
+      que l'on vous blâme cette fois!
+      Faites s'en profiter la communauté en la postant sur votre profil.
+      <Link
+        to="/poster-une-excuse"
+        className="content-link"
+      >
+        Poster une excuse
+      </Link>
+
     </p>
   </section>
 );
