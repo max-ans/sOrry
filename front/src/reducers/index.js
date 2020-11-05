@@ -5,6 +5,7 @@ import connectionReducer from 'src/reducers/connection';
 import profilPageReducer from 'src/reducers/profilPage';
 import registrationReducer from 'src/reducers/registration';
 import contactReducer from 'src/reducers/contact';
+import apologyCreateReducer from 'src/reducers/apologyCreate';
 
 const mainReducer = combineReducers({
   header: headerReducer,
@@ -13,6 +14,7 @@ const mainReducer = combineReducers({
   registration: registrationReducer,
   user: profilPageReducer,
   contact: contactReducer,
+  apologyCreate: apologyCreateReducer,
 });
 
 export default mainReducer;

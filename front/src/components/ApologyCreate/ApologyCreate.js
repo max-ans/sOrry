@@ -1,45 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes, { shape } from 'prop-types';
 
 import './apologyCreate.scss';
 
-const ApologyCreate = () => (
-  <div className="apology-create">
-    <form
-      action=""
-      className="apology-form"
-    >
-      <fieldset
-        className="form-fieldset"
+const ApologyCreate = ({
+  fetchAllCategories,
+  categories,
+}) => {
+  useEffect(() => {
+    fetchAllCategories();
+  }, []);
+
+  return (
+    <div className="apology-create">
+      <form
+        action=""
+        className="apology-form"
       >
-        <legend className="form-legend">Poster une excuse</legend>
-        <label htmlFor="title" className="form-label">
-          Titre de l'excuse :
-          <input
-            type="text"
-            className="form-input"
-            id="title"
-            name="title"
-          />
-        </label>
-        <label htmlFor="apology" className="form-label">
-          L'excuse :
-          <textarea
-            rows="10"
-            type="textarea"
-            className="form-input"
-            id="apology"
-            name="apology"
-          />
-        </label>
-        <button
-          type="submit"
-          className="form-submit"
+        <fieldset
+          className="form-fieldset"
         >
-          Poster
-        </button>
-      </fieldset>
-    </form>
-  </div>
-);
+          <legend className="form-legend">Poster une excuse</legend>
+          <label htmlFor="title" className="form-label">
+            Titre de l'excuse :
+            <input
+              type="text"
+              className="form-input"
+              id="title"
+              name="title"
+            />
+          </label>
+          <label htmlFor="apology" className="form-label">
+            L'excuse :
+            <textarea
+              rows="10"
+              type="textarea"
+              className="form-input"
+              id="apology"
+              name="apology"
+            />
+          </label>
+          <button
+            type="submit"
+            className="form-submit"
+          >
+            Poster
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  );
+};
+
+ApologyCreate.propTypes = {
+  fetchAllCategories: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(
+    shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 
 export default ApologyCreate;
