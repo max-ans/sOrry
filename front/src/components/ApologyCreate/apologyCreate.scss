@@ -1,0 +1,49 @@
+@import '../../styles/vars';
+
+.apology-create {
+
+  margin: 5% 5%;
+  color: $primaryPurple;
+
+  .apology-form {
+
+
+    .form-fieldset {
+      background-color: #fff;
+      border: 1px solid $primaryPurple;
+      border-radius: 15px ;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+
+      .form-legend {
+        font-weight: bold;
+        font-size: 1.5em;
+        padding: 0.1em;
+      }
+
+      .form-label {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        
+        .form-input {
+          padding: 0.5em;
+          margin: 1em 0;
+          border: 1px solid $primaryPurple;
+          border-radius: 5px;
+          color: $primaryPurple;
+        }
+      }
+      .form-submit {
+        margin-top: 1em;
+        border: none;
+        background-color: $primaryPurple;
+        border-radius: 10px;
+        padding: 0.5em;
+        color: #fff;
+
+      }
+    }
+  }
+}
