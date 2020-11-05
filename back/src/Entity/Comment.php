@@ -29,6 +29,7 @@ class Comment
      * @Groups("comment_groups")
      * @Assert\NotBlank(message="Le commentaires de peut pas être vide")
      * @Assert\Length(min=3)
+     * @Groups("category_groups")
      */
     private $content;
 

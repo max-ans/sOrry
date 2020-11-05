@@ -95,6 +95,7 @@ class User implements UserInterface
      * @Assert\NotBlank(message="Le pseudo est obligatoire")
      * @Groups("user_groups")
      * @Groups("comment_groups")
+     * @Groups("category_groups")
      */
     private $nickname;
 
