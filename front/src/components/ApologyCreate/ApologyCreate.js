@@ -8,10 +8,9 @@ const ApologyCreate = ({
   categories,
 }) => {
   useEffect(() => {
-    // fetchAllCategories();
+    fetchAllCategories();
   }, []);
 
-  console.log(categories);
   return (
     <div className="apology-create">
       <form
@@ -41,7 +40,7 @@ const ApologyCreate = ({
               name="apology"
             />
           </label>
-          {/* { categories.forEach((category) => (
+          { categories.forEach((category) => (
             <label htmlFor="checkbox" className="form-label checkbox">
               {category.title}
               <input
@@ -51,7 +50,7 @@ const ApologyCreate = ({
                 name="checkbox"
               />
             </label>
-          ))} */}
+          ))}
           <button
             type="submit"
             className="form-submit"

@@ -12,7 +12,7 @@ import Registration from 'src/containers/Registration/Registration';
 import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
 import Contact from 'src/containers/Contact/Contact';
 import About from 'src/containers/About/About';
-import ApologyCreate from 'src/components/ApologyCreate/ApologyCreate';
+import ApologyCreate from 'src/containers/ApologyCreate/ApologyCreate';
 
 // == Import
 import './styles.scss';
