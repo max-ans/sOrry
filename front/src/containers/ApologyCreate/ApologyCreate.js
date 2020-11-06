@@ -6,6 +6,7 @@ import {
   updateInputValueByField,
   addSelectedCategories,
   removeSelectedCategories,
+  sendApologyForm,
 } from 'src/actions/apologyCreate';
 
 // === mapStateToProps
@@ -13,6 +14,8 @@ const mapStateToProps = (state) => ({
   categories: state.apologyCreate.categories,
   title: state.apologyCreate.title,
   content: state.apologyCreate.content,
+  error: state.apologyCreate.error,
+  success: state.apologyCreate.success,
   selectedCategories: state.apologyCreate.selectedCategories,
 });
 
@@ -29,6 +32,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeSelectedCategories: (selectedCategories) => {
     dispatch(removeSelectedCategories(selectedCategories));
+  },
+  sendApologyForm: () => {
+    dispatch(sendApologyForm());
   },
 });
 

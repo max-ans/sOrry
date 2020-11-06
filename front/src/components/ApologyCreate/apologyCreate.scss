@@ -15,11 +15,53 @@
       padding: 1em;
       display: flex;
       flex-direction: column;
+     
 
       .form-legend {
         font-weight: bold;
         font-size: 1.5em;
         padding: 0.1em;
+      }
+      .form-success {
+        margin: 1% auto;
+        font-weight: bold;
+        border:  2px solid $primaryPurple;
+        box-shadow: 5px 5px 10px $primaryPurple;
+        padding: 2em;
+        border-radius: 5px;
+      }
+
+      .form-help {
+        display: flex;
+        justify-content: flex-end;
+     
+        .help-tooltip {
+
+          background-color:$primaryPurple;
+          color: #fff;
+          
+          font-size: 1em;
+          .tooltip-list {
+            padding: 1em;
+
+          }
+
+          .tooltip-items {
+            
+            margin: 1em 0;
+            
+          }
+        }
+      }
+      .form-error {
+        border: 1px solid red;
+        border-radius: 5px;
+        padding: 1em;
+        margin-bottom: 1em;
+        .error-description {
+          font-weight: bold;
+          text-align: center;
+        }
       }
 
       .form-label {
