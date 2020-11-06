@@ -41,7 +41,7 @@ const ApologyCreate = ({
               name="apology"
             />
           </label>
-          { categories.forEach((category) => (
+          {/* { categories.forEach((category) => (
             <label htmlFor="checkbox" className="form-label checkbox">
               {category.title}
               <input
@@ -51,7 +51,7 @@ const ApologyCreate = ({
                 name="checkbox"
               />
             </label>
-          ))}
+          ))} */}
           <button
             type="submit"
             className="form-submit"
