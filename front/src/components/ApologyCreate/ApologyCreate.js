@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes, { shape } from 'prop-types';
+import Loader from 'src/components/Loader/Loader';
 
 import './apologyCreate.scss';
 
@@ -13,52 +14,62 @@ const ApologyCreate = ({
 
   return (
     <div className="apology-create">
-      <form
-        action=""
-        className="apology-form"
-      >
-        <fieldset
-          className="form-fieldset"
+      { (categories.length <= 0) && <Loader />}
+      { (categories.length > 0) && (
+        <form
+          action=""
+          className="apology-form"
         >
-          <legend className="form-legend">Poster une excuse</legend>
-          <label htmlFor="title" className="form-label">
-            Titre de l'excuse :
-            <input
-              type="text"
-              className="form-input"
-              id="title"
-              name="title"
-            />
-          </label>
-          <label htmlFor="apology" className="form-label">
-            L'excuse :
-            <textarea
-              rows="10"
-              type="textarea"
-              className="form-input"
-              id="apology"
-              name="apology"
-            />
-          </label>
-          { categories.forEach((category) => (
-            <label htmlFor="checkbox" className="form-label checkbox">
-              {category.title}
+          <fieldset
+            className="form-fieldset"
+          >
+            <legend className="form-legend">Poster une excuse</legend>
+            <label htmlFor="title" className="form-label">
+              Titre de l'excuse :
               <input
-                type="checkbox"
-                className="form-input checkbox"
-                id="checkbox"
-                name="checkbox"
+                type="text"
+                className="form-input"
+                id="title"
+                name="title"
               />
             </label>
-          ))}
-          <button
-            type="submit"
-            className="form-submit"
-          >
-            Poster
-          </button>
-        </fieldset>
-      </form>
+            <label htmlFor="apology" className="form-label">
+              L'excuse :
+              <textarea
+                rows="10"
+                type="textarea"
+                className="form-input"
+                id="apology"
+                name="apology"
+              />
+            </label>
+            <div className="form-categories-choice">
+              <h2 className="form-categories-title">
+                Les catégories :
+              </h2>
+              <div className="form-categories">
+                { categories.map((category) => (
+                  <label key={category.title} htmlFor="checkbox" className="form-label checkbox">
+                    {category.title}
+                    <input
+                      type="checkbox"
+                      className="form-input checkbox"
+                      id="checkbox"
+                      name="checkbox"
+                    />
+                  </label>
+                ))}
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="form-submit"
+            >
+              Poster
+            </button>
+          </fieldset>
+        </form>
+      )}
     </div>
   );
 };
