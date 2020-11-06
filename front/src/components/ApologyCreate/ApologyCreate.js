@@ -7,6 +7,9 @@ import './apologyCreate.scss';
 const ApologyCreate = ({
   fetchAllCategories,
   categories,
+  title,
+  content,
+  updateInputValueByField,
 }) => {
   useEffect(() => {
     fetchAllCategories();
@@ -31,6 +34,10 @@ const ApologyCreate = ({
                 className="form-input"
                 id="title"
                 name="title"
+                value={title}
+                onChange={(evt) => {
+                  updateInputValueByField(evt.target.value, 'title');
+                }}
               />
             </label>
             <label htmlFor="apology" className="form-label">
@@ -41,6 +48,10 @@ const ApologyCreate = ({
                 className="form-input"
                 id="apology"
                 name="apology"
+                value={content}
+                onChange={(evt) => {
+                  updateInputValueByField(evt.target.value, 'content');
+                }}
               />
             </label>
             <div className="form-categories-choice">
@@ -82,6 +93,9 @@ ApologyCreate.propTypes = {
       description: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  updateInputValueByField: PropTypes.func.isRequired,
 };
 
 export default ApologyCreate;
