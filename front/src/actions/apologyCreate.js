@@ -6,6 +6,7 @@ export const REMOVE_SELECTED_CATEGORIES = 'REMOVE_SELECTED_CATEGORIES';
 export const SEND_APOLOGY_FORM = 'SEND_APOLOGY_FORM';
 export const ERROR_FORM_APOLOGY = 'ERROR_FORM_APOLOGY';
 export const SUCCESS_FORM_APOLOGY = 'SUCCESS_FORM_APOLOGY';
+export const SAVE_CREATED_APOLOGY = 'SAVE_CREATED_APOLOGY';
 
 export const fetchAllCategories = () => ({
   type: FETCH_ALL_CATEGORIES,
@@ -42,4 +43,10 @@ export const errorFormApology = () => ({
 
 export const successformApology = () => ({
   type: SUCCESS_FORM_APOLOGY,
+});
+
+export const saveCreatedApology = (newApology, key) => ({
+  type: SAVE_CREATED_APOLOGY,
+  newApology,
+  key,
 });

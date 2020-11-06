@@ -6,6 +6,7 @@ import {
   successformApology,
   errorFormApology,
   SEND_APOLOGY_FORM,
+  saveCreatedApology,
 } from 'src/actions/apologyCreate';
 
 import { baseURL } from 'src/utils';
@@ -39,6 +40,7 @@ const apologyCreateMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(successformApology());
+          store.dispatch(saveCreatedApology(response.data[0], 'apologies'));
         })
         .catch((error) => {
           console.warn(error);
