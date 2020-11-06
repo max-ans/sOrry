@@ -10,6 +10,9 @@ const ApologyCreate = ({
   title,
   content,
   updateInputValueByField,
+  addSelectedCategories,
+  selectedCategories,
+  removeSelectedCategories,
 }) => {
   useEffect(() => {
     fetchAllCategories();
@@ -60,13 +63,22 @@ const ApologyCreate = ({
               </h2>
               <div className="form-categories">
                 { categories.map((category) => (
-                  <label key={category.title} htmlFor="checkbox" className="form-label checkbox">
+                  <label key={category.id} htmlFor="checkbox" className="form-label checkbox">
                     {category.title}
                     <input
                       type="checkbox"
                       className="form-input checkbox"
-                      id="checkbox"
+                      id={`checkbox-${category.slug}`}
                       name="checkbox"
+                      value={category.id}
+                      onClick={(evt) => {
+                        if (!selectedCategories.includes(String(category.id))) {
+                          addSelectedCategories(evt.target.value);
+                        }
+                        else {
+                          removeSelectedCategories(evt.target.value);
+                        }
+                      }}
                     />
                   </label>
                 ))}
@@ -89,13 +101,19 @@ ApologyCreate.propTypes = {
   fetchAllCategories: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(
     shape({
+      id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   updateInputValueByField: PropTypes.func.isRequired,
+  addSelectedCategories: PropTypes.func.isRequired,
+  selectedCategories: PropTypes.array.isRequired,
+  removeSelectedCategories: PropTypes.func.isRequired,
+
 };
 
 export default ApologyCreate;
