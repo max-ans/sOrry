@@ -9,6 +9,9 @@ import {
   FORM_SUCCES,
   INPUT_FORMAT_WRONG,
 } from 'src/actions/profilPage';
+import {
+  SAVE_CREATED_APOLOGY,
+} from 'src/actions/apologyCreate';
 
 const initialState = {
   user: {},
@@ -76,6 +79,14 @@ const profilPage = (state = initialState, action = {}) => {
         firstname: '',
         lastname: '',
         nickname: '',
+      };
+    case SAVE_CREATED_APOLOGY:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          [action.key]: [...state.user.apologies, action.newApology],
+        },
       };
     default:
       return state;

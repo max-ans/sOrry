@@ -39,7 +39,7 @@ const connectionMiddleware = (store) => (next) => (action) => {
         sessionStorage.removeItem('s\'OrryUserLogged');
       }
       catch (error) {
-        console.log(error);
+        console.warn(error);
       }
       next(action);
       break;

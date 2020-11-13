@@ -28,11 +28,9 @@ const registrationMiddleware = (store) => (next) => (action) => {
         nickname,
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(registrationFormSuccess());
         })
         .catch((error) => {
-          // console.log(error.response.data);
           store.dispatch(registrationFormError());
           if (error.response.data.status === 500) {
             store.dispatch(registrationFormFieldError());

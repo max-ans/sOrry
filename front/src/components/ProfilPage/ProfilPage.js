@@ -1,11 +1,15 @@
 /* eslint-disable quote-props */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { ThumbsUp, AlertOctagon } from 'react-feather';
+import { ThumbsUp, AlertOctagon, PlusCircle } from 'react-feather';
 import className from 'classnames';
+import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
 
 import { validateEmailFormat, validatePasswordFormat } from 'src/utils';
 
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale.css';
 import './profilPage.scss';
 
 const ProfilPage = ({
@@ -24,6 +28,7 @@ const ProfilPage = ({
   passwordFormat,
   inputFormatWrong,
   closeHeaderMenu,
+  resetRedirect,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -31,6 +36,7 @@ const ProfilPage = ({
   };
   useEffect(() => {
     closeHeaderMenu();
+    resetRedirect();
   });
   return (
     <section className="profilPage">
@@ -44,7 +50,7 @@ const ProfilPage = ({
 
           {success && (
             <div className="form-message success">
-              <ThumbsUp /> <span className="message">Vos modifications ont été prise en compte</span>
+              <ThumbsUp /> <span className="message">Vos modifications ont été enregistrées</span>
             </div>
           )}
           <label htmlFor="mail" className="form-label"> Email :
@@ -151,6 +157,24 @@ const ProfilPage = ({
           Vos excuses
         </h2>
         <ul className="profil-right-list">
+          <div className="list-add">
+            <Tippy
+              className="list-add-tooltip"
+              animation="scale"
+              inertia
+              placement="left"
+              duration={500}
+              content="Ajouter un excuse"
+            >
+              <Link
+                to="/poster-une-excuse"
+              >
+                <PlusCircle
+                  className="list-add-icon"
+                />
+              </Link>
+            </Tippy>
+          </div>
           {(user.apologies.length > 0) && (
             user.apologies.map((apologie) => (
               <li key={apologie.id} className="profil-right-list-items">
@@ -175,7 +199,13 @@ const ProfilPage = ({
                 Vous n'avez encore publié aucune excuses.
               </p>
               <p className="list-empty-info">
-                Rendez-vous <a href="" className="list-empty-redirect">ici</a> pour publier votre
+                Rendez-vous&nbsp;
+                <Link
+                  to="/poster-une-excuse"
+                  className="list-empty-redirect"
+                >
+                  ici
+                </Link> pour publier votre
                 première excuses &#128521;
               </p>
             </div>
@@ -212,6 +242,7 @@ ProfilPage.propTypes = {
   passwordFormat: PropTypes.bool.isRequired,
   inputFormatWrong: PropTypes.func.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
+  resetRedirect: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;

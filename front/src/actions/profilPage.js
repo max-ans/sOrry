@@ -4,6 +4,7 @@ export const UPDATE_PASSWORD_INPUT = 'UPDATE_PASSWORD_INPUT';
 export const FORM_FAILURE = 'FORM_FAILURE';
 export const FORM_SUCCES = 'FORM_SUCCES';
 export const INPUT_FORMAT_WRONG = 'INPUT_FORMAT_WRONG';
+export const RESET_REDIRECT = 'RESET_REDIRECT';
 
 export const updateUserInput = (value, field) => ({
   type: UPDATE_USER_INPUT,
@@ -32,4 +33,8 @@ export const inputFormatWrong = (bool, field) => ({
   type: INPUT_FORMAT_WRONG,
   bool,
   field,
+});
+
+export const resetRedirect = () => ({
+  type: RESET_REDIRECT,
 });

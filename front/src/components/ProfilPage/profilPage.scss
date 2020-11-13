@@ -44,7 +44,8 @@
         
         .form-input {
           background-color: transparent;
-          border: transparent;
+          border: 1px solid $primaryPurple;
+          border-radius: 5px;
           color: $primaryPurple;
           font-weight: bold;
           padding: 1em;
@@ -90,6 +91,7 @@
         border: none;
         padding: 0.5em;
         font-size: 1em;
+        margin-top: 1em;
 
       }
     }
@@ -113,6 +115,24 @@
       padding: 1em;
       border-radius: 15px;
       margin-bottom: 2em ;
+      
+      .list-add {
+
+        text-align: right;
+
+        .list-add-icon{
+
+          transform: scale(1.5);
+          transition: all 0.5s;
+
+          &:hover{
+
+            transform: scale(2);
+            transition: all 0.5s;
+
+          }
+        }
+      }
 
       .profil-right-list-items {
        

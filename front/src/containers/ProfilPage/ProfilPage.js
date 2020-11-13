@@ -4,6 +4,7 @@ import {
   sendUserForm,
   updatePasswordInput,
   inputFormatWrong,
+  resetRedirect,
 } from 'src/actions/profilPage';
 
 import {
@@ -40,6 +41,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   closeHeaderMenu: () => {
     dispatch(closeHeaderMenu());
+  },
+  resetRedirect: () => {
+    dispatch(resetRedirect());
   },
 });
 

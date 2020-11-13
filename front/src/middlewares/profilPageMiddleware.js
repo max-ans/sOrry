@@ -30,7 +30,6 @@ const profilPageMiddleware = (store) => (next) => (action) => {
         nickname,
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(saveUser(response.data[0]));
           store.dispatch(formSucces());
         })
