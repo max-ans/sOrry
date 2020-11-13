@@ -38,7 +38,6 @@ const apologyCreateMiddleware = (store) => (next) => (action) => {
         author: id,
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(successformApology());
           store.dispatch(saveCreatedApology(response.data[0], 'apologies'));
         })
