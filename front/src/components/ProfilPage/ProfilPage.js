@@ -48,7 +48,7 @@ const ProfilPage = ({
 
           {success && (
             <div className="form-message success">
-              <ThumbsUp /> <span className="message">Vos modifications ont été prise en compte</span>
+              <ThumbsUp /> <span className="message">Vos modifications ont été enregistrées</span>
             </div>
           )}
           <label htmlFor="mail" className="form-label"> Email :
