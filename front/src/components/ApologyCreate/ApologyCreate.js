@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes, { shape } from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { HelpCircle } from 'react-feather';
 import Loader from 'src/components/Loader/Loader';
 import Tippy from '@tippyjs/react';
@@ -43,13 +44,7 @@ const ApologyCreate = ({
             className="form-fieldset"
           >
             <legend className="form-legend">Poster une excuse</legend>
-            {success && (
-              <div className="form-success">
-                <p className="success-text">
-                  Votre nouvelle excuse a bien été enregisté
-                </p>
-              </div>
-            )}
+            {success && <Redirect to="/mon-profil" />}
             <div className="form-help">
               <Tippy
                 className="help-tooltip"

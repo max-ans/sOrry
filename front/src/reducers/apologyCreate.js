@@ -7,6 +7,10 @@ import {
   SUCCESS_FORM_APOLOGY,
 } from 'src/actions/apologyCreate';
 
+import {
+  RESET_REDIRECT,
+} from 'src/actions/profilPage';
+
 const initialState = {
   categories: [],
   title: '',
@@ -58,6 +62,12 @@ const apologyCreate = (state = initialState, action = {}) => {
         title: '',
         content: '',
         selectedCategories: [],
+      };
+
+    case RESET_REDIRECT:
+      return {
+        ...state,
+        success: false,
       };
     default: return state;
   }

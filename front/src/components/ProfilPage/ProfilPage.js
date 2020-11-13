@@ -28,6 +28,7 @@ const ProfilPage = ({
   passwordFormat,
   inputFormatWrong,
   closeHeaderMenu,
+  resetRedirect,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -35,6 +36,7 @@ const ProfilPage = ({
   };
   useEffect(() => {
     closeHeaderMenu();
+    resetRedirect();
   });
   return (
     <section className="profilPage">
@@ -240,6 +242,7 @@ ProfilPage.propTypes = {
   passwordFormat: PropTypes.bool.isRequired,
   inputFormatWrong: PropTypes.func.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
+  resetRedirect: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;
