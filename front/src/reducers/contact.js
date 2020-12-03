@@ -5,6 +5,8 @@ import {
   TOGGLE_CHECKBOX,
   SEND_CONTACT_FORM_SUCCESS,
   WRONG_REQUEST_FORMAT,
+  SEND_IN_PROGRESS,
+  SEND_FINISHED,
 } from 'src/actions/contact';
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
   emailFormatAlert: false,
   formSent: false,
   formError: false,
+  sending: false,
 };
 
 const contact = (state = initialState, action = {}) => {
@@ -53,6 +56,16 @@ const contact = (state = initialState, action = {}) => {
         ...state,
         formSent: false,
         formError: true,
+      };
+    case SEND_IN_PROGRESS:
+      return {
+        ...state,
+        sending: true,
+      };
+    case SEND_FINISHED:
+      return {
+        ...state,
+        sending: false,
       };
 
     default: return state;
