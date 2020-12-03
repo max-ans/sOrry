@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   emailFormatAlert: state.contact.emailFormatAlert,
   formSent: state.contact.formSent,
   formError: state.contact.formError,
+  sending: state.contact.sending,
 });
 
 // === mapDispatchToProps
