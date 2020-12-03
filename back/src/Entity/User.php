@@ -86,6 +86,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity=Apology::class, mappedBy="author")
      * @Groups("user_groups")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $apologies;
 
