@@ -1,5 +1,67 @@
 @import '../../styles/vars';
 
 .categories {
-  height: 70vh;
+  margin: 2% 5%;
+  
+  .categorie {
+    background-color: #fff;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border-radius: 35% 42% 35px 60px;
+    border: 1px solid $primaryPurple;
+    color: $primaryPurple;
+    text-align: justify;
+    transition: all 0.8s;
+    
+    &:nth-child(even) {
+      background-color: $primaryYellow;
+      border-radius: 25px 30% 10% 25%;
+      
+    }
+    .categorie-title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .categorie-description {
+      line-height: 1.4em;
+      font-style: italic;
+    }
+  }
+}
+
+@media screen and (min-width : 912px) {
+  .categories {
+    
+
+    .categorie {
+      background-color: #fff;
+      margin-bottom: 1.5em;
+      padding: 1em;
+      border-radius: 35% 42% 35px 60px;
+      border: 1px solid $primaryPurple;
+      color: $primaryPurple;
+      text-align: justify;
+      transition: all 0.8s;
+      width: 30%;
+      margin: 0px 0px 1.5em 0px;
+      clear: both;
+      
+      &:nth-child(even) {
+        background-color: $primaryYellow;
+        border-radius: 25px 30% 10% 25%;
+        float: right;
+        
+      }
+      .categorie-title {
+        
+      }
+  
+      .categorie-description {
+        
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@ import profilPage from 'src/middlewares/profilPageMiddleware';
 import registration from 'src/middlewares/registrationMiddleware';
 import contact from 'src/middlewares/contactMiddleware';
 import apologyCreateMiddleware from 'src/middlewares/apologyCreateMiddleware';
+import categoriesMiddleware from 'src/middlewares/categoriesMiddleware';
 import reducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
@@ -16,6 +17,7 @@ const enhancers = composeWithDevTools(
     registration,
     contact,
     apologyCreateMiddleware,
+    categoriesMiddleware,
   ),
 );
 

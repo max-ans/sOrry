@@ -13,7 +13,7 @@ import ProfilPage from 'src/containers/ProfilPage/ProfilPage';
 import Contact from 'src/containers/Contact/Contact';
 import About from 'src/containers/About/About';
 import ApologyCreate from 'src/containers/ApologyCreate/ApologyCreate';
-import Categories from 'src/components/Categories/Categories';
+import Categories from 'src/containers/Categories/Categories';
 
 // == Import
 import './styles.scss';
@@ -45,11 +45,11 @@ const App = ({ isLogged }) => {
         <Route exact path="/a-propos">
           <About />
         </Route>
-        <Route exact path="/excuses-par-categories">
-          <Categories />
-        </Route>
         <Route exact path="/poster-une-excuse">
           {isLogged ? <ApologyCreate /> : <Redirect to="/connexion" />}
+        </Route>
+        <Route exact path="/excuses-par-categories">
+          <Categories />
         </Route>
       </Switch>
       <Footer />
