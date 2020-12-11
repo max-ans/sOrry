@@ -26,12 +26,18 @@ const Nav = ({
         Se deconnecter
       </Link>
     )}
-    <a href="" className="header-nav-items">
+    <Link
+      to="/excuses-par-categories"
+      className="header-nav-items"
+    >
       Top excuses
-    </a>
-    <a href="" className="header-nav-items">
+    </Link>
+    <Link
+      to="/excuses-par-categories"
+      className="header-nav-items"
+    >
       Excuses par catégories
-    </a>
+    </Link>
     <Link
       className="header-nav-items"
       to="/a-propos"
