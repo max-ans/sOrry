@@ -27,34 +27,31 @@ const ApologyByCategories = ({
           <h2 className="categorie-title">
             {currentCategorie.title}
           </h2>
-          <p className="categorie-description">
-            {currentCategorie.description}
-          </p>
           <div className="apologies-list">
             <ul>
               {currentCategorie.apologies.map((apologie) => (
-                <li key={apologie.title} className="apoligie-list-item">
-                  <h3 className="apologie title">
+                <li key={apologie.title} className="apologie-list-item">
+                  <h3 className="apologie-title">
                     {apologie.title}
                   </h3>
                   <p className="apologie-content">
                     {apologie.content}
                   </p>
                   <div className="apologie-infos">
-                    <ThumbsUp />
+                    <small className="apologie-author">
+                      {apologie.author.nickname} le {apologie.createdAt}
+                    </small>
                     <p className="apologie-likes">
+                      <ThumbsUp />
                       {apologie.likes}
                     </p>
                   </div>
-                  <small className="apologie-author">
-                    {apologie.author.nickname} le {apologie.createdAt}
-                  </small>
                 </li>
               ))}
             </ul>
           </div>
         </>
-      )};
+      )}
       <div className="go-back">
         <Link
           to="/excuses-par-categories"

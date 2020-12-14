@@ -1,7 +1,55 @@
 @import '../../styles/vars';
 
 .apology-by-categories {
+  background-color: #fff;
+  margin: 2% 2%;
+  padding: 1em;
+  border: 1px solid $primaryPurple;
+  border-radius: 15px;
+  color: $primaryPurple;
+ 
 
+  .categorie-title {
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+
+  .apologies-list {
+
+    .apologie-list-item {
+      border: 1px solid $primaryPurple;
+      border-radius: 15px;
+      padding: 1em;
+      margin-bottom: 0.5em;
+      overflow: hidden;
+      
+      .apologie-title {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .apologie-content {
+        font-style: italic;
+        text-align: justify;
+      }
+
+      .apologie-infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1em;
+      }
+
+      .apologie-likes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
 
   .go-back {
     margin: 2% auto;
