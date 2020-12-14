@@ -3,6 +3,9 @@ import Categories from 'src/components/Categories/Categories';
 import {
   fetchCategories,
 } from 'src/actions/categories';
+import {
+  closeHeaderMenu,
+} from 'src/actions/header';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -14,6 +17,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchCategories: () => {
     dispatch(fetchCategories());
+  },
+  closeHeaderMenu: () => {
+    dispatch(closeHeaderMenu());
   },
 });
 

@@ -9,9 +9,11 @@ const Categories = ({
   categoriesFetched,
   fetchCategories,
   allCategories,
+  closeHeaderMenu,
 }) => {
   useEffect(() => {
     fetchCategories();
+    closeHeaderMenu();
   }, []);
 
   return (
@@ -40,6 +42,7 @@ Categories.propTypes = {
   categoriesFetched: PropTypes.bool.isRequired,
   fetchCategories: PropTypes.func.isRequired,
   allCategories: PropTypes.array.isRequired,
+  closeHeaderMenu: PropTypes.func.isRequired,
 };
 
 export default Categories;
