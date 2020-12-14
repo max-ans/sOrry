@@ -14,6 +14,7 @@ import Contact from 'src/containers/Contact/Contact';
 import About from 'src/containers/About/About';
 import ApologyCreate from 'src/containers/ApologyCreate/ApologyCreate';
 import Categories from 'src/containers/Categories/Categories';
+import ApologyByCategories from 'src/containers/ApologyByCategories/ApologyByCategories';
 
 // == Import
 import './styles.scss';
@@ -50,6 +51,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/excuses-par-categories">
           <Categories />
+        </Route>
+        <Route exact path="/categories/:slug">
+          <ApologyByCategories />
         </Route>
       </Switch>
       <Footer />
