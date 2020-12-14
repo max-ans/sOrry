@@ -12,7 +12,12 @@ const Footer = () => (
           <nav className="footer-left-navleft">
             <a className="navleft-items" href="">Sorry</a>
             <a className="navleft-items" href="">Top excuses</a>
-            <a className="navleft-items" href="">Excuses par catégorie</a>
+            <Link
+              to="/excuses-par-categories"
+              className="navleft-items"
+            >
+              Excuses par catégorie
+            </Link>
           </nav>
         </div>
         <div className="footer-left-right">

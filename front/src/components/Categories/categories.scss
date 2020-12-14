@@ -1,0 +1,74 @@
+@import '../../styles/vars';
+
+.categories {
+  margin: 2% 5%;
+  overflow: hidden;
+  transition: all 0.8s;
+  padding: 1em;
+  
+  .categorie {
+    background-color: #fff;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border-radius: 60px;
+    border: 1px solid $primaryPurple;
+    color: $primaryPurple;
+    text-align: justify;
+    transition: all 0.8s;
+    box-shadow: 2px 2px 10px $primaryPurple;
+    
+    &:nth-child(even) {
+      background-color: $primaryYellow;
+      
+      
+    }
+    .categorie-title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .categorie-description {
+      line-height: 1.4em;
+      font-style: italic;
+    }
+  }
+}
+
+@media screen and (min-width : 912px) {
+  .categories {
+    max-width: 70%;
+    margin: 2% auto;
+    transition: all 0.8s;
+
+   
+
+
+    .categorie {
+      background-color: #fff;
+      padding: 1em; 
+      border: 1px solid $primaryPurple;
+      color: $primaryPurple;
+      text-align: justify;
+      transition: all 0.8s;
+      width: 60%;
+      margin: 0px 0px 1.5em 0.5em;
+      clear: both;
+      
+      &:nth-child(even) {
+        background-color: $primaryYellow;
+        float: right;
+        margin-right: 0.5em;
+        
+      }
+      .categorie-title {
+        
+      }
+  
+      .categorie-description {
+        
+      }
+    }
+  }
+}
