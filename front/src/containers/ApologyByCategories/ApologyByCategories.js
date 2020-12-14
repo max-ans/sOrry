@@ -4,16 +4,23 @@ import ApologyByCategories from 'src/components/ApologyByCategories/ApologyByCat
 import {
   closeHeaderMenu,
 } from 'src/actions/header';
+import {
+  fetchCurrentCategorie,
+} from 'src/actions/apologyByCategories';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  allCategories: state.categories.allCategories,
+  apologiesLoaded: state.apologyByCategories.apologiesLoaded,
+  currentCategorie: state.apologyByCategories.currentCategorie,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
   closeHeaderMenu: () => {
     dispatch(closeHeaderMenu());
+  },
+  fetchCurrentCategorie: (slug) => {
+    dispatch(fetchCurrentCategorie(slug));
   },
 });
 

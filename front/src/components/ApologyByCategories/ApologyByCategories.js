@@ -1,29 +1,90 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Loader from 'src/components/Loader/Loader';
+import { ThumbsUp } from 'react-feather';
+
 import './apology_by_categories.scss';
 
 const ApologyByCategories = ({
-  allCategories,
   closeHeaderMenu,
+  fetchCurrentCategorie,
+  apologiesLoaded,
+  currentCategorie,
 }) => {
+  const { slug } = useParams();
+
   useEffect(() => {
     closeHeaderMenu();
+    fetchCurrentCategorie(slug);
   }, []);
-
-  const { slug } = useParams();
 
   return (
     <div className="apology-by-categories">
-      listing des excuses par categories
-      {console.log(slug)}
+      {!apologiesLoaded && <Loader />}
+      {apologiesLoaded && (
+        <>
+          <h2 className="categorie-title">
+            {currentCategorie.title}
+          </h2>
+          <p className="categorie-description">
+            {currentCategorie.description}
+          </p>
+          <div className="apologies-list">
+            <ul>
+              {currentCategorie.apologies.map((apologie) => (
+                <li key={apologie.title} className="apoligie-list-item">
+                  <h3 className="apologie title">
+                    {apologie.title}
+                  </h3>
+                  <p className="apologie-content">
+                    {apologie.content}
+                  </p>
+                  <div className="apologie-infos">
+                    <ThumbsUp />
+                    <p className="apologie-likes">
+                      {apologie.likes}
+                    </p>
+                  </div>
+                  <small className="apologie-author">
+                    {apologie.author.nickname} le {apologie.createdAt}
+                  </small>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )};
+      <div className="go-back">
+        <Link
+          to="/excuses-par-categories"
+        >
+          <button
+            type="button"
+            className="go-back-button"
+          >
+            Revenir au menu des catégories
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
 
 ApologyByCategories.propTypes = {
-  allCategories: PropTypes.array.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
+  fetchCurrentCategorie: PropTypes.func.isRequired,
+  apologiesLoaded: PropTypes.bool.isRequired,
+  currentCategorie: PropTypes.shape({
+    apologies: PropTypes.array,
+    description: PropTypes.string,
+    id: PropTypes.number,
+    title: PropTypes.string,
+  }),
+};
+
+ApologyByCategories.defaultProps = {
+  currentCategorie: {},
 };
 
 export default ApologyByCategories;

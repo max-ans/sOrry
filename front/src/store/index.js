@@ -7,6 +7,7 @@ import registration from 'src/middlewares/registrationMiddleware';
 import contact from 'src/middlewares/contactMiddleware';
 import apologyCreateMiddleware from 'src/middlewares/apologyCreateMiddleware';
 import categoriesMiddleware from 'src/middlewares/categoriesMiddleware';
+import apologyByCategoriesMiddleware from 'src/middlewares/apologyByCategoriesMiddleware';
 import reducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
@@ -18,6 +19,7 @@ const enhancers = composeWithDevTools(
     contact,
     apologyCreateMiddleware,
     categoriesMiddleware,
+    apologyByCategoriesMiddleware,
   ),
 );
 
