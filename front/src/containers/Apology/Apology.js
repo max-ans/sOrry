@@ -7,8 +7,8 @@ import {
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  apology: state.apology.apology,
-  isFetched: state.apology.siFetched,
+  apologyInformation: state.apology.apologyInformation,
+  isFetched: state.apology.isFetched,
 });
 
 // === mapDispatchToProps

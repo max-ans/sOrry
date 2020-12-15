@@ -4,7 +4,7 @@ import {
 
 const initialState = {
   isFetched: false,
-  apology: [],
+  apologyInformation: {},
 };
 
 const apology = (state = initialState, action = {}) => {
@@ -13,7 +13,7 @@ const apology = (state = initialState, action = {}) => {
       return {
         ...state,
         isFetched: true,
-        apology: action.apology,
+        apologyInformation: action.apology,
       };
     default: return state;
   }
