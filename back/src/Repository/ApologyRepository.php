@@ -84,5 +84,22 @@ class ApologyRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function findBySlug ($slug)
+    {
+        $qb = $this->createQueryBuilder('apology')
+                   ->leftJoin('apology.comments', 'comments')
+                   ->addSelect('comments')
+                   ->leftJoin('apology.categories', 'categories')
+                   ->addSelect('categories')
+                   ->leftJoin('apology.author', 'author')
+                   ->addSelect('author')
+                   ->where('apology.slug = :slug')
+                   ->setParameter(':slug', $slug);
+        
+        $query = $qb->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
     
 }
