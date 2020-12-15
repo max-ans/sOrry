@@ -104,6 +104,21 @@ class ApologyController extends AbstractController
     }
 
     /**
+     * @Route("/api/v0/apologies/{slug}" , name="api_v0_apologies_find" , methods={"GET"})
+     */
+    public function find (Apology $apology, ApologyRepository $apologyRepository, ObjectNormalizer $normalizer)
+    {
+        $desiredApology = $apologyRepository->findBySlug($apology->getSlug());
+
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedApology = $serializer->normalize($desiredApology, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']);
+        return $this->json([
+            $normalizedApology,
+        ]);
+    }
+
+    /**
      * @Route("/api/v0/apologies/count" , name="api_v0_apologies_count", methods={"GET"})
      */
     public function count (ApologyRepository $apologyRepository) 
