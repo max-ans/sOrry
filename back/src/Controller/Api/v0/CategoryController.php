@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -44,9 +45,9 @@ class CategoryController extends AbstractController
      */
     public function show(Category $category)
     {
-        $serializer = new Serializer([$this->normalizer]);
+        $serializer = new Serializer([new DateTimeNormalizer(), $this->normalizer]);
 
-        $normalizedCategory = $serializer->normalize($category, null, ['groups' => 'category_groups']); 
+        $normalizedCategory = $serializer->normalize($category, null, ['groups' => 'category_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']); 
 
         return $this->json([
             $normalizedCategory

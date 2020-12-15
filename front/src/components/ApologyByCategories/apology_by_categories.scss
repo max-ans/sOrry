@@ -1,0 +1,106 @@
+@import '../../styles/vars';
+
+.apology-by-categories {
+  background-color: #fff;
+  margin: 2% 2%;
+  padding: 1em;
+  border: 1px solid $primaryPurple;
+  border-radius: 15px;
+  color: $primaryPurple;
+  position: relative;
+ 
+
+  .categorie-title {
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+
+  .order-button {
+
+    .order-choice {
+      text-align: center;
+    }
+
+    .choices {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .button {
+        height: 1.5em;
+        width: 3.5em;
+        border-radius: 50px;
+        border: none;
+        background-color: $primaryPurple;
+        margin: 1em;
+        
+        .ball {
+          height: 100%;
+          width: 1.3em;
+          background-color: #fff;
+          border: 2px solid $primaryYellow;
+          border-radius: 50%;
+          margin: 0 0 0 -0.45em;
+          transition: all 0.4s;
+  
+          &.checked {
+            transform: translate(2.15em);
+          }
+        }
+      }
+    }
+  }
+
+  .apologies-list {
+
+    .apologie-list-item {
+      border: 1px solid $primaryPurple;
+      border-radius: 15px;
+      padding: 1em;
+      margin-bottom: 0.5em;
+      overflow: hidden;
+      
+      .apologie-title {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .apologie-content {
+        font-style: italic;
+        text-align: justify;
+      }
+
+      .apologie-infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1em;
+      }
+
+      .apologie-likes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .go-back {
+    margin: 2% auto;
+    padding: 1em;
+    .go-back-button {
+      margin: 0 auto;
+      width: 100%;
+      color: #fff;
+      background-color: $primaryPurple;
+      border-radius: 25px;
+      font-size: 1.2em;
+      border: none;
+      padding: 0.8em 1em;
+    }
+  }
+}
