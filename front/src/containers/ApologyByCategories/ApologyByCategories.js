@@ -6,12 +6,14 @@ import {
 } from 'src/actions/header';
 import {
   fetchCurrentCategorie,
+  orderingByLikes,
 } from 'src/actions/apologyByCategories';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   apologiesLoaded: state.apologyByCategories.apologiesLoaded,
   currentCategorie: state.apologyByCategories.currentCategorie,
+  orderedByLikes: state.apologyByCategories.orderedByLikes,
 });
 
 // === mapDispatchToProps
@@ -21,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchCurrentCategorie: (slug) => {
     dispatch(fetchCurrentCategorie(slug));
+  },
+  orderingByLikes: () => {
+    dispatch(orderingByLikes());
   },
 });
 

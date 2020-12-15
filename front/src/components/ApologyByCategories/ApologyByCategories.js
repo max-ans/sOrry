@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader/Loader';
 import { ThumbsUp } from 'react-feather';
 
+import OrderButton from './OrderButton';
 import './apology_by_categories.scss';
 
 const ApologyByCategories = ({
@@ -11,6 +12,8 @@ const ApologyByCategories = ({
   fetchCurrentCategorie,
   apologiesLoaded,
   currentCategorie,
+  orderingByLikes,
+  orderedByLikes,
 }) => {
   const { slug } = useParams();
 
@@ -27,27 +30,58 @@ const ApologyByCategories = ({
           <h2 className="categorie-title">
             {currentCategorie.title}
           </h2>
+          <OrderButton
+            action={orderingByLikes}
+            status={orderedByLikes}
+          />
           <div className="apologies-list">
             <ul>
-              {currentCategorie.apologies.map((apologie) => (
-                <li key={apologie.title} className="apologie-list-item">
-                  <h3 className="apologie-title">
-                    {apologie.title}
-                  </h3>
-                  <p className="apologie-content">
-                    {apologie.content}
-                  </p>
-                  <div className="apologie-infos">
-                    <small className="apologie-author">
-                      {apologie.author.nickname} le {apologie.createdAt}
-                    </small>
-                    <p className="apologie-likes">
-                      <ThumbsUp />
-                      {apologie.likes}
+              {!orderedByLikes && (
+                // reverse for have apologie in datetime order
+                currentCategorie.apologies.reverse().map((apologie) => (
+                  <li key={apologie.title} className="apologie-list-item">
+                    <h3 className="apologie-title">
+                      {apologie.title}
+                    </h3>
+                    <p className="apologie-content">
+                      {apologie.content}
                     </p>
-                  </div>
-                </li>
-              ))}
+                    <div className="apologie-infos">
+                      <small className="apologie-author">
+                        {apologie.author.nickname} le {apologie.createdAt}
+                      </small>
+                      <p className="apologie-likes">
+                        <ThumbsUp />
+                        {apologie.likes}
+                      </p>
+                    </div>
+                  </li>
+                ))
+              )}
+              {orderedByLikes && (
+                // order by likes
+                currentCategorie.apologies.sort((a, b) => (
+                  b.likes - a.likes
+                )).map((apologie) => (
+                  <li key={apologie.title} className="apologie-list-item">
+                    <h3 className="apologie-title">
+                      {apologie.title}
+                    </h3>
+                    <p className="apologie-content">
+                      {apologie.content}
+                    </p>
+                    <div className="apologie-infos">
+                      <small className="apologie-author">
+                        {apologie.author.nickname} le {apologie.createdAt}
+                      </small>
+                      <p className="apologie-likes">
+                        <ThumbsUp />
+                        {apologie.likes}
+                      </p>
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </>
@@ -78,6 +112,8 @@ ApologyByCategories.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
   }),
+  orderingByLikes: PropTypes.func.isRequired,
+  orderedByLikes: PropTypes.bool.isRequired,
 };
 
 ApologyByCategories.defaultProps = {

@@ -7,6 +7,7 @@
   border: 1px solid $primaryPurple;
   border-radius: 15px;
   color: $primaryPurple;
+  position: relative;
  
 
   .categorie-title {
@@ -15,6 +16,43 @@
     font-style: italic;
     font-size: 2em;
     margin-bottom: 1em;
+  }
+
+  .order-button {
+
+    .order-choice {
+      text-align: center;
+    }
+
+    .choices {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .button {
+        height: 1.5em;
+        width: 3.5em;
+        border-radius: 50px;
+        border: none;
+        background-color: $primaryPurple;
+        margin: 1em;
+        
+        .ball {
+          height: 100%;
+          width: 1.3em;
+          background-color: #fff;
+          border: 2px solid $primaryYellow;
+          border-radius: 50%;
+          margin: 0 0 0 -0.45em;
+          transition: all 0.4s;
+  
+          &.checked {
+            transform: translate(2.15em);
+          }
+        }
+      }
+    }
   }
 
   .apologies-list {

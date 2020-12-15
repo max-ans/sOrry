@@ -50,10 +50,10 @@ const App = ({ isLogged }) => {
           {isLogged ? <ApologyCreate /> : <Redirect to="/connexion" />}
         </Route>
         <Route exact path="/excuses-par-categories">
-          <Categories />
+          {isLogged ? <Categories /> : <Redirect to="/connexion" />}
         </Route>
         <Route exact path="/categories/:slug">
-          <ApologyByCategories />
+          {isLogged ? <ApologyByCategories /> : <Redirect to="/connexion" />}
         </Route>
       </Switch>
       <Footer />
