@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './apology.scss';
 
-const Apology = () => {
+const Apology = ({
+  fetchApologyInformations,
+}) => {
   const { slug } = useParams();
-  console.log(slug);
+
+  useEffect(() => {
+    fetchApologyInformations(slug);
+  });
+
   return (
     <main className="apology">
       page d'une excuse
     </main>
   );
 };
+
+Apology.propTypes = {
+  fetchApologyInformations: PropTypes.func.isRequired,
+};
+
 export default Apology;

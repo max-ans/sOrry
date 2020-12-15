@@ -15,7 +15,7 @@ import About from 'src/containers/About/About';
 import ApologyCreate from 'src/containers/ApologyCreate/ApologyCreate';
 import Categories from 'src/containers/Categories/Categories';
 import ApologyByCategories from 'src/containers/ApologyByCategories/ApologyByCategories';
-import Apology from 'src/components/Apology/Apology';
+import Apology from 'src/containers/Apology/Apology';
 
 // == Import
 import './styles.scss';
