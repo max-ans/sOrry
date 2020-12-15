@@ -39,23 +39,28 @@ const ApologyByCategories = ({
               {!orderedByLikes && (
                 // reverse for have apologie in datetime order
                 currentCategorie.apologies.reverse().map((apologie) => (
-                  <li key={apologie.title} className="apologie-list-item">
-                    <h3 className="apologie-title">
-                      {apologie.title}
-                    </h3>
-                    <p className="apologie-content">
-                      {apologie.content}
-                    </p>
-                    <div className="apologie-infos">
-                      <small className="apologie-author">
-                        {apologie.author.nickname} le {apologie.createdAt}
-                      </small>
-                      <p className="apologie-likes">
-                        <ThumbsUp />
-                        {apologie.likes}
+                  <Link
+                    to={`/excuse/${apologie.slug}`}
+                    key={apologie.id}
+                  >
+                    <li className="apologie-list-item">
+                      <h3 className="apologie-title">
+                        {apologie.title}
+                      </h3>
+                      <p className="apologie-content">
+                        {apologie.content}
                       </p>
-                    </div>
-                  </li>
+                      <div className="apologie-infos">
+                        <small className="apologie-author">
+                          {apologie.author.nickname} le {apologie.createdAt}
+                        </small>
+                        <p className="apologie-likes">
+                          <ThumbsUp />
+                          {apologie.likes}
+                        </p>
+                      </div>
+                    </li>
+                  </Link>
                 ))
               )}
               {orderedByLikes && (
@@ -63,23 +68,28 @@ const ApologyByCategories = ({
                 currentCategorie.apologies.sort((a, b) => (
                   b.likes - a.likes
                 )).map((apologie) => (
-                  <li key={apologie.title} className="apologie-list-item">
-                    <h3 className="apologie-title">
-                      {apologie.title}
-                    </h3>
-                    <p className="apologie-content">
-                      {apologie.content}
-                    </p>
-                    <div className="apologie-infos">
-                      <small className="apologie-author">
-                        {apologie.author.nickname} le {apologie.createdAt}
-                      </small>
-                      <p className="apologie-likes">
-                        <ThumbsUp />
-                        {apologie.likes}
+                  <Link
+                    to={`/excuse/${apologie.slug}`}
+                    key={apologie.id}
+                  >
+                    <li className="apologie-list-item">
+                      <h3 className="apologie-title">
+                        {apologie.title}
+                      </h3>
+                      <p className="apologie-content">
+                        {apologie.content}
                       </p>
-                    </div>
-                  </li>
+                      <div className="apologie-infos">
+                        <small className="apologie-author">
+                          {apologie.author.nickname} le {apologie.createdAt}
+                        </small>
+                        <p className="apologie-likes">
+                          <ThumbsUp />
+                          {apologie.likes}
+                        </p>
+                      </div>
+                    </li>
+                  </Link>
                 ))
               )}
             </ul>

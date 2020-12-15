@@ -21,6 +21,8 @@ class Apology
      * @Groups("apologies_groups")
      * @Groups("user_groups")
      * @Groups("comment_groups")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
      */
     private $id;
 
@@ -40,6 +42,7 @@ class Apology
      * @ORM\Column(type="string", length=255)
      * @Groups("apologies_groups")
      * @Groups("category_groups")
+     * @Groups("user_groups")
      */
     private $slug;
 

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, AlertOctagon, PlusCircle } from 'react-feather';
 import className from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 
 import { validateEmailFormat, validatePasswordFormat } from 'src/utils';
@@ -38,6 +38,7 @@ const ProfilPage = ({
     closeHeaderMenu();
     resetRedirect();
   });
+  const { slug } = useParams();
   return (
     <section className="profilPage">
       <div className="profil-left">
@@ -177,21 +178,26 @@ const ProfilPage = ({
           </div>
           {(user.apologies.length > 0) && (
             user.apologies.map((apologie) => (
-              <li key={apologie.id} className="profil-right-list-items">
-                <div className="items-left">
-                  <a href="" className="items-link">
-                    {apologie.title}
-                  </a>
-                  <p className="items-content">
-                    {apologie.content.substr(0, 35)} ....
-                  </p>
-                </div>
-                <div className="items-right">
-                  <p className="items-likes">
-                    <ThumbsUp /> <br /> {apologie.likes}
-                  </p>
-                </div>
-              </li>
+              <Link
+                to={`/excuse/${apologie.slug}`}
+                key={apologie.id}
+              >
+                <li className="profil-right-list-items">
+                  <div className="items-left">
+                    <h3 className="items-link">
+                      {apologie.title}
+                    </h3>
+                    <p className="items-content">
+                      {apologie.content.substr(0, 35)} ....
+                    </p>
+                  </div>
+                  <div className="items-right">
+                    <p className="items-likes">
+                      <ThumbsUp /> <br /> {apologie.likes}
+                    </p>
+                  </div>
+                </li>
+              </Link>
             )))}
           {(user.apologies.length <= 0) && (
             <div className="list-empty">
