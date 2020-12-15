@@ -11,7 +11,7 @@ const Apology = ({
 
   useEffect(() => {
     fetchApologyInformations(slug);
-  });
+  }, [slug]);
 
   return (
     <main className="apology">

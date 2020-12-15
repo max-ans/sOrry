@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 import {
   FETCH_APOLOGY_INFORMATIONS,
@@ -10,6 +10,13 @@ import { baseURL } from 'src/utils';
 const apologyMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_APOLOGY_INFORMATIONS:
+      axios.get(`${baseURL}/api/v0/apologies/${action.slug}`)
+        .then((response) => {
+          store.dispatch(saveApologyInformations(response.data[0]));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
       next(action);
       break;
     default:

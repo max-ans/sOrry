@@ -13,7 +13,7 @@ const apology = (state = initialState, action = {}) => {
       return {
         ...state,
         isFetched: true,
-        apology: action.aplogy,
+        apology: action.apology,
       };
     default: return state;
   }
