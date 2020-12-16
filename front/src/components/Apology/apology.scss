@@ -1,1 +1,118 @@
 @import '../../styles/vars';
+
+.apology {
+  margin: 2% 2%;
+
+  .apology-view {
+
+    background-color: #ffffff;
+    border: 1px solid $primaryPurple;
+    border-radius: 15px;
+    padding: 1em;
+    color: $primaryPurple;
+
+    .apology-title {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .apology-content {
+      font-style: italic;
+      text-align: justify;
+      padding: 0.5em;
+      line-height: 1.1em;
+    }
+
+    .apology-informations {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .apology-date {
+        font-style: italic;
+        font-size: 0.8em;
+      }
+
+      .apology-fame {
+        display: flex;
+        align-items: center;
+
+        .comment-button {
+          border: none;
+          background-color: transparent;
+          color: $primaryPurple;
+          .comment-icon {
+            transition: all 0.4s;
+            
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+        .like-button {
+          border: none;
+          background-color: transparent;
+          color: $primaryPurple;
+
+          .like-icon {
+            transition: all 0.4s;
+            
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
+    }
+
+    .apology-categories {
+      margin-top: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .categories-item {
+        background-color: $primaryPurple;
+        color: #ffffff;
+        padding: 0.6em;
+        border-radius: 50px;
+        margin-bottom: 1em;
+
+      }
+    }
+
+
+    .apology-commentary {
+
+      .comments-title {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .comment {
+        
+        display: flex;
+        justify-content: space-between;
+        margin: 2% 0;
+        border: 1px solid $primaryPurple;
+        border-radius: 15px;
+        padding: 1em;
+        align-items: center;
+
+        .comment-item {
+          font-style: italic;
+          padding-right: 1em;
+          text-align: left;
+
+        }
+  
+        .comment-infos {
+          word-wrap: normal;
+
+        }
+      }
+    }
+
+  }
+
+
+}
