@@ -25,14 +25,12 @@ const apologyMiddleware = (store) => (next) => (action) => {
       const { id: idAuthor } = store.getState().user.user;
       const { slug: slugApology, id } = store.getState().apology.apologyInformation;
       const { commentary } = store.getState().apology;
-      console.log(slugApology, idAuthor, commentary);
       axios.post(`${baseURL}/api/v0/comment`, {
         content: commentary,
         apology: id,
         author: idAuthor,
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(fetchApologyInformations(slugApology));
         })
         .catch((error) => {
