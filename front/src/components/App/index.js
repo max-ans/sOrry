@@ -57,7 +57,7 @@ const App = ({ isLogged }) => {
           {isLogged ? <ApologyByCategories /> : <Redirect to="/connexion" />}
         </Route>
         <Route exact path="/excuse/:slug">
-          <Apology />
+          {isLogged ? <Apology /> : <Redirect to="/connexion" />}
         </Route>
       </Switch>
       <Footer />

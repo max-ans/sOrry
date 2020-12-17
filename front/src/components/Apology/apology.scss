@@ -134,6 +134,16 @@
         font-size: 1.2em;
       }
 
+      .form-error {
+        display: flex;
+        color: red;
+        align-items: center;
+
+        .error-description {
+          padding: 0em 0.5em;
+        }
+      }
+
       .input {
         font-style: italic;
       }

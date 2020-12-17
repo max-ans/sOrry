@@ -14,6 +14,8 @@ const mapStateToProps = (state) => ({
   isFetched: state.apology.isFetched,
   displayComments: state.apology.displayComments,
   commentary: state.apology.commentary,
+  formSuccess: state.apology.formSuccess,
+  formError: state.apology.formError,
 });
 
 // === mapDispatchToProps

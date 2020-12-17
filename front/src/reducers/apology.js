@@ -3,6 +3,8 @@ import {
   DISPLAY_COMMENTS_SECTION,
   WRITE_IN_INPUT,
   FETCH_APOLOGY_INFORMATIONS,
+  COMMENT_FORM_ERROR,
+  COMMENT_FORM_SUCCESS,
 } from 'src/actions/apology';
 
 const initialState = {
@@ -10,6 +12,8 @@ const initialState = {
   apologyInformation: {},
   displayComments: false,
   commentary: '',
+  formSuccess: false,
+  formError: false,
 };
 
 const apology = (state = initialState, action = {}) => {
@@ -36,6 +40,18 @@ const apology = (state = initialState, action = {}) => {
       return {
         ...state,
         commentary: '',
+      };
+    case COMMENT_FORM_ERROR:
+      return {
+        ...state,
+        formSuccess: false,
+        formError: true,
+      };
+    case COMMENT_FORM_SUCCESS:
+      return {
+        ...state,
+        formSuccess: true,
+        formError: false,
       };
     default: return state;
   }

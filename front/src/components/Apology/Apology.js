@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader/Loader';
-import { ThumbsUp, MessageSquare } from 'react-feather';
+import { ThumbsUp, MessageSquare, AlertOctagon } from 'react-feather';
 import Tippy from '@tippyjs/react';
 
 import Field from 'src/components/Field/Field';
@@ -20,6 +20,7 @@ const Apology = ({
   commentary,
   writeInInput,
   submitCommentForm,
+  formError,
 }) => {
   const { slug } = useParams();
 
@@ -141,6 +142,14 @@ const Apology = ({
                 <legend className="form-legend">
                   Poster un commentaire
                 </legend>
+                {formError && (
+                  <div className="form-error">
+                    <AlertOctagon />
+                    <p className="error-description">
+                      Votre commentaire doit comporter au moins 2 caractères
+                    </p>
+                  </div>
+                )}
                 <Field
                   identifier="commentary"
                   label=""
@@ -186,6 +195,7 @@ Apology.propTypes = {
   commentary: PropTypes.string.isRequired,
   writeInInput: PropTypes.func.isRequired,
   submitCommentForm: PropTypes.func.isRequired,
+  formError: PropTypes.bool.isRequired,
 };
 
 Apology.defaultProps = {

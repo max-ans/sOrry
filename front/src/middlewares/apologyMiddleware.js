@@ -5,6 +5,8 @@ import {
   fetchApologyInformations,
   saveApologyInformations,
   SUBMIT_COMMENT_FORM,
+  commentFormError,
+  commentFormSuccess,
 } from 'src/actions/apology';
 
 import { baseURL } from 'src/utils';
@@ -30,11 +32,12 @@ const apologyMiddleware = (store) => (next) => (action) => {
         apology: id,
         author: idAuthor,
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(fetchApologyInformations(slugApology));
+          store.dispatch(commentFormSuccess());
         })
-        .catch((error) => {
-          console.warn(error);
+        .catch(() => {
+          store.dispatch(commentFormError());
         });
       next(action);
       break;
