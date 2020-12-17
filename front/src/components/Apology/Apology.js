@@ -19,6 +19,7 @@ const Apology = ({
   displayCommentsSection,
   commentary,
   writeInInput,
+  submitCommentForm,
 }) => {
   const { slug } = useParams();
 
@@ -123,7 +124,14 @@ const Apology = ({
             )}
           </section>
           <section className="form-comment">
-            <form action="" className="form">
+            <form
+              action=""
+              className="form"
+              onSubmit={(evt) => {
+                evt.preventDefault();
+                submitCommentForm();
+              }}
+            >
               <fieldset className="form-fieldset">
                 <legend className="form-legend">
                   Poster un commentaire
@@ -172,6 +180,7 @@ Apology.propTypes = {
   displayCommentsSection: PropTypes.func.isRequired,
   commentary: PropTypes.string.isRequired,
   writeInInput: PropTypes.func.isRequired,
+  submitCommentForm: PropTypes.func.isRequired,
 };
 
 Apology.defaultProps = {

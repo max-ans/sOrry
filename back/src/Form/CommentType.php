@@ -24,14 +24,16 @@ class CommentType extends AbstractType
                 'apology',
                 EntityType::class,
                 [
-                    'class' => Apology::class
+                    'class' => Apology::class,
+                    'choice_label' => 'id',
                 ]
             )
             ->add(
                 'author',
                 EntityType::class,
                 [
-                    'class' => User::class
+                    'class' => User::class,
+                    'choice_label' => 'id',
                 ]
             )
         ;

@@ -2,6 +2,7 @@ import {
   SAVE_APOLOGY_INFORMATIONS,
   DISPLAY_COMMENTS_SECTION,
   WRITE_IN_INPUT,
+  FETCH_APOLOGY_INFORMATIONS,
 } from 'src/actions/apology';
 
 const initialState = {
@@ -30,6 +31,11 @@ const apology = (state = initialState, action = {}) => {
       return {
         ...state,
         commentary: action.newValue,
+      };
+    case FETCH_APOLOGY_INFORMATIONS:
+      return {
+        ...state,
+        commentary: '',
       };
     default: return state;
   }

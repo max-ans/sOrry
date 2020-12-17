@@ -5,6 +5,7 @@ import {
   fetchApologyInformations,
   displayCommentsSection,
   writeInInput,
+  submitCommentForm,
 } from 'src/actions/apology';
 
 // === mapStateToProps
@@ -25,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   writeInInput: (field, newValue) => {
     dispatch(writeInInput(field, newValue));
+  },
+  submitCommentForm: () => {
+    dispatch(submitCommentForm());
   },
 });
 
