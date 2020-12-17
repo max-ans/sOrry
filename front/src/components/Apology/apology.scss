@@ -152,6 +152,8 @@
         position: relative;
         width: 20%;
         float: right;
+        margin: 1em;
+
         transition: all 0.2s;
         &:active {
           transform: scale(0.9);
@@ -159,6 +161,58 @@
       }
     }
   }
+}
+@media screen and (min-width: 756px) {
+  .apology {
+    max-width: 912px;
+    margin: 5% 2%;
+  }
+}
 
+@media screen and (min-width: 912px) {
+  .apology {
+    max-width: 1200px;
+    margin: 5% auto;
+   
+    .apology-view {
 
+  
+      .apology-title {
+        margin-left: 1em;
+      }
+  
+      .apology-content {
+        text-align: center;
+      }
+  
+      .apology-informations {
+ 
+  
+        .apology-date {
+          margin-left: 1em;
+        }
+  
+      }
+  
+  
+      .apology-commentary {
+        
+        .comment-list{
+          display: flex;
+          .comment {
+            margin: 1%;
+            display: flex;
+            flex-direction: column;
+            
+            .comment-infos {
+              align-self: start; 
+              margin-top: 0.2em;
+              color: rgba(105, 104, 104, 0.849);
+              
+            }
+          }
+        }
+      }
+    }
+  }
 }

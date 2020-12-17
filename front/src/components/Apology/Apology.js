@@ -110,12 +110,17 @@ const Apology = ({
                     Commentaires :
                   </h3>
                   {apologyInformation.comments.map((comment) => (
-                    <div key={comment.id} className="comment">
-                      <div className="comment-item">
-                        {comment.content}
-                      </div>
-                      <div className="comment-infos">
-                        {comment.author.nickname}
+                    <div key={comment.id} className="comment-list">
+                      <div className="comment">
+                        <div className="comment-item">
+                          {comment.content}
+                        </div>
+                        <div className="comment-infos">
+                          <span className="comment-span">
+                            de :&nbsp;
+                          </span>
+                          {comment.author.nickname}
+                        </div>
                       </div>
                     </div>
                   ))}
