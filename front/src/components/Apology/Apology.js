@@ -3,13 +3,18 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader/Loader';
 import { ThumbsUp, MessageSquare } from 'react-feather';
+import Tippy from '@tippyjs/react';
 
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale.css';
 import './apology.scss';
 
 const Apology = ({
   fetchApologyInformations,
   isFetched,
   apologyInformation,
+  displayComments,
+  displayCommentsSection,
 }) => {
   const { slug } = useParams();
 
@@ -34,23 +39,54 @@ const Apology = ({
                 {apologyInformation.author.nickname} le {apologyInformation.createdAt}
               </p>
               <div className="apology-fame">
-                <button
-                  type="button"
-                  className="comment-button"
+                <Tippy
+                  className="tooltip"
+                  inertia
+                  interactive
+                  animation="scale"
+                  placement="top"
+                  duration={500}
+                  zIndex={9999}
+                  content={(
+                    <h3 className="tooltip-title">
+                      {!displayComments ? 'Afficher les commentaires' : 'Cacher les commentaires' }
+                    </h3>
+                  )}
                 >
-                  <MessageSquare
-                    className="comment-icon"
-                  />
-                </button>
-                <button
-                  type="button"
-                  className="like-button"
+                  <button
+                    type="button"
+                    className="comment-button"
+                    onClick={displayCommentsSection}
+                  >
+                    <MessageSquare
+                      className="comment-icon"
+                    />
+                  </button>
+                </Tippy>
+                <Tippy
+                  className="tooltip"
+                  inertia
+                  interactive
+                  animation="scale"
+                  placement="top"
+                  duration={500}
+                  zIndex={9999}
+                  content={(
+                    <h3 className="tooltip-title">
+                      J'aime
+                    </h3>
+                  )}
                 >
-                  <ThumbsUp
-                    className="like-icon"
-                  />
-                </button>
+                  <button
+                    type="button"
+                    className="like-button"
+                  >
+                    <ThumbsUp
+                      className="like-icon"
+                    />
+                  </button>
 
+                </Tippy>
                 {apologyInformation.likes}
               </div>
             </div>
@@ -61,22 +97,26 @@ const Apology = ({
                 </div>
               ))}
             </div>
-            <hr />
-            <div className="apology-commentary">
-              <h3 className="comments-title">
-                Commentaires :
-              </h3>
-              {apologyInformation.comments.map((comment) => (
-                <div key={comment.id} className="comment">
-                  <div className="comment-item">
-                    {comment.content}
-                  </div>
-                  <div className="comment-infos">
-                    {comment.author.nickname}
-                  </div>
+            {displayComments && (
+              <>
+                <hr />
+                <div className="apology-commentary">
+                  <h3 className="comments-title">
+                    Commentaires :
+                  </h3>
+                  {apologyInformation.comments.map((comment) => (
+                    <div key={comment.id} className="comment">
+                      <div className="comment-item">
+                        {comment.content}
+                      </div>
+                      <div className="comment-infos">
+                        {comment.author.nickname}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
           </section>
         </>
       )}
@@ -100,6 +140,8 @@ Apology.propTypes = {
       nickname: PropTypes.string,
     }),
   }),
+  displayComments: PropTypes.bool.isRequired,
+  displayCommentsSection: PropTypes.func.isRequired,
 };
 
 Apology.defaultProps = {

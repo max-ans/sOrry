@@ -1,8 +1,8 @@
 @import '../../styles/vars';
 
 .apology {
-  margin: 2% 2%;
-
+  margin: 5% 2%;
+ 
   .apology-view {
 
     background-color: #ffffff;
@@ -37,6 +37,9 @@
         display: flex;
         align-items: center;
 
+        .tooltip {
+          background-color: $primaryPurple;
+        }
         .comment-button {
           border: none;
           background-color: transparent;
@@ -49,6 +52,7 @@
             }
           }
         }
+
         .like-button {
           border: none;
           background-color: transparent;
