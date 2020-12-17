@@ -10,6 +10,7 @@
     border-radius: 15px;
     padding: 1em;
     color: $primaryPurple;
+    overflow: hidden;
 
     .apology-title {
       font-weight: bold;
@@ -115,7 +116,48 @@
         }
       }
     }
+  }
+  .form-comment {
+    margin: 5% 0;
 
+    .form-fieldset {
+
+      border: 1px solid $primaryPurple;
+      background-color: #ffffff;
+      padding: 1em;
+      border-radius: 15px;
+      position: relative;
+
+      .form-legend {
+        font-weight: bold;
+        color: $primaryPurple;
+        font-size: 1.2em;
+      }
+
+      .input {
+        font-style: italic;
+      }
+
+      .label {
+        color: $primaryPurple;
+      }
+
+      .form-submit {
+        border: none;
+        background-color: $primaryPurple;
+        color: #ffffff;
+        padding: 0.5em;
+        border-radius: 50px;
+        box-shadow: 2px 2px 2px gray;
+        position: relative;
+        width: 20%;
+        float: right;
+        transition: all 0.2s;
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
   }
 
 

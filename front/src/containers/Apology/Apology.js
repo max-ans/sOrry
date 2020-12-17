@@ -4,6 +4,7 @@ import Apology from 'src/components/Apology/Apology';
 import {
   fetchApologyInformations,
   displayCommentsSection,
+  writeInInput,
 } from 'src/actions/apology';
 
 // === mapStateToProps
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => ({
   apologyInformation: state.apology.apologyInformation,
   isFetched: state.apology.isFetched,
   displayComments: state.apology.displayComments,
+  commentary: state.apology.commentary,
 });
 
 // === mapDispatchToProps
@@ -20,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   displayCommentsSection: () => {
     dispatch(displayCommentsSection());
+  },
+  writeInInput: (field, newValue) => {
+    dispatch(writeInInput(field, newValue));
   },
 });
 

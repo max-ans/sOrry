@@ -5,6 +5,8 @@ import Loader from 'src/components/Loader/Loader';
 import { ThumbsUp, MessageSquare } from 'react-feather';
 import Tippy from '@tippyjs/react';
 
+import Field from 'src/components/Field/Field';
+
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './apology.scss';
@@ -15,6 +17,8 @@ const Apology = ({
   apologyInformation,
   displayComments,
   displayCommentsSection,
+  commentary,
+  writeInInput,
 }) => {
   const { slug } = useParams();
 
@@ -118,6 +122,30 @@ const Apology = ({
               </>
             )}
           </section>
+          <section className="form-comment">
+            <form action="" className="form">
+              <fieldset className="form-fieldset">
+                <legend className="form-legend">
+                  Poster un commentaire
+                </legend>
+                <Field
+                  identifier="commentary"
+                  label=""
+                  placeholder="Votre commentaire"
+                  value={commentary}
+                  changeField={writeInInput}
+                />
+                {(commentary.length > 0) && (
+                  <button
+                    type="submit"
+                    className="form-submit"
+                  >
+                    Poster
+                  </button>
+                )}
+              </fieldset>
+            </form>
+          </section>
         </>
       )}
     </main>
@@ -142,6 +170,8 @@ Apology.propTypes = {
   }),
   displayComments: PropTypes.bool.isRequired,
   displayCommentsSection: PropTypes.func.isRequired,
+  commentary: PropTypes.string.isRequired,
+  writeInInput: PropTypes.func.isRequired,
 };
 
 Apology.defaultProps = {
