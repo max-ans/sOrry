@@ -96,10 +96,20 @@ class Apology
      */
     private $author;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="apologiesLiked")
+     * @Groups("apologies_groups")
+     * @Groups("comment_groups")
+     * @Groups("categories_groups")
+     * @Groups("category_groups")
+     */
+    private $userWhoLiked;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->userWhoLiked = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -232,6 +242,34 @@ class Apology
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUserWhoLiked(): Collection
+    {
+        return $this->userWhoLiked;
+    }
+
+    public function addUserWhoLiked(User $userWhoLiked): self
+    {
+        if (!$this->userWhoLiked->contains($userWhoLiked)) {
+            $this->userWhoLiked[] = $userWhoLiked;
+            $userWhoLiked->addApologiesLiked($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserWhoLiked(User $userWhoLiked): self
+    {
+        if ($this->userWhoLiked->contains($userWhoLiked)) {
+            $this->userWhoLiked->removeElement($userWhoLiked);
+            $userWhoLiked->removeApologiesLiked($this);
+        }
 
         return $this;
     }
