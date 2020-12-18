@@ -8,6 +8,7 @@ import contactReducer from 'src/reducers/contact';
 import apologyCreateReducer from 'src/reducers/apologyCreate';
 import categoriesReducer from 'src/reducers/categories';
 import apologyByCategoriesReducer from 'src/reducers/apologyByCategories';
+import apologyReducer from 'src/reducers/apology';
 
 const mainReducer = combineReducers({
   header: headerReducer,
@@ -19,6 +20,7 @@ const mainReducer = combineReducers({
   apologyCreate: apologyCreateReducer,
   categories: categoriesReducer,
   apologyByCategories: apologyByCategoriesReducer,
+  apology: apologyReducer,
 });
 
 export default mainReducer;

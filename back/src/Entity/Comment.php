@@ -18,6 +18,8 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("user_groups")
+     * @Groups("apologies_groups")
+     * @Groups("apology_groups")
      * @Groups("comment_groups")
      */
     private $id;

@@ -1,0 +1,228 @@
+@import '../../styles/vars';
+
+.apology {
+  margin: 5% 2%;
+ 
+  .apology-view {
+
+    background-color: #ffffff;
+    border: 1px solid $primaryPurple;
+    border-radius: 15px;
+    padding: 1em;
+    color: $primaryPurple;
+    overflow: hidden;
+
+    .apology-title {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .apology-content {
+      font-style: italic;
+      text-align: justify;
+      padding: 0.5em;
+      line-height: 1.1em;
+    }
+
+    .apology-informations {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .apology-date {
+        font-style: italic;
+        font-size: 0.8em;
+      }
+
+      .apology-fame {
+        display: flex;
+        align-items: center;
+
+        .tooltip {
+          background-color: $primaryPurple;
+        }
+        .comment-button {
+          border: none;
+          background-color: transparent;
+          color: $primaryPurple;
+          .comment-icon {
+            transition: all 0.4s;
+            
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+
+        .like-button {
+          border: none;
+          background-color: transparent;
+          color: $primaryPurple;
+
+          .like-icon {
+            transition: all 0.4s;
+            
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
+    }
+
+    .apology-categories {
+      margin-top: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      .categories-item {
+        background-color: $primaryPurple;
+        color: #ffffff;
+        padding: 0.6em;
+        border-radius: 50px;
+        margin-bottom: 1em;
+
+      }
+    }
+
+
+    .apology-commentary {
+
+      .comments-title {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .comment {
+        
+        display: flex;
+        justify-content: space-between;
+        margin: 2% 0;
+        border: 1px solid $primaryPurple;
+        border-radius: 15px;
+        padding: 1em;
+        align-items: center;
+
+        .comment-item {
+          font-style: italic;
+          padding-right: 1em;
+          text-align: left;
+
+        }
+  
+        .comment-infos {
+          word-wrap: normal;
+
+        }
+      }
+    }
+  }
+  .form-comment {
+    margin: 5% 0;
+
+    .form-fieldset {
+
+      border: 1px solid $primaryPurple;
+      background-color: #ffffff;
+      padding: 1em;
+      border-radius: 15px;
+      position: relative;
+
+      .form-legend {
+        font-weight: bold;
+        color: $primaryPurple;
+        font-size: 1.2em;
+      }
+
+      .form-error {
+        display: flex;
+        color: red;
+        align-items: center;
+
+        .error-description {
+          padding: 0em 0.5em;
+        }
+      }
+
+      .input {
+        font-style: italic;
+      }
+
+      .label {
+        color: $primaryPurple;
+      }
+
+      .form-submit {
+        border: none;
+        background-color: $primaryPurple;
+        color: #ffffff;
+        padding: 0.5em;
+        border-radius: 50px;
+        box-shadow: 2px 2px 2px gray;
+        position: relative;
+        width: 20%;
+        float: right;
+        margin: 1em;
+
+        transition: all 0.2s;
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 756px) {
+  .apology {
+    max-width: 912px;
+    margin: 5% 2%;
+  }
+}
+
+@media screen and (min-width: 912px) {
+  .apology {
+    max-width: 1200px;
+    margin: 5% auto;
+   
+    .apology-view {
+
+  
+      .apology-title {
+        margin-left: 1em;
+      }
+  
+      .apology-content {
+        text-align: center;
+      }
+  
+      .apology-informations {
+ 
+  
+        .apology-date {
+          margin-left: 1em;
+        }
+  
+      }
+  
+  
+      .apology-commentary {
+        
+        .comment-list{
+          display: flex;
+          .comment {
+            margin: 1%;
+            display: flex;
+            flex-direction: column;
+            
+            .comment-infos {
+              align-self: start; 
+              margin-top: 0.2em;
+              color: rgba(105, 104, 104, 0.849);
+              
+            }
+          }
+        }
+      }
+    }
+  }
+}
