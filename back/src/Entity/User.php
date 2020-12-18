@@ -112,10 +112,17 @@ class User implements UserInterface
      */
     private $apiToken;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Apology::class, inversedBy="userWhoLiked")
+     * @Groups("user_groups")
+     */
+    private $apologiesLiked;
+
     public function __construct()
     {
         $this->apologies = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->apologiesLiked = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -302,6 +309,32 @@ class User implements UserInterface
     public function setApiToken(?string $apiToken): self
     {
         $this->apiToken = $apiToken;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Apology[]
+     */
+    public function getApologiesLiked(): Collection
+    {
+        return $this->apologiesLiked;
+    }
+
+    public function addApologiesLiked(Apology $apologiesLiked): self
+    {
+        if (!$this->apologiesLiked->contains($apologiesLiked)) {
+            $this->apologiesLiked[] = $apologiesLiked;
+        }
+
+        return $this;
+    }
+
+    public function removeApologiesLiked(Apology $apologiesLiked): self
+    {
+        if ($this->apologiesLiked->contains($apologiesLiked)) {
+            $this->apologiesLiked->removeElement($apologiesLiked);
+        }
 
         return $this;
     }

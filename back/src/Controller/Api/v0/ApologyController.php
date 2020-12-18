@@ -104,21 +104,6 @@ class ApologyController extends AbstractController
     }
 
     /**
-     * @Route("/api/v0/apologies/{slug}" , name="api_v0_apologies_find" , methods={"GET"})
-     */
-    public function find (Apology $apology, ApologyRepository $apologyRepository, ObjectNormalizer $normalizer)
-    {
-        $desiredApology = $apologyRepository->findBySlug($apology->getSlug());
-
-        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
-
-        $normalizedApology = $serializer->normalize($desiredApology, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']);
-        return $this->json([
-            $normalizedApology,
-        ]);
-    }
-
-    /**
      * @Route("/api/v0/apologies/count" , name="api_v0_apologies_count", methods={"GET"})
      */
     public function count (ApologyRepository $apologyRepository) 
@@ -131,6 +116,89 @@ class ApologyController extends AbstractController
              'allApologiesNumber' => $countApologies,
          ]);
 
+    }
+
+    /**
+     * @Route("/api/v0/apologies/{slug}/like" , name="api_v0_apologies_like" , methods={"POST"})
+     */
+    public function likeApologie (Apology $apology, Request $request, UserRepository $userRepository, ObjectNormalizer $normalizer)
+    {
+       
+        $dataSent = json_decode($request->getContent(), true);
+       
+        $userId = $dataSent['userId'];
+        
+        $user = $userRepository->find($userId);
+        if ($user) {
+            
+            $apology->addUserWhoLiked($user);
+            $apology->setLikes($apology->getLikes() + 1);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($apology);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $apologyNormalized = $serializer->normalize($apology, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']);
+
+            return $this->json([
+                $apologyNormalized,
+            ]);
+        }
+
+        return $this->json([
+            "message" => "Bad Request"
+        ], 400);  
+    }
+
+    /**
+     * @Route("/api/v0/apologies/{slug}/unlike" , name="api_v0_apologies_unlike" , methods={"POST"})
+     */
+    public function unlikeApologie (Apology $apology, Request $request, UserRepository $userRepository, ObjectNormalizer $normalizer)
+    {
+       
+        $dataSent = json_decode($request->getContent(), true);
+       
+        $userId = $dataSent['userId'];
+        
+        $user = $userRepository->find($userId);
+        if ($user) {
+            
+            $apology->removeUserWhoLiked($user);
+            $apology->setLikes($apology->getLikes() - 1);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($apology);
+            $em->flush();
+
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $apologyNormalized = $serializer->normalize($apology, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']);
+
+            return $this->json([
+                $apologyNormalized,
+            ]);
+        }
+
+        return $this->json([
+            "message" => "Bad Request"
+        ], 400);  
+    }
+
+    /**
+     * @Route("/api/v0/apologies/{slug}" , name="api_v0_apologies_find" , methods={"GET"})
+     */
+    public function find (Apology $apology, ApologyRepository $apologyRepository, ObjectNormalizer $normalizer)
+    {
+        $desiredApology = $apologyRepository->findBySlug($apology->getSlug());
+
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedApology = $serializer->normalize($desiredApology, null, ['groups' => 'apologies_groups', DateTimeNormalizer::FORMAT_KEY => 'd-M-Y']);
+        return $this->json([
+            $normalizedApology,
+        ]);
     }
 
     /**
