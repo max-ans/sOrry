@@ -5,6 +5,8 @@ export const WRITE_IN_INPUT = 'WRITE_IN_INPUT';
 export const SUBMIT_COMMENT_FORM = 'SUBMIT_COMMENT_FORM';
 export const COMMENT_FORM_ERROR = 'COMMENT_FORM_ERROR';
 export const COMMENT_FORM_SUCCESS = 'COMMENT_FORM_SUCCESS';
+export const LIKE_CURRENT_APOLOGY = 'LIKE_CURRENT_APOLOGY';
+export const UNLIKE_CURRENT_APOLOGY = 'UNLIKE_CURRENT_APOLOGY';
 
 export const fetchApologyInformations = (slug) => ({
   type: FETCH_APOLOGY_INFORMATIONS,
@@ -36,4 +38,12 @@ export const commentFormError = () => ({
 
 export const commentFormSuccess = () => ({
   type: COMMENT_FORM_SUCCESS,
+});
+
+export const likeCurrentApology = () => ({
+  type: LIKE_CURRENT_APOLOGY,
+});
+
+export const unlikeCurrentApology = () => ({
+  type: UNLIKE_CURRENT_APOLOGY,
 });

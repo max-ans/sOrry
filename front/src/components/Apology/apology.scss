@@ -65,6 +65,10 @@
             &:hover {
               transform: scale(1.2);
             }
+
+            &.unliked {
+             transform: rotate(-180deg);
+            }
           }
         }
       }

@@ -21,12 +21,15 @@ const Apology = ({
   writeInInput,
   submitCommentForm,
   formError,
+  actualUser,
+  likeCurrentApology,
+  unlikeCurrentApology,
 }) => {
   const { slug } = useParams();
 
   useEffect(() => {
     fetchApologyInformations(slug);
-  }, [slug]);
+  }, []);
 
   return (
     <main className="apology">
@@ -69,6 +72,40 @@ const Apology = ({
                     />
                   </button>
                 </Tippy>
+                {/* if the apology is in array of liked Apology of current user */}
+                {(apologyInformation.userWhoLiked.find((elt) => (
+                  elt.nickname === actualUser.nickname
+                ))) && (
+                <Tippy
+                  className="tooltip"
+                  inertia
+                  interactive
+                  animation="scale"
+                  placement="top"
+                  duration={500}
+                  zIndex={9999}
+                  content={(
+                    <h3 className="tooltip-title">
+                      Je n'aime plus
+                    </h3>
+                  )}
+                >
+                  <button
+                    type="button"
+                    className="like-button"
+                    onClick={unlikeCurrentApology}
+                  >
+                    <ThumbsUp
+                      className="like-icon unliked"
+                    />
+                  </button>
+
+                </Tippy>
+                )}
+                {/* else */}
+                {!(apologyInformation.userWhoLiked.find((elt) => (
+                  elt.nickname === actualUser.nickname
+                ))) && (
                 <Tippy
                   className="tooltip"
                   inertia
@@ -86,6 +123,7 @@ const Apology = ({
                   <button
                     type="button"
                     className="like-button"
+                    onClick={likeCurrentApology}
                   >
                     <ThumbsUp
                       className="like-icon"
@@ -93,6 +131,7 @@ const Apology = ({
                   </button>
 
                 </Tippy>
+                )}
                 {apologyInformation.likes}
               </div>
             </div>
@@ -189,6 +228,11 @@ Apology.propTypes = {
     author: PropTypes.shape({
       nickname: PropTypes.string,
     }),
+    userWhoLiked: PropTypes.arrayOf(
+      PropTypes.shape({
+        nickname: PropTypes.string,
+      }),
+    ),
   }),
   displayComments: PropTypes.bool.isRequired,
   displayCommentsSection: PropTypes.func.isRequired,
@@ -196,6 +240,18 @@ Apology.propTypes = {
   writeInInput: PropTypes.func.isRequired,
   submitCommentForm: PropTypes.func.isRequired,
   formError: PropTypes.bool.isRequired,
+  actualUser: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nickname: PropTypes.string.isRequired,
+    apologiesLiked: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        slug: PropTypes.string.isRequired,
+      }).isRequired,
+    ).isRequired,
+  }).isRequired,
+  likeCurrentApology: PropTypes.func.isRequired,
+  unlikeCurrentApology: PropTypes.func.isRequired,
 };
 
 Apology.defaultProps = {
