@@ -6,6 +6,8 @@ import {
   displayCommentsSection,
   writeInInput,
   submitCommentForm,
+  likeCurrentApology,
+  unlikeCurrentApology,
 } from 'src/actions/apology';
 
 // === mapStateToProps
@@ -16,6 +18,7 @@ const mapStateToProps = (state) => ({
   commentary: state.apology.commentary,
   formSuccess: state.apology.formSuccess,
   formError: state.apology.formError,
+  actualUser: state.user.user,
 });
 
 // === mapDispatchToProps
@@ -31,6 +34,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitCommentForm: () => {
     dispatch(submitCommentForm());
+  },
+  likeCurrentApology: () => {
+    dispatch(likeCurrentApology());
+  },
+  unlikeCurrentApology: () => {
+    dispatch(unlikeCurrentApology());
   },
 });
 

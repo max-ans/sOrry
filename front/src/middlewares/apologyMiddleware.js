@@ -7,6 +7,8 @@ import {
   SUBMIT_COMMENT_FORM,
   commentFormError,
   commentFormSuccess,
+  LIKE_CURRENT_APOLOGY,
+  UNLIKE_CURRENT_APOLOGY,
 } from 'src/actions/apology';
 
 import { baseURL } from 'src/utils';
@@ -38,6 +40,37 @@ const apologyMiddleware = (store) => (next) => (action) => {
         })
         .catch(() => {
           store.dispatch(commentFormError());
+        });
+      next(action);
+      break;
+    }
+    case LIKE_CURRENT_APOLOGY: {
+      const { id } = store.getState().user.user;
+      const { slug } = store.getState().apology.apologyInformation;
+      axios.post(`${baseURL}/api/v0/apologies/${slug}/like`, {
+        userId: id,
+      })
+        .then((response) => {
+          store.dispatch(fetchApologyInformations(response.data[0].slug));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+    }
+
+    case UNLIKE_CURRENT_APOLOGY: {
+      const { id } = store.getState().user.user;
+      const { slug } = store.getState().apology.apologyInformation;
+      axios.post(`${baseURL}/api/v0/apologies/${slug}/unlike`, {
+        userId: id,
+      })
+        .then((response) => {
+          store.dispatch(fetchApologyInformations(response.data[0].slug));
+        })
+        .catch((error) => {
+          console.warn(error);
         });
       next(action);
       break;
