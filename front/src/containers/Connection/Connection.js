@@ -6,6 +6,7 @@ import {
   setRememberMe,
   sendLoginForm,
   resetRedirect,
+  seePassword,
 } from 'src/actions/connection';
 
 import { closeHeaderMenu } from 'src/actions/header';
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => ({
   password: state.connection.password,
   rememberMe: state.connection.rememberMe,
   loginError: state.connection.loginError,
+  seePasswordStatus: state.connection.seePasswordStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,6 +34,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetRedirect: () => {
     dispatch(resetRedirect());
+  },
+  seePassword: () => {
+    dispatch(seePassword());
   },
 });
 

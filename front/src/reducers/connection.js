@@ -4,6 +4,7 @@ import {
   SAVE_USER,
   CREDENTIALS_LOGIN_ERROR,
   DISCONNECT_CURRENT_USER,
+  SEE_PASSWORD_CONNECTION,
 } from 'src/actions/connection';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   rememberMe: false,
   isLogged: false,
   loginError: false,
+  seePasswordStatus: false,
 };
 
 const connection = (state = initialState, action = {}) => {
@@ -44,6 +46,11 @@ const connection = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
+      };
+    case SEE_PASSWORD_CONNECTION:
+      return {
+        ...state,
+        seePasswordStatus: !state.seePasswordStatus,
       };
     default:
       return state;

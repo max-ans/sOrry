@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { AlertOctagon } from 'react-feather';
+import { AlertOctagon, Eye, EyeOff } from 'react-feather';
 import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 
@@ -18,6 +19,8 @@ const Connection = ({
   sendLoginForm,
   closeHeaderMenu,
   resetRedirect,
+  seePasswordStatus,
+  seePassword,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -77,9 +80,12 @@ const Connection = ({
           <label
             htmlFor="password"
             className="connection-form-label"
-          > Mot de passe
+          >
+            <span className="eye-icon">
+              Mot de passe  {seePasswordStatus ? <Eye size={25} onClick={seePassword} /> : <EyeOff size={25} onClick={seePassword} /> }
+            </span>
             <input
-              type="password"
+              type={seePasswordStatus ? 'text' : 'password'}
               name="password"
               id="password"
               value={password}
@@ -127,6 +133,8 @@ Connection.propTypes = {
   loginError: PropTypes.bool.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
   resetRedirect: PropTypes.func.isRequired,
+  seePasswordStatus: PropTypes.bool.isRequired,
+  seePassword: PropTypes.func.isRequired,
 };
 
 export default Connection;

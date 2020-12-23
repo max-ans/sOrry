@@ -51,6 +51,11 @@
           background-color: $primaryPurple;
           
         }
+        .eye-icon {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
 
 
         &.checkbox {

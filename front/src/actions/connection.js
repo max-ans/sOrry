@@ -5,6 +5,7 @@ export const SAVE_USER = 'SAVE_USER';
 export const CREDENTIALS_LOGIN_ERROR = 'CREDENTIALS_LOGIN_ERROR';
 export const RESET_REDIRECT = 'RESET_REDIRECT';
 export const DISCONNECT_CURRENT_USER = 'DISCONNECT_CURRENT_USER';
+export const SEE_PASSWORD_CONNECTION = 'SEE_PASSWORD_CONNECTION';
 
 export const updateConnectionInput = (newValue, field) => ({
   type: UPDATE_CONNECTION_INPUT,
@@ -35,4 +36,8 @@ export const resetRedirect = () => ({
 
 export const disconnectCurrentUser = () => ({
   type: DISCONNECT_CURRENT_USER,
+});
+
+export const seePassword = () => ({
+  type: SEE_PASSWORD_CONNECTION,
 });
