@@ -5,6 +5,7 @@ import Registration from 'src/components/Registration/Registration';
 import {
   changeInputValue,
   submitRegistrationForm,
+  seePassword,
 } from 'src/actions/registration';
 
 const mapStateToProps = (state) => ({
@@ -16,6 +17,7 @@ const mapStateToProps = (state) => ({
   registrationError: state.registration.registrationError,
   emptyField: state.registration.emptyField,
   redirect: state.registration.redirect,
+  seePasswordStatus: state.registration.seePasswordStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitForm: () => {
     dispatch(submitRegistrationForm());
+  },
+  seePassword: () => {
+    dispatch(seePassword());
   },
 
 });

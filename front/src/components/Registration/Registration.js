@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field/Field';
-import { AlertOctagon, HelpCircle } from 'react-feather';
+import {
+  AlertOctagon,
+  HelpCircle,
+} from 'react-feather';
 
 import { Link, Redirect } from 'react-router-dom';
 
 import './registration.scss';
+import { seePassword } from '../../actions/registration';
 
 const Registration = ({
   email,
@@ -18,6 +22,8 @@ const Registration = ({
   registrationError,
   emptyField,
   redirect,
+  seePasswordStatus,
+  seePassword,
 }) => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
@@ -77,6 +83,8 @@ const Registration = ({
             label="Mot de passe"
             value={password}
             changeField={changeInputValue}
+            see={seePasswordStatus}
+            seeAction={seePassword}
           />
           <Field
             className="registration-form-field"
@@ -119,6 +127,8 @@ Registration.propTypes = {
   submitForm: PropTypes.func.isRequired,
   emptyField: PropTypes.bool.isRequired,
   redirect: PropTypes.bool.isRequired,
+  seePasswordStatus: PropTypes.bool.isRequired,
+  seePassword: PropTypes.func.isRequired,
 };
 
 export default Registration;

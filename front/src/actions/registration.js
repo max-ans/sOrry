@@ -4,6 +4,7 @@ export const REGISTRATION_FORM_ERROR = 'REGISTRATION_FORM_ERROR';
 export const REGISTRATION_FORM_SUCCESS = 'REGISTRATION_FORM_SUCCESS';
 export const REGISTRATION_FORM_FIELD_ERROR = 'REGISTRATION_FORM_FIELD_ERROR';
 export const RESET_FORM_ERRORS = 'RESET_FORM_ERRORS';
+export const SEE_PASSWORD = 'SEE_PASSWORD';
 
 export const changeInputValue = (field, value) => ({
   type: CHANGE_INPUT_VALUE,
@@ -29,4 +30,8 @@ export const registrationFormFieldError = () => ({
 
 export const resetFormErrors = () => ({
   type: RESET_FORM_ERRORS,
+});
+
+export const seePassword = () => ({
+  type: SEE_PASSWORD,
 });

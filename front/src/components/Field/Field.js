@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Eye, EyeOff } from 'react-feather';
 import './field.scss';
 
 /**
@@ -13,6 +14,8 @@ const Field = ({
   type,
   value,
   changeField,
+  see,
+  seeAction,
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
@@ -21,21 +24,44 @@ const Field = ({
 
   return (
     <div className="field">
-      <input
-        className="input"
-        id={identifier}
-        placeholder={placeholder}
-        name={identifier}
-        type={type}
-        value={value}
-        onChange={handleChange}
-      />
-      <label
-        className="label"
-        htmlFor={identifier}
-      >
-        {label}
-      </label>
+      {!(type === 'password') && (
+        <>
+          <input
+            className="input"
+            id={identifier}
+            placeholder={placeholder}
+            name={identifier}
+            type={type}
+            value={value}
+            onChange={handleChange}
+          />
+          <label
+            className="label"
+            htmlFor={identifier}
+          >
+            {label}
+          </label>
+        </>
+      )}
+      {(type === 'password') && (
+        <>
+          <input
+            className="input"
+            id={identifier}
+            placeholder={placeholder}
+            name={identifier}
+            type={see ? 'text' : 'password'}
+            value={value}
+            onChange={handleChange}
+          />
+          <label
+            className="label"
+            htmlFor={identifier}
+          >
+            {label}{see ? <Eye size={25} onClick={seeAction} /> : <EyeOff size={25} onClick={seeAction} />}
+          </label>
+        </>
+      )}
     </div>
   );
 };
@@ -56,12 +82,16 @@ Field.propTypes = {
    * - new value
    */
   changeField: PropTypes.func.isRequired,
+  see: PropTypes.bool,
+  seeAction: PropTypes.func,
 };
 
 Field.defaultProps = {
   type: 'text',
   value: '',
   placeholder: '',
+  see: false,
+  seeAction: undefined,
 };
 
 export default Field;

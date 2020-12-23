@@ -4,6 +4,7 @@ import {
   REGISTRATION_FORM_SUCCESS,
   REGISTRATION_FORM_FIELD_ERROR,
   RESET_FORM_ERRORS,
+  SEE_PASSWORD,
 } from 'src/actions/registration';
 
 import { RESET_REDIRECT } from 'src/actions/connection';
@@ -17,6 +18,7 @@ const initialState = {
   registrationError: false,
   emptyField: false,
   redirect: false,
+  seePasswordStatus: false,
 };
 
 const registration = (state = initialState, action = {}) => {
@@ -61,6 +63,11 @@ const registration = (state = initialState, action = {}) => {
       return {
         ...state,
         redirect: false,
+      };
+    case SEE_PASSWORD:
+      return {
+        ...state,
+        seePasswordStatus: !state.seePasswordStatus,
       };
     default:
       return state;
