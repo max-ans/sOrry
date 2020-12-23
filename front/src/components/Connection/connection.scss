@@ -47,6 +47,11 @@
         padding: 0.5em;
         font-weight: bold;
 
+        .tooltip {
+          background-color: $primaryPurple;
+          
+        }
+
 
         &.checkbox {
           display: flex;
@@ -80,6 +85,7 @@
       .connection-form-button {
         line-height: 2em;
         margin-top: 5%;
+        width: 100%;
         color: #ffffff;
         background-color: $primaryPurple;
         border: 1px solid $primaryPurple;
@@ -158,62 +164,6 @@
             display: none;
           }
           
-          &:hover {
-            .connection-form-input-info {
-              display: block;
-              position: absolute;
-              color: #ffffff;
-              background-color: $primaryPurple;
-              padding: 1em;
-              border-radius: 10px;
-              font-weight: normal;
-  
-              &.login {
-                top: 15%;
-                right: 0;
-                &::before {
-                  content: "";
-                  display : inline-block;
-                  height : 0;
-                  width : 0;
-                  border-top : 15px solid $primaryPurple;
-                  border-right : 15px solid transparent;
-                  position: relative;
-                  bottom: -2em;
-                }
-                
-              }
-              
-              &.password {
-               
-                right: -50px;
-                top: 55%;
-                &::before {
-                  content: "";
-                  display : inline-block;
-                  height : 0;
-                  width : 0;
-                  border-right : 20px solid transparent;
-                  border-bottom : 20px solid $primaryPurple;
-                  position: relative;
-                  top: -2.2em;
-                  left: 20%;
-                }
-              }
-  
-              .info-list {
-                
-                .info-list-item {
-                  text-decoration: none;
-                  text-align: start;
-                  &::before {
-                    content: "- ";
-                  }
-                }
-              }
-              
-            }
-          }
         }
       }
     }

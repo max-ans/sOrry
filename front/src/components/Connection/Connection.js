@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AlertOctagon } from 'react-feather';
 import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
 
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale-extreme.css';
 import './connection.scss';
 
 const Connection = ({
@@ -45,20 +48,31 @@ const Connection = ({
             className="connection-form-label"
             htmlFor="nickname"
           > Identifiant
-            <input
-              type="text"
-              name="nickname"
-              id="nickname"
-              value={login}
-              onChange={(evt) => {
-                updateConnectionInput(evt.target.value, 'login');
-              }}
-              required
-              className="connection-form-input "
-            />
-            <span className="connection-form-input-info login">
-              Adresse e-mail
-            </span>
+            <Tippy
+              className="tooltip"
+              interactive
+              animation="scale-extreme"
+              inertia
+              trigger="click"
+              placement="top-end"
+              duration={500}
+              zIndex={9999}
+              content="votre adresse e-mail"
+              arrow="false"
+            >
+              <input
+                type="text"
+                name="nickname"
+                id="nickname"
+                value={login}
+                onChange={(evt) => {
+                  updateConnectionInput(evt.target.value, 'login');
+                }}
+                required
+                className="connection-form-input "
+              />
+            </Tippy>
+
           </label>
           <label
             htmlFor="password"
@@ -75,16 +89,6 @@ const Connection = ({
               required
               className="connection-form-input "
             />
-            <span className="connection-form-input-info password">
-              Votre mot de passe doit respecter ce format:
-              <ul className="info-list">
-                <li className="info-list-item">Une lettre majuscule</li>
-                <li className="info-list-item">Une lettre minuscule</li>
-                <li className="info-list-item">Un chiffre</li>
-                <li className="info-list-item">Un caractère spécial</li>
-                <li className="info-list-item">Entre 8 et 16 caractères</li>
-              </ul>
-            </span>
           </label>
           <label
             htmlFor="checkbox"
