@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
@@ -39,15 +40,19 @@ const Carousel = ({
         >
           {bestApologies.map((bestApologie) => (
             <div key={bestApologie.id} className="carousel-item">
-              <h2 className="carousel-item-title">
-                {bestApologie.title}
-              </h2>
-              <div className="carousel-item-content">
-                &ldquo; {bestApologie.content} &bdquo;
-              </div>
-              <small className="carousel-item-small">
-                {bestApologie.author.nickname}, le {bestApologie.createdAt}
-              </small>
+              <Link
+                to={`excuse/${bestApologie.slug}`}
+              >
+                <h2 className="carousel-item-title">
+                  {bestApologie.title}
+                </h2>
+                <div className="carousel-item-content">
+                  &ldquo; {bestApologie.content} &bdquo;
+                </div>
+                <small className="carousel-item-small">
+                  {bestApologie.author.nickname}, le {bestApologie.createdAt}
+                </small>
+              </Link>
             </div>
           ))}
         </Slider>
