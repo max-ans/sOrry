@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader/Loader';
 import { ThumbsUp, MessageSquare, AlertOctagon } from 'react-feather';
@@ -138,7 +138,11 @@ const Apology = ({
             <div className="apology-categories">
               {apologyInformation.categories.map((categorie) => (
                 <div key={categorie.title} className="categories-item">
-                  {categorie.title}
+                  <Link
+                    to={`/categories/${categorie.slug}`}
+                  >
+                    {categorie.title}
+                  </Link>
                 </div>
               ))}
             </div>

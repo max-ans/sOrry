@@ -39,6 +39,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups("apologies_groups")
      * @Groups("categories_groups")
      * @Groups("category_groups")
      */
