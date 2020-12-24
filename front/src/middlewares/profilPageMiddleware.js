@@ -4,6 +4,8 @@ import {
   SEND_USER_FORM,
   formFailure,
   formSucces,
+  FETCH_USER_APOLOGIES,
+  saveUserApologies,
 } from 'src/actions/profilPage';
 import {
   saveUser,
@@ -36,6 +38,19 @@ const profilPageMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
           store.dispatch(formFailure());
+        });
+      next(action);
+      break;
+    }
+    case FETCH_USER_APOLOGIES: {
+      const { id } = store.getState().user.user;
+      axios.get(`${baseURL}/api/v0/user/${id}`)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveUserApologies(response.data[0]));
+        })
+        .catch((error) => {
+          console.warn(error);
         });
       next(action);
       break;

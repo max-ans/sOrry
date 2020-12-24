@@ -8,6 +8,7 @@ import {
   FORM_FAILURE,
   FORM_SUCCES,
   INPUT_FORMAT_WRONG,
+  SAVE_USER_APOLOGIES,
 } from 'src/actions/profilPage';
 import {
   SAVE_CREATED_APOLOGY,
@@ -87,6 +88,11 @@ const profilPage = (state = initialState, action = {}) => {
           ...state.user,
           [action.key]: [...state.user.apologies, action.newApology],
         },
+      };
+    case SAVE_USER_APOLOGIES:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;

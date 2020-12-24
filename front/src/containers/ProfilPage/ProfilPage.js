@@ -5,6 +5,7 @@ import {
   updatePasswordInput,
   inputFormatWrong,
   resetRedirect,
+  fetchUserApologies,
 } from 'src/actions/profilPage';
 
 import {
@@ -44,6 +45,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetRedirect: () => {
     dispatch(resetRedirect());
+  },
+  fetchUserApologies: () => {
+    dispatch(fetchUserApologies());
   },
 });
 

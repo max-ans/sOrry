@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThumbsUp, AlertOctagon, PlusCircle } from 'react-feather';
 import className from 'classnames';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 
 import { validateEmailFormat, validatePasswordFormat } from 'src/utils';
@@ -29,16 +29,17 @@ const ProfilPage = ({
   inputFormatWrong,
   closeHeaderMenu,
   resetRedirect,
+  fetchUserApologies,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
     sendUserForm();
   };
   useEffect(() => {
+    fetchUserApologies();
     closeHeaderMenu();
     resetRedirect();
-  });
-  const { slug } = useParams();
+  }, []);
   return (
     <section className="profilPage">
       <div className="profil-left">
@@ -249,6 +250,7 @@ ProfilPage.propTypes = {
   inputFormatWrong: PropTypes.func.isRequired,
   closeHeaderMenu: PropTypes.func.isRequired,
   resetRedirect: PropTypes.func.isRequired,
+  fetchUserApologies: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;
