@@ -15,12 +15,14 @@
     .apology-title {
       font-weight: bold;
       font-size: 1.2em;
+      text-align: center;
+      padding-bottom: 1em; 
     }
 
     .apology-content {
       font-style: italic;
       text-align: justify;
-      padding: 0.5em;
+      padding: 0.5em 0.5em 1.5em 0.5em;
       line-height: 1.1em;
     }
 
@@ -150,6 +152,7 @@
 
       .input {
         font-style: italic;
+        height: 10vh;
       }
 
       .label {

@@ -38,7 +38,7 @@ const Apology = ({
         <>
           <section className="apology-view">
             <h3 className="apology-title">
-              {apologyInformation.title}
+              {apologyInformation.title.toUpperCase()}
             </h3>
             <p className="apology-content">
               {apologyInformation.content}
@@ -196,14 +196,13 @@ const Apology = ({
                   value={commentary}
                   changeField={writeInInput}
                 />
-                {(commentary.length > 0) && (
-                  <button
-                    type="submit"
-                    className="form-submit"
-                  >
-                    Poster
-                  </button>
-                )}
+                <button
+                  type="submit"
+                  className="form-submit"
+                >
+                  Poster
+                </button>
+
               </fieldset>
             </form>
           </section>
