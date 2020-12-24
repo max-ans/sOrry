@@ -1,5 +1,5 @@
 @import 'reset';
-@import 'vars';
+@import '_vars';
 
 @font-face {
   font-family: 'Bubble';
@@ -22,6 +22,14 @@ body {
   background: url('../assets/images/banana_backgroundJPEG.jpeg');
   background-size: contain;
   font-family: 'Lato', sans-serif;
+  
+  
+  &::-webkit-scrollbar {
+    width: 0px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  
   
 }
 
