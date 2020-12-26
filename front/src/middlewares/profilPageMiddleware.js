@@ -46,7 +46,6 @@ const profilPageMiddleware = (store) => (next) => (action) => {
       const { id } = store.getState().user.user;
       axios.get(`${baseURL}/api/v0/user/${id}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveUserApologies(response.data[0]));
         })
         .catch((error) => {
