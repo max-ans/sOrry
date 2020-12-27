@@ -2,6 +2,8 @@
 .footer {
   background-color:#78317bf3;;
   color: #ffffff;
+  position: relative;
+  bottom: -100px;
   
   .footer-flex{
     display: flex;
@@ -146,5 +148,12 @@
       color: rgba(128, 128, 128, 0.747);
     }
   
+  }
+}
+
+@media screen and (min-width: 1315px) {
+  .footer {
+    position: relative;
+    bottom: 0px;
   }
 }
