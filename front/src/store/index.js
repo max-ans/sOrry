@@ -9,6 +9,7 @@ import apologyCreateMiddleware from 'src/middlewares/apologyCreateMiddleware';
 import categoriesMiddleware from 'src/middlewares/categoriesMiddleware';
 import apologyByCategoriesMiddleware from 'src/middlewares/apologyByCategoriesMiddleware';
 import apologyMiddleware from 'src/middlewares/apologyMiddleware';
+import apologyEditMiddleware from 'src/middlewares/apologyEditMiddleware';
 import reducer from 'src/reducers';
 
 const enhancers = composeWithDevTools(
@@ -22,6 +23,7 @@ const enhancers = composeWithDevTools(
     categoriesMiddleware,
     apologyByCategoriesMiddleware,
     apologyMiddleware,
+    apologyEditMiddleware,
   ),
 );
 

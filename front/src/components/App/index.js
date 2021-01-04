@@ -16,6 +16,7 @@ import ApologyCreate from 'src/containers/ApologyCreate/ApologyCreate';
 import Categories from 'src/containers/Categories/Categories';
 import ApologyByCategories from 'src/containers/ApologyByCategories/ApologyByCategories';
 import Apology from 'src/containers/Apology/Apology';
+import ApologyEdit from 'src/containers/ApologyEdit/ApologyEdit';
 
 // == Import
 import './styles.scss';
@@ -58,6 +59,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/excuse/:slug">
           {isLogged ? <Apology /> : <Redirect to="/connexion" />}
+        </Route>
+        <Route exact path="/excuse/edition/:slug">
+          {isLogged ? <ApologyEdit /> : <Redirect to="/connexion" />}
         </Route>
       </Switch>
       <Footer />

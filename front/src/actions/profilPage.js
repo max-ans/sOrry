@@ -7,6 +7,7 @@ export const INPUT_FORMAT_WRONG = 'INPUT_FORMAT_WRONG';
 export const RESET_REDIRECT = 'RESET_REDIRECT';
 export const FETCH_USER_APOLOGIES = 'FETCH_USER_APOLOGIES';
 export const SAVE_USER_APOLOGIES = 'SAVE_USER_APOLOGIES';
+export const RESET_SUCCESS = 'RESET_SUCCESS';
 
 export const updateUserInput = (value, field) => ({
   type: UPDATE_USER_INPUT,
@@ -48,4 +49,8 @@ export const fetchUserApologies = () => ({
 export const saveUserApologies = (user) => ({
   type: SAVE_USER_APOLOGIES,
   user,
+});
+
+export const resetSuccess = () => ({
+  type: RESET_SUCCESS,
 });

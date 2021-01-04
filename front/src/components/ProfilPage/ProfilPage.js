@@ -30,6 +30,7 @@ const ProfilPage = ({
   closeHeaderMenu,
   resetRedirect,
   fetchUserApologies,
+  resetSuccess,
 }) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -39,6 +40,7 @@ const ProfilPage = ({
     fetchUserApologies();
     closeHeaderMenu();
     resetRedirect();
+    resetSuccess();
   }, []);
   return (
     <section className="profilPage">
@@ -251,6 +253,7 @@ ProfilPage.propTypes = {
   closeHeaderMenu: PropTypes.func.isRequired,
   resetRedirect: PropTypes.func.isRequired,
   fetchUserApologies: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
 };
 
 export default ProfilPage;

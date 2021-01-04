@@ -6,6 +6,7 @@ import {
   inputFormatWrong,
   resetRedirect,
   fetchUserApologies,
+  resetSuccess,
 } from 'src/actions/profilPage';
 
 import {
@@ -48,6 +49,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchUserApologies: () => {
     dispatch(fetchUserApologies());
+  },
+  resetSuccess: () => {
+    dispatch(resetSuccess());
   },
 });
 

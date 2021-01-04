@@ -1,50 +1,54 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import { HelpCircle } from 'react-feather';
-import Loader from 'src/components/Loader/Loader';
 import Tippy from '@tippyjs/react';
+import Loader from 'src/components/Loader/Loader';
+import { useParams, Link } from 'react-router-dom';
+import { HelpCircle } from 'react-feather';
 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
-import './apologyCreate.scss';
+import './apologyEdit.scss';
 
-const ApologyCreate = ({
+const ApologyEdit = ({
   fetchAllCategories,
-  categories,
+  fetchApologyEdit,
+  allCategories,
+  selectedCategories,
   title,
   content,
-  updateInputValueByField,
-  addSelectedCategories,
-  selectedCategories,
-  removeSelectedCategories,
-  sendApologyForm,
   error,
   success,
+  isFetched,
+  updateApologyFieldEdit,
+  addCategorie,
+  removeCategorie,
+  submit,
+  categorieIsEmpty,
 }) => {
+  const { slug } = useParams();
   useEffect(() => {
     fetchAllCategories();
+    fetchApologyEdit(slug);
   }, []);
 
-  const handleFormSubmit = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    sendApologyForm();
+    submit(slug);
   };
 
   return (
     <div className="apology-create">
-      { (categories.length <= 0) && <Loader />}
-      { (categories.length > 0) && (
+      {!isFetched && <Loader />}
+      {isFetched && (
         <form
           action=""
           className="apology-form"
-          onSubmit={handleFormSubmit}
+          onSubmit={handleSubmit}
         >
           <fieldset
             className="form-fieldset"
           >
-            <legend className="form-legend">Poster une excuse</legend>
-            {success && <Redirect to="/mon-profil" />}
+            <legend className="form-legend">Modifier une excuse</legend>
             <div className="form-help">
               <Tippy
                 className="help-tooltip"
@@ -80,6 +84,27 @@ const ApologyCreate = ({
                 </p>
               </div>
             )}
+            {success && (
+              <div className="form-infos">
+                <p className="infos-description">
+                  Vos modifications ont étés validées
+                  <Link
+                    to="/mon-profil"
+                  >
+                    <small className="infos-link">
+                      Revenir a la page de profil
+                    </small>
+                  </Link>
+                </p>
+              </div>
+            )}
+            {(categorieIsEmpty && error) && (
+              <div className="form-error">
+                <p className="error-description">
+                  Il manque la catégorisation de l'excuse
+                </p>
+              </div>
+            )}
             <label htmlFor="title" className="form-label">
               Titre de l'excuse :
               <input
@@ -89,7 +114,7 @@ const ApologyCreate = ({
                 name="title"
                 value={title}
                 onChange={(evt) => {
-                  updateInputValueByField(evt.target.value, 'title');
+                  updateApologyFieldEdit(evt.currentTarget.value, 'title');
                 }}
               />
             </label>
@@ -103,7 +128,7 @@ const ApologyCreate = ({
                 name="apology"
                 value={content}
                 onChange={(evt) => {
-                  updateInputValueByField(evt.target.value, 'content');
+                  updateApologyFieldEdit(evt.currentTarget.value, 'content');
                 }}
               />
             </label>
@@ -112,21 +137,22 @@ const ApologyCreate = ({
                 Les catégories :
               </h2>
               <div className="form-categories">
-                { categories.map((category) => (
+                { allCategories.map((category) => (
                   <label key={category.id} htmlFor="checkbox" className="form-label checkbox">
                     {category.title}
+
                     <input
                       type="checkbox"
                       className="form-input checkbox"
                       id={`checkbox-${category.slug}`}
                       name="checkbox"
                       value={category.id}
-                      onClick={(evt) => {
+                      onChange={(evt) => {
                         if (!selectedCategories.includes(String(category.id))) {
-                          addSelectedCategories(evt.target.value);
+                          addCategorie(evt.target.value);
                         }
                         else {
-                          removeSelectedCategories(evt.target.value);
+                          removeCategorie(evt.target.value);
                         }
                       }}
                     />
@@ -138,7 +164,7 @@ const ApologyCreate = ({
               type="submit"
               className="form-submit"
             >
-              Poster
+              Valider les modifications
             </button>
           </fieldset>
         </form>
@@ -147,9 +173,10 @@ const ApologyCreate = ({
   );
 };
 
-ApologyCreate.propTypes = {
+ApologyEdit.propTypes = {
   fetchAllCategories: PropTypes.func.isRequired,
-  categories: PropTypes.arrayOf(
+  fetchApologyEdit: PropTypes.func.isRequired,
+  allCategories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
@@ -159,14 +186,15 @@ ApologyCreate.propTypes = {
   ).isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  updateInputValueByField: PropTypes.func.isRequired,
-  addSelectedCategories: PropTypes.func.isRequired,
   selectedCategories: PropTypes.array.isRequired,
-  removeSelectedCategories: PropTypes.func.isRequired,
-  sendApologyForm: PropTypes.func.isRequired,
   error: PropTypes.bool.isRequired,
   success: PropTypes.bool.isRequired,
-
+  isFetched: PropTypes.bool.isRequired,
+  updateApologyFieldEdit: PropTypes.func.isRequired,
+  addCategorie: PropTypes.func.isRequired,
+  removeCategorie: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
+  categorieIsEmpty: PropTypes.bool.isRequired,
 };
 
-export default ApologyCreate;
+export default ApologyEdit;
