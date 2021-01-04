@@ -53,31 +53,33 @@ const Apology = ({
                 {apologyInformation.author.nickname} le {apologyInformation.createdAt}
               </p>
               <div className="apology-fame">
-                <Tippy
-                  className="tooltip"
-                  inertia
-                  interactive
-                  animation="scale"
-                  placement="top"
-                  duration={500}
-                  zIndex={9999}
-                  content={(
-                    <h3 className="tooltip-title">
-                      Modifier l'excuse
-                    </h3>
-                  )}
-                >
-                  <button
-                    type="button"
-                    className="comment-button"
+                {(actualUser.nickname === apologyInformation.author.nickname) && (
+                  <Tippy
+                    className="tooltip"
+                    inertia
+                    interactive
+                    animation="scale"
+                    placement="top"
+                    duration={500}
+                    zIndex={9999}
+                    content={(
+                      <h3 className="tooltip-title">
+                        Modifier l'excuse
+                      </h3>
+                    )}
                   >
-                    <Link to={`/excuse/edition/${apologyInformation.slug}`}>
-                      <Edit2
-                        className="comment-icon"
-                      />
-                    </Link>
-                  </button>
-                </Tippy>
+                    <button
+                      type="button"
+                      className="comment-button"
+                    >
+                      <Link to={`/excuse/edition/${apologyInformation.slug}`}>
+                        <Edit2
+                          className="comment-icon"
+                        />
+                      </Link>
+                    </button>
+                  </Tippy>
+                )}
                 <Tippy
                   className="tooltip"
                   inertia
