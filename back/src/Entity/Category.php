@@ -19,6 +19,7 @@ class Category
      * @ORM\Column(type="integer")
      * @Groups("categories_groups")
      * @Groups("category_groups")
+     * @Groups("apologies_groups")
      */
     private $id;
 

@@ -1,0 +1,31 @@
+@import '../../styles/vars';
+
+.apology-create {
+  .apology-form{
+    .form-fieldset{
+
+      .form-infos {
+        
+        margin: 1% auto;
+        font-weight: bold;
+        border:  2px solid $primaryPurple;
+        box-shadow: 5px 5px 10px $primaryPurple;
+        padding: 2em;
+        border-radius: 5px;
+        .infos-description {
+          font-size: 1.2em;
+          .infos-link {
+            font-size: 0.8em;
+            display: block;
+            text-align: center;
+            margin-top: 1.5em;
+            color: #fff;
+            background-color: $primaryPurple;
+            padding: 0.8em;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+}

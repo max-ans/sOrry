@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader/Loader';
-import { ThumbsUp, MessageSquare, AlertOctagon } from 'react-feather';
+import {
+  ThumbsUp,
+  MessageSquare,
+  AlertOctagon,
+  Edit2,
+} from 'react-feather';
 import Tippy from '@tippyjs/react';
 
 import Field from 'src/components/Field/Field';
@@ -48,6 +53,31 @@ const Apology = ({
                 {apologyInformation.author.nickname} le {apologyInformation.createdAt}
               </p>
               <div className="apology-fame">
+                <Tippy
+                  className="tooltip"
+                  inertia
+                  interactive
+                  animation="scale"
+                  placement="top"
+                  duration={500}
+                  zIndex={9999}
+                  content={(
+                    <h3 className="tooltip-title">
+                      Modifier l'excuse
+                    </h3>
+                  )}
+                >
+                  <button
+                    type="button"
+                    className="comment-button"
+                  >
+                    <Link to={`/excuse/edition/${apologyInformation.slug}`}>
+                      <Edit2
+                        className="comment-icon"
+                      />
+                    </Link>
+                  </button>
+                </Tippy>
                 <Tippy
                   className="tooltip"
                   inertia
