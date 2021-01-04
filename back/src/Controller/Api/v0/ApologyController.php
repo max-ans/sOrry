@@ -219,6 +219,8 @@ class ApologyController extends AbstractController
 
         $form->submit($jsonArray, true);
 
+        $this->denyAccessUnlessGranted('add', $apology);
+
         // if request content is Ok 
         if ($form->isValid()){
             // set Slug of apology
@@ -258,12 +260,13 @@ class ApologyController extends AbstractController
     public function edit (Apology $apology, ApologyRepository $apologyRepository, Request $request, Slugger $slugger, ObjectNormalizer $normalizer) 
     {
         
-
         $jsonArray = json_decode($request->getContent(), true);
-
+        
         $form = $this->createForm(ApologyType::class, $apology, ['csrf_protection' => false]);
         
         $form->submit($jsonArray, true);
+
+        $this->denyAccessUnlessGranted('edit', $apology);
 
         if ($form->isValid()){
            
