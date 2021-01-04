@@ -25,7 +25,7 @@ const apologyEditMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_APOLOGY_EDIT_FORM: {
       const { title, content, selectedCategories } = store.getState().apologyEdit;
-      const { id } = store.getState().user.user;
+      const { id, apiToken } = store.getState().user.user;
       if (selectedCategories.length === 0) {
         store.dispatch(emptySelectedCategories());
         store.dispatch(wrongApologyForm());
@@ -36,6 +36,9 @@ const apologyEditMiddleware = (store) => (next) => (action) => {
           content,
           categories: selectedCategories,
           author: id,
+        },
+        {
+          headers: { 'X-AUTH-TOKEN': apiToken },
         })
           .then((response) => {
             store.dispatch(goodApologyForm());

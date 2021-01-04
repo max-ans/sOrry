@@ -25,7 +25,7 @@ const apologyCreateMiddleware = (store) => (next) => (action) => {
       break;
 
     case SEND_APOLOGY_FORM: {
-      const { id } = store.getState().user.user;
+      const { id, apiToken } = store.getState().user.user;
       const {
         title,
         content,
@@ -36,6 +36,8 @@ const apologyCreateMiddleware = (store) => (next) => (action) => {
         content,
         categories: selectedCategories,
         author: id,
+      }, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then((response) => {
           store.dispatch(successformApology());
