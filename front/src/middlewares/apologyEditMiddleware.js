@@ -15,7 +15,6 @@ const apologyEditMiddleware = (store) => (next) => (action) => {
     case FETCH_APOLOGY_EDIT:
       axios.get(`${baseURL}/api/v0/apologies/${action.slug}`)
         .then((response) => {
-          console.log(response);
           store.dispatch(saveApologyEdit(response.data[0]));
         })
         .catch((error) => {
@@ -27,7 +26,6 @@ const apologyEditMiddleware = (store) => (next) => (action) => {
     case SUBMIT_APOLOGY_EDIT_FORM: {
       const { title, content, selectedCategories } = store.getState().apologyEdit;
       const { id } = store.getState().user.user;
-      console.log(id);
       if (selectedCategories.length === 0) {
         store.dispatch(emptySelectedCategories());
         store.dispatch(wrongApologyForm());
@@ -40,7 +38,6 @@ const apologyEditMiddleware = (store) => (next) => (action) => {
           author: id,
         })
           .then((response) => {
-            console.log(response);
             store.dispatch(goodApologyForm());
             store.dispatch(fetchApologyEdit(response.data[0].slug));
           })
