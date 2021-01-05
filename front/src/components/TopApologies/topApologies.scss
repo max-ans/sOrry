@@ -1,0 +1,128 @@
+@import '../../styles/vars';
+
+.top-apologies {
+  margin: 5% 5%;
+
+  .top-description {
+
+    color: $primaryPurple;
+    font-size: 1em;
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid $primaryPurple;
+    border-radius: 15px;
+
+    .description-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 0.8em;
+      font-style: italic;
+    }
+
+    .description-paragraphe {
+      font-style: italic;
+      text-align: justify;
+      
+    }  
+  }
+  .all-apologies{
+    margin: 5% 5%;
+
+    .apologies-list {
+      display: flex;
+      flex-direction: column;
+
+      .apologies-item{
+        margin: 0.2em 0em;
+        background-color: #fff;
+        border: 1px solid $primaryPurple;
+        padding: 0.6em;
+        color: $primaryPurple;
+        overflow: hidden;
+        
+
+        .item-title {
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .item-content {
+          text-align: right;
+          margin-top: 0.6em;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &:nth-of-type(odd) {
+          background-color: $primaryYellow;
+          width: 80%;
+          align-self: flex-end ; 
+          border-radius: 50px 15px;
+        }
+        &:nth-of-type(even) {
+          background-color: #fff;
+          width: 80%; 
+          align-self: flex-start ; 
+          border-radius: 15px 50px ;
+
+        }
+      }
+    }
+  }
+}
+
+@media screen and ( min-width : 912px ) {
+  .top-apologies {
+    max-width: 1000px;
+    padding: 1em;
+    margin: 2% auto;
+    transition: all 0.5s;
+  
+
+    .all-apologies{
+      margin: 5% 5%;
+  
+      .apologies-list {
+        display: flex;
+        flex-direction: column;
+  
+        .apologies-item{
+          margin: 0.2em 0em;
+          background-color: #fff;
+          border: 1px solid $primaryPurple;
+          padding: 0.6em;
+          color: $primaryPurple;
+          
+  
+          .item-title {
+            text-align: center;
+            
+          }
+  
+          .item-content {
+            text-align: right;
+            margin-top: 0.6em;
+            text-align: center;
+          }
+  
+          &:nth-of-type(odd) {
+            background-color: $primaryYellow;
+            width: 70%;
+            align-self: flex-end ; 
+            border-radius: 50px 15px;
+          }
+          &:nth-of-type(even) {
+            background-color: #fff;
+            width: 70%; 
+            align-self: flex-start ; 
+            border-radius: 15px 50px ;
+  
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ import categoriesReducer from 'src/reducers/categories';
 import apologyByCategoriesReducer from 'src/reducers/apologyByCategories';
 import apologyReducer from 'src/reducers/apology';
 import apologyEditReducer from 'src/reducers/apologyEdit';
+import topApologiesReducer from 'src/reducers/topApologies';
 
 const mainReducer = combineReducers({
   header: headerReducer,
@@ -23,6 +24,7 @@ const mainReducer = combineReducers({
   apologyByCategories: apologyByCategoriesReducer,
   apology: apologyReducer,
   apologyEdit: apologyEditReducer,
+  topApologies: topApologiesReducer,
 });
 
 export default mainReducer;

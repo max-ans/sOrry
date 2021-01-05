@@ -113,7 +113,7 @@ class ApologyController extends AbstractController
          $countApologies = count($allApologies);
 
          return $this->json([
-             'allApologiesNumber' => $countApologies,
+            $countApologies,
          ]);
 
     }
