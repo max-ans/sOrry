@@ -17,6 +17,7 @@ import Categories from 'src/containers/Categories/Categories';
 import ApologyByCategories from 'src/containers/ApologyByCategories/ApologyByCategories';
 import Apology from 'src/containers/Apology/Apology';
 import ApologyEdit from 'src/containers/ApologyEdit/ApologyEdit';
+import TopApologies from 'src/containers/TopApologies/TopApologies';
 
 // == Import
 import './styles.scss';
@@ -47,6 +48,9 @@ const App = ({ isLogged }) => {
         </Route>
         <Route exact path="/a-propos">
           <About />
+        </Route>
+        <Route exact path="/top-excuses">
+          <TopApologies />
         </Route>
         <Route exact path="/poster-une-excuse">
           {isLogged ? <ApologyCreate /> : <Redirect to="/connexion" />}

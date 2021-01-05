@@ -10,8 +10,18 @@ const Footer = () => (
       <div className="footer-left">
         <div className="footer-left-left">
           <nav className="footer-left-navleft">
-            <a className="navleft-items" href="">Sorry</a>
-            <a className="navleft-items" href="">Top excuses</a>
+            <Link
+              className="navleft-items"
+              to="/"
+            >
+              Sorry
+            </Link>
+            <Link
+              className="navleft-items"
+              to="/top-excuses"
+            >
+              Top excuses
+            </Link>
             <Link
               to="/excuses-par-categories"
               className="navleft-items"

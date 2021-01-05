@@ -27,7 +27,7 @@ const Nav = ({
       </Link>
     )}
     <Link
-      to="/excuses-par-categories"
+      to="/top-excuses"
       className="header-nav-items"
     >
       Top excuses
