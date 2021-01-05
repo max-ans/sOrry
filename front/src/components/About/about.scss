@@ -37,12 +37,13 @@
     }
   
     .about-content {
-      
+      text-align: justify;
       line-height: 1.4em;
+
       .emoji {
         margin: 0.2em;
       }
-  
+
       .about-link {
         text-decoration: underline;
 

@@ -50,7 +50,7 @@ const About = ({ closeHeaderMenu }) => {
           dans le développement web. Le site que tu contemple actuellement est
           une de mes réalisations. Ce site, je l'est fait sur mon temps libre
           avec autant de serieux que possible, bien que le sujet
-          de celui-ci ne le soit pas.<br /> Mon objectif, en créant ce site, etait
+          de celui-ci ne le soit pas.<br /> Mon objectif, en créant ce site, est
           de faire passer un agréablement moment a l'utilisateur (toi du coup)
           pas seulement en lisant les perles des excuses de retard que
           j'ai pu entendre ici et là, mais aussi en fournissant une interface
